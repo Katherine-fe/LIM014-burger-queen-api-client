@@ -10,6 +10,9 @@ import { ProductsCatalogoComponent } from './components/admin/products-catalogo/
 import { NavegadorComponent } from './components/admin/navegador/navegador.component';
 import { AddUserComponent } from './components/admin/user-catalogo/add-user/add-user.component';
 import { ListUserComponent } from './components/admin/user-catalogo/list-user/list-user.component';
+import { ModalEditComponent } from './components/admin/user-catalogo/list-user/modal/modal-edit/modal-edit.component';
+import { ModalDeleteComponent } from './components/admin/user-catalogo/list-user/modal/modal-delete/modal-delete.component';
+import { ModalAddComponent } from './components/admin/user-catalogo/add-user/modal-add/modal-add.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { ListUserComponent } from './components/admin/user-catalogo/list-user/li
     NavegadorComponent,
     ProductsCatalogoComponent,
     AddUserComponent,
-    ListUserComponent
+    ListUserComponent,
+    ModalEditComponent,
+    ModalDeleteComponent,
+    ModalAddComponent
   ],
   imports: [
     BrowserModule,
