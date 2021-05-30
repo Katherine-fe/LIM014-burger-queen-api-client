@@ -1,4 +1,4 @@
-.modal {
+.modal-add {
     position: fixed;
     left: 0;
     top: 0;
@@ -7,7 +7,7 @@
     z-index: 990;
   }
   
-  .modal .overlay {
+  .modal-add .overlay {
     position: absolute;
     left: 0;
     top: 0;
@@ -17,7 +17,7 @@
     background: rgba(0, 0, 0, 0.85);
   }
   
-  .modal .modal_content {
+  .modal-add .modal_content {
     z-index: 999;
     position: absolute;
     top: 50%;
@@ -84,7 +84,7 @@
             background: #c1aa98;
           }
   
-          button.save {
+          button.add {
             background: #36af5a;
             color: #ffffff;
           }
@@ -94,11 +94,11 @@
   }
   
   
-  .modal .modal_content .buttons_wrapper {
+  .modal-add .modal_content .buttons_wrapper {
     padding: 20px;
   }
   
-  .modal .close_modal {
+  .modal-add .close_modal {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -110,6 +110,6 @@
     transition: opacity 0.2s ease;
   }
   
-  .modal .close_modal:hover {
+  .modal-add .close_modal:hover {
     opacity: 0.9;
   }

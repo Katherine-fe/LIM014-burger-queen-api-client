@@ -4,6 +4,7 @@
     </div>
     <div class="div-add">
         <input class="input-search" type="search" placeholder="Search" aria-label="Search">
-        <button class="add-user">Add New</button>
+        <button type="button" class="add-user" (click)="mostrarModalAdd()">Add New</button>
     </div>
 </section> 
+<app-modal-add [visibleAdd]="myModalAdd" (close)="cerrarModalAdd($event)"></app-modal-add>
