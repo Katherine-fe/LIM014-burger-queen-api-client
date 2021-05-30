@@ -1,41 +1,17 @@
 @import '../../../../styles.scss';
-
-nav{
-    display: flex;
-    position: fixed;
-    z-index: 200;
-    width: 100%;
-    background-color: #323232;
-    h1{
-        color: blanchedalmond;
+@import '../../../../assets/scss/nav-mixins';
+a{
+    @include  anclaNav;
+}
+.nav-waiter{
+    @include conteinerNav;
+    .logo-waiter{
+        @include logoWaiter;
     }
-    a{
-        color: white;
-        display: block;
-        text-decoration: none;
-        font-family: $fontText;
-        font-size: $sizeBody;
+    .linkNav-waiter{
+        @include linksNav;
     }
-    .list-nav{
-        align-items: center;
-        display: flex;
-        justify-content: space-evenly;
-        text-align: right;
-        list-style-type: none;
-        width: 100%;
-        list-style-type: none;
-        
-    }
-    .div-burgen{
-        background-color: #FFC839;
-        padding: 5px 10px;
-        h1{
-            font-family: $fontLogo;
-            font-size: 35px;
-            color:#323232;
-        }
-        .color-queen{
-            color: #EF2626;
-        }
-    }
-    }
+}
+.link-active.active{
+    @include activeLink;
+}

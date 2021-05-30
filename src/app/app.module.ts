@@ -14,6 +14,9 @@ import { NavBarComponent } from './components/waiter/nav-bar/nav-bar.component';
 import { MainComponent } from './components/waiter/main/main.component';
 import { OrdersComponent } from './components/waiter/orders/orders.component';
 import { RecordComponent } from './components/waiter/record/record.component';
+import { ModalEditComponent } from './components/admin/user-catalogo/list-user/modal/modal-edit/modal-edit.component';
+import { ModalDeleteComponent } from './components/admin/user-catalogo/list-user/modal/modal-delete/modal-delete.component';
+import { ModalAddComponent } from './components/admin/user-catalogo/add-user/modal-add/modal-add.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { RecordComponent } from './components/waiter/record/record.component';
     NavBarComponent,
     MainComponent,
     OrdersComponent,
-    RecordComponent
+    RecordComponent,
+    ModalEditComponent,
+    ModalDeleteComponent,
+    ModalAddComponent
   ],
   imports: [
     BrowserModule,
