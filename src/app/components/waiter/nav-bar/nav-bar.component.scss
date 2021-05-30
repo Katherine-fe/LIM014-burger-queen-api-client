@@ -1,0 +1,81 @@
+@import '../../../../styles.scss';
+
+a{
+    color: white;
+    font-family: $fontText;
+    font-size: $sizeBody;
+    font-weight: normal;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.nav-waiter{
+    width: 100%;
+    background-color: $bg-nav;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    z-index: 200;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+    .logo-waiter{
+        display: block;
+        padding: 5px 10px;
+        background-color: $bg-logo;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1{
+            color: $bg-nav;
+            font-family: $fontLogo;
+            font-size: 1.5em;
+            line-height: 2em;
+            .colorh1{
+                color: $bg-h1;
+            }
+        }
+    }
+    .linkNav-waiter{
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        li{
+            width: 100%;
+            &:hover{
+                background-color: rgba(0,0,0,1);
+            }
+        }
+        .li-btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .btn-sign{
+                font-size: $sizeBody;
+                font-weight: bold;
+                padding: 5px 15px;
+                border-radius: 5px;
+                border: none;
+                color: $bg-nav;
+                cursor: pointer;
+                background-color: rgb(238, 238, 238);
+            }
+            .btn-sign:hover{
+                background-color: #fff;
+            }
+        }
+    }
+}
+.link-active.active{
+    position: relative;
+    a::after{
+        content: '';
+        position: absolute;
+        width: 70px;
+        height: 2px;
+        background-color: $bg-logo;
+        bottom: 20%;
+    }
+}

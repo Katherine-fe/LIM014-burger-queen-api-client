@@ -1,5 +1,4 @@
-$font1: 'Alfa Slab One', cursive;
-$font2: 'Poppins', sans-serif;
+@import '../../../styles.scss';
 
 .login-container{
     width: 100%;
@@ -14,7 +13,7 @@ header{
     padding: 40px 20px 20px 20px;
     text-align: center;
     h1{
-        font-family: $font1;
+        font-family: $fontLogo;
         font-size: 62px;
         color:#323232;
     }
@@ -52,11 +51,11 @@ header{
             padding: 15px;
             color: white;
             box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
-            font-family: $font2;
+            font-family: $fontText;
         }
     }
     h3{
-        font-family: $font2;
+        font-family: $fontText;
         font-size: 30px;
         font-weight:200;
         color:#323232;
@@ -68,7 +67,7 @@ header{
     input{
         padding: 5px 30px;
         font-size: 20px;
-        font-family: $font2;
+        font-family: $fontText;
     }
     span{
         position: absolute;
@@ -103,7 +102,7 @@ header{
  @media screen and (max-width: 411px){
     header{
         h1{
-            font-family: $font1;
+            font-family: $fontLogo;
             font-size: 30px;
             color:#323232;
         }

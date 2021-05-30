@@ -1,5 +1,5 @@
-$font1: 'Alfa Slab One', cursive;
-$font2: 'Poppins', sans-serif;
+@import '../../../../styles.scss';
+
 nav{
     display: flex;
     position: fixed;
@@ -13,8 +13,8 @@ nav{
         color: white;
         display: block;
         text-decoration: none;
-        font-family: $font2;
-        font-size: 18px;
+        font-family: $fontText;
+        font-size: $sizeBody;
     }
     .list-nav{
         align-items: center;
@@ -30,7 +30,7 @@ nav{
         background-color: #FFC839;
         padding: 5px 10px;
         h1{
-            font-family: $font1;
+            font-family: $fontLogo;
             font-size: 35px;
             color:#323232;
         }
