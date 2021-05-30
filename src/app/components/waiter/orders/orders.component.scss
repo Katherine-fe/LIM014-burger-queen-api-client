@@ -1,5 +1,10 @@
 @import './../../../../styles.scss';
 
+@mixin flexElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .container-orders{
     display: grid;
     grid-gap: 20px;
@@ -45,8 +50,12 @@
 .body-tickets{
     display: flex;
     flex-wrap: wrap;
+    padding: 10px;
     row-gap: 15px;
     justify-content: space-between;
+    background-color: rgb(235, 235, 235);
+    height: 50vh;
+    overflow-y: scroll;
     .card{
         figure{
             width: 100%;
@@ -76,6 +85,8 @@
     }
 }
 .container-out{
+    background-color: red;
+    @include flexElement;
     .card-out{
         width: 100%;
         max-width: 95%;
