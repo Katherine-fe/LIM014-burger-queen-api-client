@@ -10,6 +10,10 @@ import { ProductsCatalogoComponent } from './components/admin/products-catalogo/
 import { NavegadorComponent } from './components/admin/navegador/navegador.component';
 import { AddUserComponent } from './components/admin/user-catalogo/add-user/add-user.component';
 import { ListUserComponent } from './components/admin/user-catalogo/list-user/list-user.component';
+import { NavBarComponent } from './components/waiter/nav-bar/nav-bar.component';
+import { MainComponent } from './components/waiter/main/main.component';
+import { OrdersComponent } from './components/waiter/orders/orders.component';
+import { RecordComponent } from './components/waiter/record/record.component';
 import { ModalEditComponent } from './components/admin/user-catalogo/list-user/modal/modal-edit/modal-edit.component';
 import { ModalDeleteComponent } from './components/admin/user-catalogo/list-user/modal/modal-delete/modal-delete.component';
 import { ModalAddComponent } from './components/admin/user-catalogo/add-user/modal-add/modal-add.component';
@@ -24,6 +28,10 @@ import { ModalAddComponent } from './components/admin/user-catalogo/add-user/mod
     ProductsCatalogoComponent,
     AddUserComponent,
     ListUserComponent,
+    NavBarComponent,
+    MainComponent,
+    OrdersComponent,
+    RecordComponent,
     ModalEditComponent,
     ModalDeleteComponent,
     ModalAddComponent

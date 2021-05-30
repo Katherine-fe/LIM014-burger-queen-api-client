@@ -1,8 +1,9 @@
-$font2: 'Poppins', sans-serif;
+@import '../../../../styles.scss';
+
 .container-admin{
     width: 100%;
     max-width: 90%;
     margin: 0 auto;
     padding-top: 70px;
-    font-family: $font2;
+    font-family: $fontText;
 }

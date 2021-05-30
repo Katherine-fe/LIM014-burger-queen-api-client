@@ -1,19 +1,15 @@
  <nav class="nav">
-    <div class ='div-burgen'> 
-      <h1>Burger<span class="color-queen">Queen</span></h1>
-          </div>
-    <ul class="list-nav">
-      <li routerLinkActive="active" >
-        <a class="btn-nav" [routerLink]="['usercatalogoadmin']">Users</a>
-      </li>
-      <li routerLinkActive="active" >
-        <a class="btn-nav"  [routerLink]="['productoscatalogoadmin']">Products</a>
-      </li>
-      <li routerLinkActive="active" >
-        <a class="btn-nav" [routerLink]="['login']">Sign out</a>
-      </li>
-    </ul>
     <div class="burger">
       <div class="line-burger"></div>
     </div>
   </nav>
+  <nav class="nav-waiter">
+    <div class="logo-waiter">
+        <h1>Burger<span class="colorh1">Queen</span></h1>
+    </div>
+    <ul class="linkNav-waiter">
+        <li class="link-active active"><a [routerLink]="['usercatalogoadmin']" href="">Users</a></li>
+        <li class="link-active"><a [routerLink]="['productoscatalogoadmin']" href="">Products</a></li>
+        <li class="li-btn"><button class="btn-sign" [routerLink]="['login']">Sign Out</button></li>
+    </ul>
+</nav>
