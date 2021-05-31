@@ -8,6 +8,7 @@ import { ProductsCatalogoComponent } from '../app/components/admin/products-cata
 import { MainComponent } from './components/waiter/main/main.component';
 import { OrdersComponent } from './components/waiter/orders/orders.component';
 import { RecordComponent } from './components/waiter/record/record.component';
+import { MainKComponent } from './components/kitchener/main-k/main-k.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'record', component: RecordComponent }
     ],
   },
+  { path: 'mainkitchener', component: MainKComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'login' },
 
 ];

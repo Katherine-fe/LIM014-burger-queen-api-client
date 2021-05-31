@@ -22,6 +22,10 @@ import { ListProductsComponent } from './components/admin/products-catalogo/list
 import { ModalAddProductsComponent } from './components/admin/products-catalogo/add-products/modal-add-products/modal-add-products.component';
 import { ModalDeleteProductsComponent } from './components/admin/products-catalogo/list-products/modal/modal-delete-products/modal-delete-products.component';
 import { ModalEditProductsComponent } from './components/admin/products-catalogo/list-products/modal/modal-edit-products/modal-edit-products.component';
+import { MainKComponent } from './components/kitchener/main-k/main-k.component';
+import { NavBarKComponent } from './components/kitchener/nav-bar-k/nav-bar-k.component';
+import { PendingComponent } from './components/kitchener/pending/pending.component';
+import { DoneComponent } from './components/kitchener/done/done.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,11 @@ import { ModalEditProductsComponent } from './components/admin/products-catalogo
     ListProductsComponent,
     ModalAddProductsComponent,
     ModalDeleteProductsComponent,
-    ModalEditProductsComponent
+    ModalEditProductsComponent,
+    MainKComponent,
+    NavBarKComponent,
+    PendingComponent,
+    DoneComponent
   ],
   imports: [
     BrowserModule,

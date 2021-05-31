@@ -1,0 +1,17 @@
+@import '../../../../styles.scss';
+@import '../../../../assets/scss/nav-mixins';
+a{
+    @include  anclaNav;
+}
+.nav-waiter{
+    @include conteinerNav;
+    .logo-waiter{
+        @include logoWaiter;
+    }
+    .linkNav-waiter{
+        @include linksNav;
+    }
+}
+.link-active.active{
+    @include activeLink;
+}
