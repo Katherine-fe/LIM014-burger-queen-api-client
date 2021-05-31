@@ -1,18 +1,10 @@
+@import '../../../../assets/scss/container-minins';
+
 .container-waiter{
-    width: 100%;
-    min-height: 100vh;
-    padding-top: 80px;
-    background-image: linear-gradient(to bottom right, #ffffff, #f5f5f5);
-    .row{
-        width: 100%;
-        max-width: 85%;
-        margin: 0 auto;
-    }
+    @include container;
 }
 @media screen and (min-width: 1600px){
     .container-waiter{
-        .row{
-           max-width: 1360px;
-        }
+        @include mediaContainer;
     }
 }

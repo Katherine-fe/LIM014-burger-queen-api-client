@@ -1,5 +1,9 @@
 @import './../../../../styles.scss';
 
+$oro :#ffbf00;
+$verde: #8FDE7B;
+$scala: scale(1.03);
+
 @mixin flexElement {
     display: flex;
     justify-content: center;
@@ -7,7 +11,7 @@
 }
 .container-orders{
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 40px;
 }
 .container-tickets{
     display: flex;
@@ -46,7 +50,7 @@
         border: none;
         border-radius: 15px 30px 15px 30px;
         &:hover{
-            transform: scale(1.03);
+            transform: $scala;
         }
     }
 }
@@ -95,7 +99,7 @@
             flex-direction: column;
             align-items: center;
             .price-card{
-                color: $bg-logo;
+                color: $oro;
                 font-weight: bold;
             }
         }
@@ -117,6 +121,7 @@
             border: 1px solid rgb(206, 206, 206);
             box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
             font-family: $fontText;
+            color: rgb(63, 63, 63);
             font-size: 18px;
             table{
                 width: 100%;
@@ -132,6 +137,46 @@
                 }
             }
         }
+        .total-product{
+            display: flex;
+            justify-content: space-evenly;
+            padding: 20px 0px;
+            border-bottom: 1px solid rgb(230, 230, 230);
+            .total-price{
+                color: rgb(39, 197, 39);
+                font-weight: 700;
+            }
+        }
+        .group-btn-make{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 10px 0px;
+            button{
+                padding: 10px 35px;
+                font-family: $fontText;
+                font-size: 15px;
+                border: none;
+                border-radius: 5px;
+                color: $fontText;
+                box-shadow: 5px 5px 5px rgba(0,0,0,.1);
+                cursor: pointer;
+                &:hover{
+                    transform: $scala;
+                }
+            }
+        }
+    }
+}
+.del{
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(163, 14, 14);
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    &:hover{
+        transform: $scala;
     }
 }
 .btn-more, .btn-remove{
@@ -141,8 +186,8 @@
     background-color: #E2E2E0;
     cursor: pointer;
     &:hover{
-        transform: scale(1.03);
-        background-color: $bg-logo;
+        transform: $scala;
+        background-color: $verde;
     }
 }
 @media screen and (min-width: 1366px){
