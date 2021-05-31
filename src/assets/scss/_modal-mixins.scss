@@ -1,0 +1,80 @@
+@mixin modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 990;
+}
+@mixin modaloverlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 995;
+    background: rgba(0, 0, 0, 0.85);
+}
+@mixin modalmodalcontent {
+    z-index: 999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 90%;
+    overflow: auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    border-radius: 4px;
+    width: 30%;
+  
+}
+@mixin  divctn-edit-user {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    h2 {
+        font-size: 2em;
+        text-align: center;
+      } 
+    
+}
+@mixin divcancel-save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      height: 2.5em;
+      width: 41%;
+      border-radius: 5px;
+      margin: 4%;
+      border: none;
+    }
+
+    button.cancel {
+      color: #323232;
+      background: #e351519f;
+    }
+
+    button.save {
+      background: #FFC839;
+      color: #323232;
+    }
+    
+}
+@mixin modalclose_modal {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.5;
+    background: none;
+    border: none;
+    transition: opacity 0.2s ease;
+}
