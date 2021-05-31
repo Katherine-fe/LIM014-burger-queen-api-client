@@ -1,0 +1,10 @@
+<section class="section-add margin-bt">
+    <div class="title-user"> 
+        <h2> Products Catalogue</h2> 
+    </div>
+    <div class="div-add">
+        <input class="input-search" type="search" placeholder="Search" aria-label="Search">
+        <button type="button" class="add-products" (click)="mostrarModalAddProducts()">Add New Product</button>
+    </div>
+</section> 
+<app-modal-add-products [visibleAddProducts]="myModalAddProducts" (close)="cerrarModalAddProducts($event)"></app-modal-add-products>

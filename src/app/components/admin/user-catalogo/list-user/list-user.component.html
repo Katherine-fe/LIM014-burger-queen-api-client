@@ -14,32 +14,27 @@
           <td>1</td>
           <td>katty@gmail.com</td>
           <td>123456789</td>
-          <td>Admin</td>
+          <td>Administrador</td>
           <td class="edit-delete">
-            <button class="edit"> 
-              Editar</button>
-            <button class="delete"> <!-- modal -->
-              Eliminar
-            </button>
+            <button class="edit" (click)="mostrarModalEdit()">Update</button>
+            <button class="delete" (click)="mostrarModalDelete()">Delete</button>
           </td>
           <tr>
-            <td>1</td>
+            <td>2</td>
             <td>eunice@gmail.com</td>
             <td>123456789</td>
-            <td>Admin</td>
+            <td>Administrador</td>
             <td class="edit-delete">
-              <button class="edit"> 
-                Editar</button>
-              <button class="delete"> <!-- modal -->
-                Eliminar
-              </button>
+              <button class="edit" (click)="mostrarModalEdit()">Update</button>
+              <button class="delete" (click)="mostrarModalDelete()">Delete</button>
             </td>
         </tr>    
       </tbody>
     </table>
   </div>
-<!--   <div class="app">
-<app-modal-edit></app-modal-edit>
-  </div> -->
+  <div class="app">
+    <app-modal-edit [visibleEdit]="myModalEdit" (close)="cerrarModalEdit($event)" ></app-modal-edit>
+    <app-modal-delete [visibleDelete]="myModalDelete" (close)="cerrarModalDelete($event)"></app-modal-delete>
+  </div>
 
 

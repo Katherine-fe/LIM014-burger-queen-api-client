@@ -1,0 +1,33 @@
+$colors: (
+  add:#FFC839,
+  secundary: #323232,
+);
+$font2: 'Poppins', sans-serif;
+.section-add{
+    width: 100%;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    .title-user{
+      font-size: 13px;
+      color:map-get($colors, 'secundary');
+    }
+    .input-search{
+    padding: 2px 10px;
+    font-size: 18px;
+    font-family:$font2 ;
+    border-radius: 5px;
+    border:1px solid grey ;
+    }
+   
+
+}
+.add-products{
+    padding: 2px 10px;
+    background: map-get($colors, 'add');
+    font-size: 18px;
+    font-family:$font2 ;  
+    border-radius: 5px;
+    margin: 10px;
+    border: none;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-modal-edit',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalEditComponent implements OnInit {
 
+  @Input() visibleEdit: boolean = false;
+  @Output() close: EventEmitter<boolean> = new EventEmitter;
+  
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  closeModalEdit(){
+    this.close.emit(false);
+  }
 }

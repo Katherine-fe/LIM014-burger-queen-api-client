@@ -17,6 +17,11 @@ import { RecordComponent } from './components/waiter/record/record.component';
 import { ModalEditComponent } from './components/admin/user-catalogo/list-user/modal/modal-edit/modal-edit.component';
 import { ModalDeleteComponent } from './components/admin/user-catalogo/list-user/modal/modal-delete/modal-delete.component';
 import { ModalAddComponent } from './components/admin/user-catalogo/add-user/modal-add/modal-add.component';
+import { AddProductsComponent } from './components/admin/products-catalogo/add-products/add-products.component';
+import { ListProductsComponent } from './components/admin/products-catalogo/list-products/list-products.component';
+import { ModalAddProductsComponent } from './components/admin/products-catalogo/add-products/modal-add-products/modal-add-products.component';
+import { ModalDeleteProductsComponent } from './components/admin/products-catalogo/list-products/modal/modal-delete-products/modal-delete-products.component';
+import { ModalEditProductsComponent } from './components/admin/products-catalogo/list-products/modal/modal-edit-products/modal-edit-products.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import { ModalAddComponent } from './components/admin/user-catalogo/add-user/mod
     RecordComponent,
     ModalEditComponent,
     ModalDeleteComponent,
-    ModalAddComponent
+    ModalAddComponent,
+    AddProductsComponent,
+    ListProductsComponent,
+    ModalAddProductsComponent,
+    ModalDeleteProductsComponent,
+    ModalEditProductsComponent
   ],
   imports: [
     BrowserModule,

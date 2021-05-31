@@ -6,9 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-user.component.scss']
 })
 export class ListUserComponent implements OnInit {
+
   constructor() { }
 
   ngOnInit(): void {
   }
+  myModalEdit = false;
+  myModalDelete = false;
 
+  mostrarModalEdit(){
+    this.myModalEdit = true;
+  }
+  mostrarModalDelete(){
+    this.myModalDelete = true;
+  }
+  cerrarModalEdit(e: boolean){
+    this.myModalEdit = e;
+  }
+  cerrarModalDelete(e: boolean){
+    this.myModalDelete = e;
+  }
 }

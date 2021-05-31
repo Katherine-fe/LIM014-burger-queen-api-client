@@ -1,4 +1,4 @@
-<div class="modal">
+<section class="modal" *ngIf="visibleAdd">
     <div class="overlay"></div>
     <div class="modal_content">
     <div class="ctn-edit-user" >
@@ -12,10 +12,11 @@
               <option>Kitchener</option>
               </select>
           <div class="cancel-save">
-            <button type='button' class="cancel" >Cancel</button>
-            <button type='submit' class="save">Add</button>
+            <button type='button' class="cancel" (click)="closeModalAdd()">Cancel</button>
+            <button type='button' class="save">Add</button>
           </div>
         </form>
     </div>
     </div>
-  </div>
+  </section>
+
