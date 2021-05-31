@@ -1,0 +1,21 @@
+<section class="modal" *ngIf="visibleEditProduct">
+    <div class="overlay"></div>
+    <div class="modal_content">
+    <div class="ctn-edit-user" >
+        <h2>Edit Product</h2>
+        <form class="form">
+            <input type="text" placeholder="Name Product" name="NameProduct" formControlName="NameProduct">
+            <input type="text" placeholder="Price" formControlName="Price">
+            <select name="typeProduct" class="select-product">
+              <option>Menu</option>
+              <option>Desayunos</option>
+              </select>
+              <input type="date" placeholder="Date Creation" formControlName="Date Creation">
+          <div class="cancel-save">
+            <button type='button' class="cancel" (click)="closeModalEditProduct()" >Cancel</button>
+            <button type='button' class="save">Update</button>
+          </div>
+        </form>
+    </div>
+    </div>
+  </section>

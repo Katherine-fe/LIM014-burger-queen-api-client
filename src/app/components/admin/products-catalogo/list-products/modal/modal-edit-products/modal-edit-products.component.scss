@@ -1,4 +1,4 @@
-@import '../../../../../../assets/scss/modal-mixins';
+@import '../../../../../../../assets/scss/modal-mixins';
 
 .modal {
   @include modal;
@@ -8,9 +8,9 @@
   }
   .modal .modal_content {
     @include modalmodalcontent;
-
+  
     div.ctn-edit-user {
-      @include divctn-edit-user;
+      @include divctn-edit-user;  
       .form {
         input {
           height: 30px;
@@ -21,7 +21,7 @@
           padding: 1%;
           text-align: center;
         }
-        .select-rol{
+        .select-product{
             height: 30px;
             width: 90%;
             border-radius: 8px;
@@ -40,7 +40,7 @@
       }
     }  
   }
-    
+  
   .modal .modal_content .buttons_wrapper {
     padding: 20px;
   }

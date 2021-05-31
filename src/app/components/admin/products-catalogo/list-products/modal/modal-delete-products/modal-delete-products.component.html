@@ -1,0 +1,15 @@
+<section class="modal" *ngIf="visibleDeleteProduct">
+    <div class="overlay"></div>
+    <div class="modal_content">
+    <div class="ctn-edit-user" >
+        <h2>Delete Product</h2>
+        <div class="form">
+            <h5 class="nameDelete" id="modal-delete">If you delete this product, you will not be able to recover it.</h5>
+          <div class="cancel-save">
+            <button type='button' class="cancel" (click)="closeModalDeleteProduct()" >Cancel</button>
+            <button type='button' class="save">Delete</button>
+          </div>
+        </div>
+    </div>
+    </div>
+</section>
