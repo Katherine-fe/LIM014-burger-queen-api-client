@@ -1,5 +1,10 @@
 @import './../../../../styles.scss';
 
+@mixin flexElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .container-orders{
     display: grid;
     grid-gap: 20px;
@@ -8,7 +13,6 @@
     display: flex;
     flex-direction: column;
     justify-self: center;
-    /* align-items: center; */
     row-gap: 15px;
     font-family: $fontText;
     .user-name{
@@ -33,6 +37,7 @@
         width: 35%;
         background-color: $bg-nav;
         color: white;
+        cursor: pointer;
         font-family: $fontText;
         font-weight: 800;
         font-size: 18px;
@@ -40,13 +45,25 @@
         line-height: 40px;
         border: none;
         border-radius: 15px 30px 15px 30px;
+        &:hover{
+            transform: scale(1.03);
+        }
     }
 }
 .body-tickets{
     display: flex;
     flex-wrap: wrap;
-    row-gap: 15px;
-    justify-content: space-between;
+    padding: 10px 0px;
+    row-gap: 10px;
+    column-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(235, 235, 235)/**/;
+    width: 100%;
+    min-width: 652px;
+    height: 40vh;
+    min-height: 20vh;
+    overflow-y: scroll;
     .card{
         figure{
             width: 100%;
@@ -73,9 +90,19 @@
         .card-img{
             width: 80%;
         }
+        .card-body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .price-card{
+                color: $bg-logo;
+                font-weight: bold;
+            }
+        }
     }
 }
 .container-out{
+    @include flexElement;
     .card-out{
         width: 100%;
         max-width: 95%;
@@ -87,17 +114,42 @@
         .container-table{
             width: 100%;
             background-color:#fafafa;
+            border: 1px solid rgb(206, 206, 206);
+            box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+            font-family: $fontText;
+            font-size: 18px;
             table{
                 width: 100%;
+                tr{
+                    text-align: center;
+                    td{
+                        line-height: 2.5em;
+                    }
+                }
                 .head-table{
                     background-color: #EDF2F7;
+                    color: #4A5568;
                 }
             }
         }
     }
 }
-@media screen and (min-width: 1024px){
+.btn-more, .btn-remove{
+    border-radius: 50%;
+    padding: 8px;
+    border:none;
+    background-color: #E2E2E0;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.03);
+        background-color: $bg-logo;
+    }
+}
+@media screen and (min-width: 1366px){
     .container-orders{
         grid-template-columns: repeat(2,1fr);
     }
-}
+    .body-tickets{
+        height: 50vh;
+    }
+} 

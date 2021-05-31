@@ -9,3 +9,10 @@
         margin: 0 auto;
     }
 }
+@media screen and (min-width: 1600px){
+    .container-waiter{
+        .row{
+           max-width: 1360px;
+        }
+    }
+}

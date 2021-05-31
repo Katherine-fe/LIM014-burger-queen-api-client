@@ -1,18 +1,17 @@
 @import '../../../styles.scss';
 
+@mixin flexElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .login-container{
     width: 100%;
     height: 100vh;
-   /*  background-image: url(../../../assets/img/fondo.svg); */
-    
-    main{
-        display: grid;
-        grid-template-rows: 70% 30%;
-    }
 }
 header{
-    padding: 40px 20px 20px 20px;
     text-align: center;
+    line-height: 8em;
     h1{
         font-family: $fontLogo;
         font-size: 62px;
@@ -22,90 +21,83 @@ header{
         color: #EF2626;
     }
 }
-.img-login{
+.container-login{
     width: 100%;
-    max-width: 500px;
-    min-height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    max-width: 80%;
     margin: 0 auto;
-    img{
-        width: 100%;
-        /* height: 400px; */
+    display: grid;
+    grid-gap: 20px;
+    .img-login{
+        @include flexElement;
+        img{
+            width: 80%;
+        }
     }
 }
 .form-container{
-    display: flex;
+    justify-self: center;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    .login-form{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        .log-in{
-            border: none;
-            outline: none;
-            cursor: pointer;
-            background-color: #EF2626;
-            padding: 15px;
-            color: white;
-            box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
-            font-family: $fontText;
-        }
-    }
+    @include flexElement;
+    margin-bottom: 50px;
     h3{
         font-family: $fontText;
         font-size: 30px;
-        font-weight:200;
+        font-weight:bold;
         color:#323232;
     }
 }
-.div-imput{
-    margin-bottom: 30px;
-    position: relative;
-    input{
-        padding: 5px 30px;
-        font-size: 20px;
-        font-family: $fontText;
+.login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    .div-input{
+        width: 100%;
+        position: relative;
+        span{
+            position: absolute;
+            color: grey;
+            bottom: 25%;
+            left: 5px;
+        }
+        input{
+            padding: 5px 30px;
+            font-family: $fontText;
+            font-size: 18px;
+        }
     }
-    span{
-        position: absolute;
-        top: 25%;
-        left: 5px;
-    }
+}
+.log-in{
+    width: 100%;
+    padding: 5px 25px;
+    font-family: $fontText;
+    font-size: 18px;
+    color:white;
+    background-color: #EF2626;
+    outline: none;
+    border: none;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+@media screen and (max-width: 414px){
+    header{
+        h1{ font-size: 2em; }}
 }
 @media screen and (min-width: 1024px){
-    .login-container{
-        main{
-            grid-template-rows: none;
-            grid-template-columns: 50% 50%;
+    .container-login{
+        .img-login{
+            img{
+                width: 50%;
+            }
         }
     }
 }
-/* @media screen and (min-width: 1366px){
-    .img-login{
-        img{
-            width: 600px;
-            height: 600px;
-        }
-    }
-    header{
-        h1{
-            font-family: $font1;
-            font-size: 70px;
-            color:#323232;
-        }
-    }
-}
- */
- @media screen and (max-width: 411px){
-    header{
-        h1{
-            font-family: $fontLogo;
-            font-size: 30px;
-            color:#323232;
+@media screen and (min-width: 1500px){
+    .container-login{
+        height: calc( 100vh - 180px);
+        grid-template-columns: repeat(2,1fr);
+        .img-login{
+            img{ width: 80%; }
         }
     }
 }
