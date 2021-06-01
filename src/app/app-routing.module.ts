@@ -9,6 +9,8 @@ import { MainComponent } from './components/waiter/main/main.component';
 import { OrdersComponent } from './components/waiter/orders/orders.component';
 import { RecordComponent } from './components/waiter/record/record.component';
 import { MainKComponent } from './components/kitchener/main-k/main-k.component';
+import { PendingComponent } from './components/kitchener/pending/pending.component';
+import { DoneComponent } from './components/kitchener/done/done.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,7 +31,14 @@ const routes: Routes = [
       { path: 'record', component: RecordComponent }
     ],
   },
-  { path: 'mainkitchener', component: MainKComponent },
+  {
+    path: 'mainkitchener', component: MainKComponent,
+    children: [
+      { path: '', redirectTo: 'pending', pathMatch: 'full' },
+      { path: 'pending', component: PendingComponent },
+      { path: 'done', component: DoneComponent },
+    ]
+  },
   { path: '**', pathMatch: 'full', redirectTo: 'login' },
 
 ];
