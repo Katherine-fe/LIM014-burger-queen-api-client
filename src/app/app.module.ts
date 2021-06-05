@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +29,11 @@ import { PendingComponent } from './components/kitchener/pending/pending.compone
 import { DoneComponent } from './components/kitchener/done/done.component';
 import { HttpClientModule } from '@angular/common/http';
 
+// services
+import { ApiService } from './services/api.service';
+
+// importamos para usar ngForm
+import { FormsModule } from '@angular/forms'
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,14 +59,16 @@ import { HttpClientModule } from '@angular/common/http';
     MainKComponent,
     NavBarKComponent,
     PendingComponent,
-    DoneComponent
+    DoneComponent,
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

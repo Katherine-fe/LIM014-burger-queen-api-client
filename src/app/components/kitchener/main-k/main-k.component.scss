@@ -1,0 +1,10 @@
+@import '../../../../assets/scss/container-minins';
+
+.container-waiter{
+    @include container;
+}
+@media screen and (min-width: 1600px){
+    .container-waiter{
+        @include mediaContainer;
+    }
+}
