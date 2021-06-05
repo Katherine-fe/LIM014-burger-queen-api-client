@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-orders',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-
-  constructor() { }
+  constructor(private http: ApiService) { }
 
   ngOnInit(): void {
+    this.getProducts();
   }
 
+  getProducts() {
+    this.http.getProducts().subscribe((rest: any) => {
+      console.log(rest.products);
+    });
+  }
 }
