@@ -10,24 +10,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>katty@gmail.com</td>
+        <tr *ngFor="let prod of products">
+          <td>{{prod.name}}</td>
+          <td></td>
           <td>123456789</td>
           <td>Administrador</td>
           <td class="edit-delete">
             <button class="edit" (click)="mostrarModalEdit()">Update</button>
             <button class="delete" (click)="mostrarModalDelete()">Delete</button>
           </td>
-          <tr>
-            <td>2</td>
-            <td>eunice@gmail.com</td>
-            <td>123456789</td>
-            <td>Administrador</td>
-            <td class="edit-delete">
-              <button class="edit" (click)="mostrarModalEdit()">Update</button>
-              <button class="delete" (click)="mostrarModalDelete()">Delete</button>
-            </td>
         </tr>    
       </tbody>
     </table>

@@ -26,6 +26,7 @@ import { MainKComponent } from './components/kitchener/main-k/main-k.component';
 import { NavBarKComponent } from './components/kitchener/nav-bar-k/nav-bar-k.component';
 import { PendingComponent } from './components/kitchener/pending/pending.component';
 import { DoneComponent } from './components/kitchener/done/done.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { DoneComponent } from './components/kitchener/done/done.component';
     DoneComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],
