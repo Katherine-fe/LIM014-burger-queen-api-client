@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { EmailValidator, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserInterface } from 'src/app/model/user-interface';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private autho: AuthService, private router: Router) { }
+
+  public user: UserInterface = {
+    email: '',
+    password: ''
+  };
 
   ngOnInit(): void {
+    // this.login();
   }
-
+  login() {
+    if (this.user.email === '' || this.user.password === '') {
+      alert("Campos vacios");
+    } else {
+      this.autho.loginUser(this.user.email, this.user.password)
+        .subscribe(data => {
+          this.autho.setToken(data.token);
+          const pokemon = this.autho.getToken();
+          switch (pokemon) {
+            case '"tokenAdmin"':
+              this.router.navigate(['menuprincipal']);
+              break;
+            case '"tokenCocinero"':
+              this.router.navigate(['mainkitchener']);
+              break;
+            case '"tokenMesero"':
+              this.router.navigate(['mainWaiter']);
+              break;
+            default:
+              console.log("No pasa nada");
+          }
+        }, error => console.log(error));
+    }
+  }
 }

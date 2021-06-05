@@ -8,16 +8,16 @@
     </section>
     <section class="form-container">
         <h3>Welcome</h3>
-        <form action="" class="login-form">
+        <form #formLogin= "ngForm" (ngSubmit)="login()" class="login-form">
             <div class="div-input">
                 <span class="material-icons">person_outline</span>                    
-                <input type="text" placeholder="Email">
+                <input type="text" [(ngModel)]= "user.email" name="email" required placeholder="Email">
             </div>
             <div class="div-input">
                 <span class="material-icons">lock</span>
-                <input type="password" placeholder="Password">
+                <input type="password" [(ngModel)]= "user.password" name="password" placeholder="Password">
             </div>
-            <button class="log-in" type="" [routerLink]="['/menuprincipal']" routerLinkActive="router-link-active" >LOGIN</button>
+            <button class="log-in" type="submit">LOGIN</button>
         </form>
     </section>
     </main>
