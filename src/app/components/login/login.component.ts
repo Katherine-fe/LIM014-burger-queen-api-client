@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     password: ''
   };
   error: boolean = false;
-  errorMessage: string = 'Incorret Email or Password'
+  errorMessage: string = 'Please enter a valid email or password'
   ngOnInit(): void {}
 
   login() {
