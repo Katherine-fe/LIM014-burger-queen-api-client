@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -27,6 +25,7 @@ import { MainKComponent } from './components/kitchener/main-k/main-k.component';
 import { NavBarKComponent } from './components/kitchener/nav-bar-k/nav-bar-k.component';
 import { PendingComponent } from './components/kitchener/pending/pending.component';
 import { DoneComponent } from './components/kitchener/done/done.component';
+import { HttpClientModule } from '@angular/common/http';
 
 // services
 import { ApiService } from './services/api.service';
@@ -61,6 +60,7 @@ import { FormsModule } from '@angular/forms'
     DoneComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
