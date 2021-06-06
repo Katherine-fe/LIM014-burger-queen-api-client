@@ -17,14 +17,11 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   };
+  error: boolean = false;
+  errorMessage: string = 'Incorret Email or Password'
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    // this.login();
-  }
   login() {
-    if (this.user.email === '' || this.user.password === '') {
-      alert("Campos vacios");
-    } else {
       this.autho.loginUser(this.user.email, this.user.password)
         .subscribe(data => {
           this.autho.setToken(data.token);
@@ -42,7 +39,11 @@ export class LoginComponent implements OnInit {
             default:
               console.log("No pasa nada");
           }
-        }, error => console.log(error));
+        }, error => {
+          if (error.status === 400){
+            this.error = true;
+          }
+          });
     }
   }
-}
+

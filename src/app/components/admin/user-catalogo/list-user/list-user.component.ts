@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+/* import { HttpClient } from '@angular/common/http';
+ */
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
@@ -8,13 +8,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListUserComponent implements OnInit {
   products: any [] = [];
-  constructor( private http: HttpClient) { 
-   this.http.get('http://localhost:3000/products')
+  constructor( /* private http: HttpClient */) { 
+ /*   this.http.get('http://localhost:3000/products')
       .subscribe((resp : any) => {
         this.products = resp.products;
         console.log(resp.products)
       })
-  }
+      */
+  } 
 
   ngOnInit(): void {
   }

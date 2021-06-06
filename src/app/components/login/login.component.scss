@@ -79,6 +79,15 @@ header{
     box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
     cursor: pointer;
 }
+.error{
+  color: #CA3A28;
+  font-family: $fontText;
+  width: 100%;
+  text-align: center;
+  margin:10px;
+  font-weight:700;
+}
+
 @media screen and (max-width: 414px){
     header{
         h1{ font-size: 2em; }}

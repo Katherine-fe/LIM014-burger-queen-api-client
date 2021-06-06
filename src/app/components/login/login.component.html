@@ -17,6 +17,7 @@
                 <span class="material-icons">lock</span>
                 <input type="password" [(ngModel)]= "user.password" name="password" placeholder="Password">
             </div>
+            <p *ngIf="error" class="error">{{errorMessage}}</p>
             <button class="log-in" type="submit">LOGIN</button>
         </form>
     </section>
