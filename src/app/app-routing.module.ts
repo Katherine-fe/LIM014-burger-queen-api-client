@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ChildrenOutletContexts, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../app/components/login/login.component';
 import { MenuPrincipalComponent } from '../app/components/admin/menu-principal/menu-principal.component'
 import { NavegadorComponent } from './components/admin/navegador/navegador.component';
@@ -11,16 +11,27 @@ import { RecordComponent } from './components/waiter/record/record.component';
 import { MainKComponent } from './components/kitchener/main-k/main-k.component';
 import { PendingComponent } from './components/kitchener/pending/pending.component';
 import { DoneComponent } from './components/kitchener/done/done.component';
+import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'navegador', component: NavegadorComponent },
   {
     path: 'menuprincipal', component: MenuPrincipalComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: 'usercatalogoadmin', component: UserCatalogoComponent },
-      { path: '', redirectTo: 'usercatalogoadmin', pathMatch: 'full' },
-      { path: 'productoscatalogoadmin', component: ProductsCatalogoComponent },
+      {
+        path: 'usercatalogoadmin', component: UserCatalogoComponent,
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: '', redirectTo: 'usercatalogoadmin', pathMatch: 'full',
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'productoscatalogoadmin', component: ProductsCatalogoComponent,
+        canActivateChild: [AuthGuard]
+      },
     ],
   },
   {

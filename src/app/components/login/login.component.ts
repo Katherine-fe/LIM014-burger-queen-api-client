@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailValidator, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserInterface } from 'src/app/model/user-interface';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private autho: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   public user: UserInterface = {
     email: '',
@@ -19,31 +18,35 @@ export class LoginComponent implements OnInit {
   };
   error: boolean = false;
   errorMessage: string = 'Please enter a valid email or password'
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   login() {
-      this.autho.loginUser(this.user.email, this.user.password)
-        .subscribe(data => {
-          this.autho.setToken(data.token);
-          const pokemon = this.autho.getToken();
-          switch (pokemon) {
-            case '"tokenAdmin"':
-              this.router.navigate(['menuprincipal']);
-              break;
-            case '"tokenCocinero"':
-              this.router.navigate(['mainkitchener']);
-              break;
-            case '"tokenMesero"':
-              this.router.navigate(['mainWaiter']);
-              break;
-            default:
-              console.log("No pasa nada");
-          }
-        }, error => {
-          if (error.status === 400){
-            this.error = true;
-          }
-          });
-    }
+    this.auth.requestPost(this.user.email, this.user.password)
+      .subscribe(data => {
+        this.auth.setToken(data.token);
+        const token = this.auth.getToken();
+        switch (token) {
+          case '"tokenAdmin"':
+            this.auth.admin().subscribe(() => {
+              if (this.auth.isLoggedIn) {
+                this.router.navigate(['menuprincipal']);
+              }
+            })
+            break;
+          case '"tokenCocinero"':
+            this.router.navigate(['mainkitchener']);
+            break;
+          case '"tokenMesero"':
+            this.router.navigate(['mainWaiter']);
+            break;
+          default:
+            console.log("No pasa nada");
+        }
+      }, error => {
+        if (error.status === 400) {
+          this.error = true;
+        }
+      });
   }
+}
 
