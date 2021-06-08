@@ -32,7 +32,7 @@ export class AuthService {
     return localStorage.getItem("accessToken");
   }
 
-  admin(): Observable<boolean> {
+  authorization(): Observable<boolean> {
     return of(true).pipe(
       delay(500),
       tap(() => this.isLoggedIn = true));

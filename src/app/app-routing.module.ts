@@ -36,18 +36,38 @@ const routes: Routes = [
   },
   {
     path: 'mainWaiter', component: MainComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'orders', pathMatch: 'full' },
-      { path: 'orders', component: OrdersComponent },
-      { path: 'record', component: RecordComponent }
+      {
+        path: '', redirectTo: 'orders', pathMatch: 'full',
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'orders', component: OrdersComponent,
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'record', component: RecordComponent,
+        canActivateChild: [AuthGuard]
+      }
     ],
   },
   {
     path: 'mainkitchener', component: MainKComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'pending', pathMatch: 'full' },
-      { path: 'pending', component: PendingComponent },
-      { path: 'done', component: DoneComponent },
+      {
+        path: '', redirectTo: 'pending', pathMatch: 'full',
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'pending', component: PendingComponent,
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'done', component: DoneComponent,
+        canActivateChild: [AuthGuard]
+      },
     ]
   },
   { path: '**', pathMatch: 'full', redirectTo: 'login' },

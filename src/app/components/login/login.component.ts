@@ -27,17 +27,25 @@ export class LoginComponent implements OnInit {
         const token = this.auth.getToken();
         switch (token) {
           case '"tokenAdmin"':
-            this.auth.admin().subscribe(() => {
+            this.auth.authorization().subscribe(() => {
               if (this.auth.isLoggedIn) {
                 this.router.navigate(['menuprincipal']);
               }
             })
             break;
           case '"tokenCocinero"':
-            this.router.navigate(['mainkitchener']);
+            this.auth.authorization().subscribe(() => {
+              if (this.auth.isLoggedIn) {
+                this.router.navigate(['mainkitchener']);
+              }
+            })
             break;
           case '"tokenMesero"':
-            this.router.navigate(['mainWaiter']);
+            this.auth.authorization().subscribe(() => {
+              if (this.auth.isLoggedIn) {
+                this.router.navigate(['mainWaiter']);
+              }
+            })
             break;
           default:
             console.log("No pasa nada");
