@@ -21,16 +21,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'usercatalogoadmin', component: UserCatalogoComponent,
-        canActivateChild: [AuthGuard]
+        path: 'usercatalogoadmin', component: UserCatalogoComponent
       },
       {
-        path: '', redirectTo: 'usercatalogoadmin', pathMatch: 'full',
-        canActivateChild: [AuthGuard]
+        path: '', redirectTo: 'usercatalogoadmin', pathMatch: 'full'
       },
       {
         path: 'productoscatalogoadmin', component: ProductsCatalogoComponent,
-        canActivateChild: [AuthGuard]
       },
     ],
   },

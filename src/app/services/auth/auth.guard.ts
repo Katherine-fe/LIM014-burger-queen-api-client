@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate/* , CanActivateChild */ {
   constructor(private authService: AuthService, private route: Router) { }
 
   canActivate(
@@ -16,10 +16,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return this.checkLogin(url);
   }
 
-  canActivateChild(childRoute: ActivatedRouteSnapshot,
+  /* canActivateChild(childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
     return this.canActivate(childRoute, state);
-  }
+  } */
   checkLogin(url: string): boolean {
     if (this.authService.isLoggedIn) {
       return true;
