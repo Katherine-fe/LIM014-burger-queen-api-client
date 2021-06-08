@@ -31,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 
 // importamos para usar ngForm
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,11 +61,11 @@ import { FormsModule } from '@angular/forms'
     DoneComponent,
   ],
   imports: [
-    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
