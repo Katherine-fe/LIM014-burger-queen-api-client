@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ChildrenOutletContexts, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../app/components/login/login.component';
 import { MenuPrincipalComponent } from '../app/components/admin/menu-principal/menu-principal.component'
 import { NavegadorComponent } from './components/admin/navegador/navegador.component';
@@ -11,32 +11,60 @@ import { RecordComponent } from './components/waiter/record/record.component';
 import { MainKComponent } from './components/kitchener/main-k/main-k.component';
 import { PendingComponent } from './components/kitchener/pending/pending.component';
 import { DoneComponent } from './components/kitchener/done/done.component';
+import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'navegador', component: NavegadorComponent },
   {
     path: 'menuprincipal', component: MenuPrincipalComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: 'usercatalogoadmin', component: UserCatalogoComponent },
-      { path: '', redirectTo: 'usercatalogoadmin', pathMatch: 'full' },
-      { path: 'productoscatalogoadmin', component: ProductsCatalogoComponent },
+      {
+        path: 'usercatalogoadmin', component: UserCatalogoComponent
+      },
+      {
+        path: '', redirectTo: 'usercatalogoadmin', pathMatch: 'full'
+      },
+      {
+        path: 'productoscatalogoadmin', component: ProductsCatalogoComponent,
+      },
     ],
   },
   {
     path: 'mainWaiter', component: MainComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'orders', pathMatch: 'full' },
-      { path: 'orders', component: OrdersComponent },
-      { path: 'record', component: RecordComponent }
+      {
+        path: '', redirectTo: 'orders', pathMatch: 'full',
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'orders', component: OrdersComponent,
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'record', component: RecordComponent,
+        canActivateChild: [AuthGuard]
+      }
     ],
   },
   {
     path: 'mainkitchener', component: MainKComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'pending', pathMatch: 'full' },
-      { path: 'pending', component: PendingComponent },
-      { path: 'done', component: DoneComponent },
+      {
+        path: '', redirectTo: 'pending', pathMatch: 'full',
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'pending', component: PendingComponent,
+        canActivateChild: [AuthGuard]
+      },
+      {
+        path: 'done', component: DoneComponent,
+        canActivateChild: [AuthGuard]
+      },
     ]
   },
   { path: '**', pathMatch: 'full', redirectTo: 'login' },

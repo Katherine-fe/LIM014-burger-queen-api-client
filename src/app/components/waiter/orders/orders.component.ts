@@ -10,12 +10,12 @@ export class OrdersComponent implements OnInit {
   constructor(private http: ApiService) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    /* this.getProducts(); */
   }
 
-  getProducts() {
-    this.http.getProducts().subscribe((rest: any) => {
-      console.log(rest.products);
-    });
-  }
+  /*  getProducts() {
+     this.http.getProducts().subscribe((rest: any) => {
+       console.log(rest.products);
+     });
+   } */
 }
