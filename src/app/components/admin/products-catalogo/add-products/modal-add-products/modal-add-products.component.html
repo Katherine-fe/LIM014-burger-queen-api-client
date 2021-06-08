@@ -3,19 +3,19 @@
     <div class="modal_content">
     <div class="ctn-edit-user" >
         <h2>Add Product</h2>
-        <form class="form">
-          <input type="text" placeholder="Name Product" name="NameProduct" formControlName="NameProduct">
-          <input type="text" placeholder="Price" formControlName="Price">
+        <div class="form">
+          <input type="text" placeholder="Name Product" name="NameProduct">
+          <input type="text" placeholder="Price" >
           <select name="typeProduct" class="select-product">
             <option>Menu</option>
             <option>Desayunos</option>
             </select>
-            <input type="date" placeholder="Date Creation" formControlName="Date Creation">
+            <input type="date" placeholder="Date Creation">
           <div class="cancel-save">
             <button type='button' class="cancel" (click)="closeModalAddProducts()">Cancel</button>
             <button type='button' class="save">Add</button>
           </div>
-        </form>
+        </div>
     </div>
     </div>
   </section>

@@ -13,7 +13,7 @@ import { PendingComponent } from './components/kitchener/pending/pending.compone
 import { DoneComponent } from './components/kitchener/done/done.component';
 import { AuthGuard } from './services/auth/auth.guard';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'navegador', component: NavegadorComponent },
   {

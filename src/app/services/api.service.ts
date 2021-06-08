@@ -9,7 +9,7 @@ export class ApiService {
 
   constructor(private http: HttpClient, private token: AuthService) { }
 
-  headers: HttpHeaders = new HttpHeaders({
+  /* headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
     // Authorization: this.token.loginUser(),
   });
