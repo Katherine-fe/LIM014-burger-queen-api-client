@@ -12,7 +12,7 @@ import { MainKComponent } from './components/kitchener/main-k/main-k.component';
 import { PendingComponent } from './components/kitchener/pending/pending.component';
 import { DoneComponent } from './components/kitchener/done/done.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'navegador', component: NavegadorComponent },
   {
