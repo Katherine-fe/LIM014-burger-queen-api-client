@@ -9,7 +9,7 @@ export class ApiService {
 
   constructor(private http: HttpClient, private token: AuthService) { }
 
-  headers: HttpHeaders = new HttpHeaders({
+  /* headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
     // Authorization: this.token.loginUser(),
   });
@@ -20,5 +20,5 @@ export class ApiService {
   getProductId(id: string) {
     const link = `http://localhost:3000/products/${id}`;
     return this.http.get(link);
-  }
+  } */
 }
