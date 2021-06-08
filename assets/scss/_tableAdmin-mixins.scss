@@ -1,0 +1,82 @@
+$font1: 'Alfa Slab One', cursive;
+$font2: 'Poppins', sans-serif;
+$colors: (
+  secundary: #323232,
+  letter: #323232,
+  add:#FFC839,
+  error: #e351519f,
+  edit: #bbf8ded9,
+  less-contrast:#d4ecff,
+  title:#EDF2F7,
+);
+
+@mixin app-add-user {
+    margin-top: 30px;
+}
+@mixin table-staff {
+    width: 100%;
+    .table {
+      text-align: center;
+      width: 100%;
+      border: 1px solid #C4C4C4;
+      font-family: $font2; 
+      thead {
+        font-size: 15px;
+        
+        tr {
+          height: 45px;
+  
+          th {
+            border: 0;
+  
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+  
+        .titles {
+          background: map-get($colors, 'title');
+          color: map-get($colors, 'secundary');
+          height: 50px;
+  
+          .num {
+            width: 100px;
+          }
+        }
+      }
+}
+}
+@mixin tbody {
+    overflow-y: scroll;
+    tr {
+      height: 45px;
+      border-top: 1px solid map-get($colors, 'secundary');
+      background: #FFFFFF;
+
+      td.edit-delete {
+        width: 30%;
+        button {
+          height: 28px;
+          width: 80px;
+          border-radius: 5px;
+          margin: 10px;
+          border: none;
+        }
+
+        button.edit {
+          background: map-get($colors, 'edit');
+          color: map-get($colors, 'letter');
+          text-decoration: none; 
+          width: 25%;
+        }
+
+        button.delete {
+          background: map-get($colors, 'error');
+          color: map-get($colors, 'secundary');
+          width: 25%;
+        }
+       
+      }
+    }
+}

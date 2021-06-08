@@ -1,0 +1,65 @@
+@import '../../styles.scss';
+
+$oro :#ffbf00;
+$scala: scale(1.03);
+$verde: #8FDE7B;
+$verde-add: rgb(39, 197, 39);
+$sangre: #a30e0e;
+
+@mixin containerBody {
+    display: flex;
+    font-family: $fontText;
+    row-gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@mixin cardGroup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px 15px;
+}
+@mixin card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: 20px;
+    padding: 20px;
+    header{
+        display: flex;
+        column-gap: 20px;
+        justify-content: space-between;
+        .state{
+            color: $bg-h1;
+            font-weight: bold;
+        }
+    }
+    table{
+        width: 100%;
+        text-align: center;
+    }
+    .btn-end{
+        display: flex;
+        button{
+            cursor: pointer;
+            padding: 10px 40px;
+            font-family: $fontText;
+            font-size: 15px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+            &:hover{
+                transform: $scala;
+            }
+        }
+        p{
+            color: $verde-add;
+        }
+    }
+}
