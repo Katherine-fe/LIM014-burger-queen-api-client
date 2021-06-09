@@ -1,8 +1,5 @@
 <section class="container-orders">
     <section class="container-tickets">
-        <div class="user-name">
-            <input placeholder="Name user" type="text">
-        </div>
         <div class="btn-group">
             <button class="btn-bkf"  (click)="getProductsFilter('desayuno')">Breakfast</button>
             <button class="btn-menu"  (click)="viewButton()" >Menu</button>
@@ -14,7 +11,7 @@
         </div>
 
         <div class="body-tickets">
-            <div class="card" *ngFor="let item of products">
+            <div class="card" *ngFor="let item of products" (click)="buttonAdd(item)">                 
                 <figure>
                     <img class="card-img" src="./../../../../assets/img/burger1.png" alt="">
                 </figure>
@@ -26,46 +23,5 @@
             </div>
         </div> 
     </section>
-    <section class="container-out">
-        <div class="card-out">
-            <section class="container-table">
-                <table>
-                    <tr class="head-table">
-                        <td>Quantity</td>
-                        <td>Product</td>
-                        <td>Price</td>
-                        <td>Delete</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="btn-more" type="button"><span class="material-icons">add</span></button>
-                            01
-                            <button class="btn-remove" type="button"><span class="material-icons">remove</span></button>
-                        </td>
-                        <td>Product description</td>
-                        <td>S./ 120.00</td>
-                        <td><button class="del"><span class="material-icons">delete</span></button></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="btn-more" type="button"><span class="material-icons">add</span></button>
-                            01
-                            <button class="btn-remove" type="button"><span class="material-icons">remove</span></button>
-                        </td>
-                        <td>Product description</td>
-                        <td>S./ 120.00</td>
-                        <td><button class="del"><span class="material-icons">delete</span></button></td>
-                    </tr>
-                </table>
-                <section class="total-product">
-                    <p>Total</p>
-                    <p class="total-price">S/. 240.00</p>
-                </section>
-                <section class="group-btn-make">
-                    <button style="background-color: #ffbf00;" class="btn-make">Order</button>
-                    <button style="background-color: #EF2626;" class="btn-cancel">Cancel</button>
-                </section>
-            </section>
-        </div>
-    </section>
+    <app-list-orders class="app-list-order"></app-list-orders>
 </section>

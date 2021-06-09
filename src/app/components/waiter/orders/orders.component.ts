@@ -12,6 +12,7 @@ export class OrdersComponent implements OnInit {
   products: Product[] = [];
   constructor(private http: ProductService) { }
   viewB:boolean = false;
+  public productOrder!: object;
 
   ngOnInit(): void {
     this.http.refresh$.subscribe(() => {
@@ -36,6 +37,10 @@ export class OrdersComponent implements OnInit {
   }
   viewButton(){
   this.viewB=true;
+  }
+  buttonAdd(product: any){
+    this.productOrder = product;
+    console.log(this.productOrder);
   }
 
 }
