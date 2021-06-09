@@ -4,71 +4,27 @@
             <input placeholder="Name user" type="text">
         </div>
         <div class="btn-group">
-            <button class="btn-bkf">Breakfast</button>
-            <button class="btn-menu">Menu</button>
+            <button class="btn-bkf"  (click)="getProductsFilter('desayuno')">Breakfast</button>
+            <button class="btn-menu"  (click)="viewButton()" >Menu</button>
         </div>
+        <div class="btn-group" *ngIf="viewB">
+            <button class="btn-bkf" (click)="getProductsFilter('menú')">Burgers</button>     
+            <button class="btn-bkf" (click)="getProductsFilter('acompañamientos')">Snacks</button>
+            <button class="btn-bkf" (click)="getProductsFilter('Para tomar')">Drink</button>
+        </div>
+
         <div class="body-tickets">
-            <div class="card">
+            <div class="card" *ngFor="let item of products">
                 <figure>
                     <img class="card-img" src="./../../../../assets/img/burger1.png" alt="">
                 </figure>
                 <div class="card-body">
-                    <h3>Hamburger</h3>
+                    <h3>{{item.name}}</h3>
                     <p>150g<p>
-                    <p class="price-card">S/. <span class="price">150.00</span></p>
+                    <p class="price-card">S/. <span class="price">{{item.price}}</span></p>
                 </div>
             </div>
-            <div class="card">
-                <figure>
-                    <img class="card-img" src="./../../../../assets/img/burger1.png" alt="">
-                </figure>
-                <div class="card-body">
-                    <h3>Hamburger</h3>
-                    <p>150g<p>
-                    <p class="price-card">S/. <span class="price">150.00</span></p>
-                </div>
-            </div>
-            <div class="card">
-                <figure>
-                    <img class="card-img" src="./../../../../assets/img/burger1.png" alt="">
-                </figure>
-                <div class="card-body">
-                    <h3>Hamburger</h3>
-                    <p>150g<p>
-                    <p class="price-card">S/. <span class="price">150.00</span></p>
-                </div>
-            </div>
-            <div class="card">
-                <figure>
-                    <img class="card-img" src="./../../../../assets/img/burger1.png" alt="">
-                </figure>
-                <div class="card-body">
-                    <h3>Hamburger</h3>
-                    <p>150g<p>
-                    <p class="price-card">S/. <span class="price">150.00</span></p>
-                </div>
-            </div>
-            <div class="card">
-                <figure>
-                    <img class="card-img" src="./../../../../assets/img/burger1.png" alt="">
-                </figure>
-                <div class="card-body">
-                    <h3>Hamburger</h3>
-                    <p>150g<p>
-                    <p class="price-card">S/. <span class="price">150.00</span></p>
-                </div>
-            </div>
-            <div class="card">
-                <figure>
-                    <img class="card-img" src="./../../../../assets/img/burger1.png" alt="">
-                </figure>
-                <div class="card-body">
-                    <h3>Hamburger</h3>
-                    <p>150g<p>
-                    <p class="price-card">S/. <span class="price">150.00</span></p>
-                </div>
-            </div>
-        </div>
+        </div> 
     </section>
     <section class="container-out">
         <div class="card-out">
