@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 import { UserInterface } from '../../model/user-interface';
@@ -12,7 +11,7 @@ export class AuthService {
   error: boolean = false;
   isLoggedIn = false;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   requestPost(email: string, password: string): Observable<any> {
     const link = "http://localhost:3000/auth";
