@@ -53,6 +53,8 @@ export class LoginComponent implements OnInit {
       }, error => {
         if (error.status === 400) {
           this.error = true;
+        } else {
+          alert("servidor desconectado");
         }
       });
   }
