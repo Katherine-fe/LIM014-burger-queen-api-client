@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { ProductService } from 'src/app/services/products/product.service';
+import { Product } from '../../../model/product-interface';
 
 @Component({
   selector: 'app-orders',
@@ -7,16 +8,39 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  constructor(private http: ApiService) { }
+
+  products: Product[] = [];
+  constructor(private http: ProductService) { }
+  viewB:boolean = false;
+  public productOrder!: object;
 
   ngOnInit(): void {
-/*     this.getProducts();
- */  }
+    this.http.refresh$.subscribe(() => {
+      this.getProductsFilter('desayuno')
+    })
+    this.getProductsFilter('desayuno')
+}
 
-  /* getProducts() {
-    this.http.getProducts().subscribe((rest: any) => {
-      console.log(rest.products);
+ getProducts() {
+    this.http.getListProducts().subscribe((data) => {
+    /* console.log(rest.products);  */
+    this.products = data.products;
     });
   }
-   */
+
+  getProductsFilter(typeF : any) {
+    this.http.getListProducts().subscribe((data) => {
+    this.products= data.products.filter((products: { type: string;}) => products.type === typeF)});
+    if(typeF === 'desayuno'){
+      this.viewB=false; 
+    }
+  }
+  viewButton(){
+  this.viewB=true;
+  }
+  buttonAdd(product: any){
+    this.productOrder = product;
+    console.log(this.productOrder);
+  }
+
 }
