@@ -1,0 +1,36 @@
+    <div class="user-name">
+            <input placeholder="Name user" type="text" formControlName="client">
+            <p *ngIf="confirmation"><span>Debes ingresar nombre</span></p>
+        </div>
+        <div class="card-out">
+            <section class="container-table">
+                <table>
+                    <tr class="head-table">
+                        <td>Quantity</td>
+                        <td>Product</td>
+                        <td>Price</td>
+                        <td>Delete</td>
+                    </tr>
+                    <tr *ngFor="let order of orders">
+                        <td>
+                            <button class="btn-more" type="button"><span class="material-icons" (click)="plus(order.product._id)">add</span></button>
+                            {{order.qty}}
+                            <button class="btn-remove" type="button"><span class="material-icons" (click)="minus(order.product._id)">remove</span></button>
+                        </td>
+                        <td>{{order.product.name}}</td>
+                        <td>S./{{order.product.price * order.qty}}</td>
+                        <td><button class="del"><span class="material-icons" (click)="trash(order.product._id)">delete</span></button></td>
+                    </tr>
+                </table>
+                <section class="total-product">
+                    <p>{{total}}</p>
+                    <p class="total-price">0</p>
+                </section>
+                <section class="group-btn-make">
+                    <button style="background-color: #ffbf00;" class="btn-make" (click)="sendOrder()">Order</button>
+                    <button style="background-color: #EF2626;" class="btn-cancel" (click)="cleanList()">Cancel</button>
+                </section>
+            </section>
+        </div>
+
+

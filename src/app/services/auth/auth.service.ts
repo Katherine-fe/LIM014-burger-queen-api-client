@@ -12,7 +12,7 @@ export class AuthService {
   error: boolean = false;
   public link: string = environment.link;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   requestPost(email: string, password: string): Observable<any> {
     const link = "http://localhost:3000/auth";

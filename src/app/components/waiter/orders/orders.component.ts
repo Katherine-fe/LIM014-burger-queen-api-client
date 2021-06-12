@@ -1,22 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { ProductService } from 'src/app/services/products/product.service';
+import { Product } from '../../../model/product-interface';
+import { OrdersService } from '../../../services/orders/orders.service';
 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss']
+  styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  constructor(private http: ApiService) { }
+  products: Product[] = [];
+  viewB: boolean = false;
+  public productOrder!: object;
+  
+  constructor(private http: ProductService, private order$: OrdersService) {}
 
   ngOnInit(): void {
-/*     this.getProducts();
- */  }
-
-  /* getProducts() {
-    this.http.getProducts().subscribe((rest: any) => {
-      console.log(rest.products);
+    this.http.refresh$.subscribe(() => {
+      this.getProductsFilter('desayuno');
+    });
+    this.getProductsFilter('desayuno');
+  }
+  getProducts() {
+    this.http.getListProducts().subscribe((data) => {
+      this.products = data.products;
     });
   }
-   */
+  getProductsFilter(typeF: any) {
+    this.http.getListProducts().subscribe((data) => {
+      this.products = data.products.filter(
+        (products: { type: string }) => products.type === typeF
+      );
+    });
+    if (typeF === 'desayuno') {
+      this.viewB = false;
+    }
+  }
+  viewButton() {
+    this.viewB = true;
+  }
+  buttonAdd(product: any) {
+    this.productOrder = { qty: 1, product };
+    this.sendObjProd(this.productOrder);
+    this.order$.buttonAddClickEventTrack.next();
+  }
+  sendObjProd(product: object) {
+    this.order$.setObjectOrderProduct(product);
+  }
 }
