@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +10,12 @@ export class ApiService {
 
   constructor(private http: HttpClient, private token: AuthService) { }
 
-  /* headers: HttpHeaders = new HttpHeaders({
+  headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
-    // Authorization: this.token.loginUser(),
+    Authorization: "Bearer 123ABC",
   });
-  /* getProducts() {
-    const link = 'http://localhost:3000/products';
+  getOrders(): Observable<any> {
+    const link = 'http://localhost:3000/orders';
     return this.http.get(link, { headers: this.headers });
   }
-  getProductId(id: string) {
-    const link = `http://localhost:3000/products/${id}`;
-    return this.http.get(link);
-  } */
 }

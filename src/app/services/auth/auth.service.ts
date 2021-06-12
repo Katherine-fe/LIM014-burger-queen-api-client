@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { delay, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { UserInterface } from '../../model/user-interface';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   error: boolean = false;
-  isLoggedIn = false;
+  public link: string = environment.link;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -31,11 +31,15 @@ export class AuthService {
   getToken() {
     return localStorage.getItem("accessToken");
   }
-
-  authorization(): Observable<boolean> {
-    return of(true).pipe(
-      delay(500),
-      tap(() => this.isLoggedIn = true));
+  logout() {
+    localStorage.removeItem("accessToken");
+  }
+  getUser(email: string, token: any) {
+    return this.http.get(`${this.link}users/${email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    }
+    )
   };
-
-}
+};

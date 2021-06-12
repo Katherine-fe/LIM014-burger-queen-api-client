@@ -5,6 +5,6 @@
     <ul class="linkNav-waiter">
         <li class="link-active" routerLinkActive="active"><a [routerLink]="['pending']">Pending</a></li>
         <li class="link-active" routerLinkActive="active"><a [routerLink]="['done']">Done</a></li>
-        <li class="li-btn"><button class="btn-sign" [routerLink]="['login']">Sign Out</button></li>
+        <li class="li-btn"><button class="btn-sign" (click)="back()">Back</button></li>
     </ul>
 </nav>

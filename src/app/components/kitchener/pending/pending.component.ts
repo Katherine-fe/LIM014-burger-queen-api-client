@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-pending',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PendingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private get: ApiService) { }
 
   ngOnInit(): void {
+    this.orders();
   }
 
+  orders() {
+    this.get.getOrders().subscribe(data => {
+      data.order.forEach((element: any) => {
+        console.log(element.client);
+      });
+    });
+  }
 }

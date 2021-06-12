@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -9,23 +9,14 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate/* , CanActivateChild */ {
   constructor(private authService: AuthService, private route: Router) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-    const url: string = state.url;
-    return this.checkLogin(url);
-  }
-
-  /* canActivateChild(childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-    return this.canActivate(childRoute, state);
-  } */
-  checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) {
-      return true;
+  canActivate() {
+    const local: any = this.authService.getToken();
+    const token: any = jwt_decode(local);
+    if (!token.roles.admin) {
+      this.route.navigate(['login']);
+      return false;
     }
-    this.route.navigate(['login']);
-    return false;
+    return true;
   }
 
 }

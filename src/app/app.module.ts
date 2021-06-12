@@ -31,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 
 // importamos para usar ngForm
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StaffComponent } from './components/staff/staff.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     NavBarKComponent,
     PendingComponent,
     DoneComponent,
+    StaffComponent,
   ],
   imports: [
     BrowserModule,
