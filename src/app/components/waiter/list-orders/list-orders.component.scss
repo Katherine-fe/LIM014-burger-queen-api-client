@@ -19,6 +19,12 @@ $scala: scale(1.03);
             border: 1px solid rgba(0,0,0,0.5);
             font-family: $fontText;
         }
+        p {
+            color: red;
+            font-size: 12px;
+            align-self: flex-start;
+            margin: 0;
+          }
     }
     
 .card-out{
