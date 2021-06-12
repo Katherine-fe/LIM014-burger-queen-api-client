@@ -32,7 +32,9 @@ import { ApiService } from './services/api.service';
 
 // importamos para usar ngForm
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StaffComponent } from './components/staff/staff.component';
 import { ListOrdersComponent } from './components/waiter/list-orders/list-orders.component'
+
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { ListOrdersComponent } from './components/waiter/list-orders/list-orders
     NavBarKComponent,
     PendingComponent,
     DoneComponent,
+    StaffComponent,
     ListOrdersComponent,
   ],
   imports: [
