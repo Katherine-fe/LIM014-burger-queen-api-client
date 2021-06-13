@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { OrdersService } from '../../../services/orders/orders.service';
 import { itemOrder } from '../../../model/order-interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import jwt_decode from 'jwt-decode';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-list-orders',
@@ -20,8 +22,12 @@ export class ListOrdersComponent implements OnInit {
   public orderTotal: any;
   orderSuscription: Subscription = new Subscription();
   orderSendSuscription: Subscription = new Subscription();
-  
-  constructor(private orders$: OrdersService) {}
+  date = new Date();
+  public accessToken: any;
+  fecha = this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear();
+  hora =  this.date.getHours() + ':' + this.date.getMinutes() + ':' + this.date.getSeconds();
+
+  constructor(private orders$: OrdersService, private auth: AuthService) {}
 
   ngOnInit(): void {
     this.listenAddProduct();
@@ -78,20 +84,39 @@ export class ListOrdersComponent implements OnInit {
     return this.form.get('client');
   }
   createOrderFood() {
-    this.arrayProducts = this.orders.map(order => {
+    this.accessToken = this.auth.getToken();
+    const token: any = jwt_decode(this.accessToken);
+
+    this.arrayProducts = this.orders.map((order) => {
       this.productsProduct = {
-        productId : order.product._id,
+        productId: order.product._id,
+        productName: order.product.name,
         qty: order.qty,
       };
       return this.productsProduct;
     });
-
     this.orderTotal = {
+      userId: token._id,
       client: this.form.value.client,
       products: this.arrayProducts,
-     };
-     return this.orderTotal;
+      status: 'pending',
+      dateEntry: this.fecha + ' ' + this.hora,
+    };
+    console.log(this.orderTotal);
+    return this.orderTotal;
   }
 
-
+  sendOrder() {
+    if (this.form.valid) {
+      this.orderSendSuscription = this.orders$
+        .postOrder(this.createOrderFood())
+        .subscribe((data: any) => {
+          this.form.reset();
+          this.confirmation = false;
+          this.cleanList();
+        });
+    } else {
+      this.confirmation = true;
+    }
+  }
 }
