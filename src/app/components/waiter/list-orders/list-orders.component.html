@@ -1,4 +1,4 @@
-    <div class="user-name">
+    <div class="user-name" [formGroup]="form">
             <input placeholder="Name user" type="text" formControlName="client">
             <p *ngIf="confirmation"><span>Debes ingresar nombre</span></p>
         </div>
@@ -23,8 +23,8 @@
                     </tr>
                 </table>
                 <section class="total-product">
-                    <p>{{total}}</p>
-                    <p class="total-price">0</p>
+                    <p>Total</p>
+                    <p class="total-price">{{total}}</p>
                 </section>
                 <section class="group-btn-make">
                     <button style="background-color: #ffbf00;" class="btn-make" (click)="sendOrder()">Order</button>
