@@ -1,4 +1,14 @@
-<button (click)="routerWaiter()">Mesero</button>
-<button (click)="routerkitchener()">Cocinero</button>
-<button (click)="logOut()">Log out</button>
+<section class="container-staff">
+    <div class="row">
+        <div class="staff staff-waiter">
+            <img src="./../../../assets/img/waiter.svg" alt="Waiter" srcset="">
+            <button class="btn-waiter" (click)="routerWaiter()">Waiter</button>
+        </div>
+        <button class="staff btn-out" (click)="logOut()">Log out</button>
+        <div class="staff staff-cheff">
+            <img src="./../../../assets/img/Chef.svg" alt="" srcset="">
+            <button class="btn-cheff" (click)="routerkitchener()">Kitchener</button>
+        </div>
+    </div>
+</section>
 
