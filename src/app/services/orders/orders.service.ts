@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from "../../../environments/environment";
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -22,6 +23,7 @@ export class OrdersService {
 
   public link: string = environment.link + 'orders/';
   public buttonAddClickEventTrack = new Subject();
+  private subjectSource = new Subject<void>();
 
   headers = new HttpHeaders(
     {
@@ -29,7 +31,21 @@ export class OrdersService {
     }
   );
 
+  get refresh$() {
+    return this.subjectSource;
+  }
+  getListOrders(){
+    return this.http.get(`${this.link}`, {  headers: this.headers });
+  }
 
+  postOrder(order: object): Observable<any> {
+    return this.http.post(this.link, (order), { headers: this.headers })
+      .pipe(
+        tap(()=> {
+          this.refresh$.next();
+        })
+      )
+  }
 
   
 }

@@ -14,8 +14,12 @@ export class ListOrdersComponent implements OnInit {
   total!: number;
   public objProd: any;
   form!: FormGroup;
+  public arrayProducts: any;
+  public productsProduct: any;
   confirmation: boolean = false;
+  public orderTotal: any;
   orderSuscription: Subscription = new Subscription();
+  orderSendSuscription: Subscription = new Subscription();
   
   constructor(private orders$: OrdersService) {}
 
@@ -47,8 +51,8 @@ export class ListOrdersComponent implements OnInit {
     let minus = item[0].qty;
     if (minus > 1) {
       this.orders.filter((obj) => obj.product._id == id)[0].qty -= 1;
-      this.totalBill();
     }
+    this.totalBill();
   }
   cleanList() {
     this.total = 0;
@@ -73,12 +77,21 @@ export class ListOrdersComponent implements OnInit {
   getClient() {
     return this.form.get('client');
   }
-  sendOrder() {
-    if (this.form.valid) {
-      this.form.reset();
-      this.confirmation = false;
-    } else {
-      this.confirmation = true;
-    }
+  createOrderFood() {
+    this.arrayProducts = this.orders.map(order => {
+      this.productsProduct = {
+        productId : order.product._id,
+        qty: order.qty,
+      };
+      return this.productsProduct;
+    });
+
+    this.orderTotal = {
+      client: this.form.value.client,
+      products: this.arrayProducts,
+     };
+     return this.orderTotal;
   }
+
+
 }
