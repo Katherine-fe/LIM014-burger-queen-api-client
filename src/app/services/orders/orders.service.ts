@@ -34,7 +34,7 @@ export class OrdersService {
   get refresh$() {
     return this.subjectSource;
   }
-  getListOrders(){
+  getListOrders(): Observable<any> {
     return this.http.get(`${this.link}`, {  headers: this.headers });
   }
 

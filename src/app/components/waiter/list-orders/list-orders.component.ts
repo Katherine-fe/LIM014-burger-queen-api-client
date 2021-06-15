@@ -91,6 +91,10 @@ export class ListOrdersComponent implements OnInit {
       this.productsProduct = {
         productId: order.product._id,
         productName: order.product.name,
+        productPrice:order.product.price,
+        productImage:order.product.image,
+        productType:order.product.type,
+        productDataEntry:order.product.dateEntry,
         qty: order.qty,
       };
       return this.productsProduct;
