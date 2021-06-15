@@ -1,59 +1,26 @@
 <section class="body-orders">
     <section class="group-cards">
-        <div class="card-record">
+        <div class="card-record" *ngFor="let itemOrder of orderList">
             <header>
-                <p>State: <span id="state" class="state">Pending</span></p>
-                <p>User: <span id="idUser" class="id-user">Fulanita López</span></p>
-                <p>12/02/1997 00:10</p>
+                <p>State: <span id="state" class="state">{{itemOrder.status}}</span></p>
+                <p>User: <span id="idUser" class="id-user">{{itemOrder.client}}</span></p>
+                <p>{{itemOrder.dateEntry}}</p>
             </header>
             <table>
-                <tr>
+                <tr style="color: blue; font-weight: bold;">
                     <td>Cant</td>
                     <td>Product</td>
                     <td>Price</td>
                 </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Hamburger</td>
-                    <td>S/. 120.00</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Hamburger</td>
-                    <td>S/. 120.00</td>
+                <tr *ngFor="let product of itemOrder.products">
+                    <td>{{product.qty}}</td>
+                    <td>{{product.product.name}}</td>
+                    <td>S/. {{product.product.price}}</td>
                 </tr>
             </table>
             <section class="btn-end">
                 <button>Done</button>
-                <p>S/. <span class="price-record">240.00</span></p>
-            </section>
-        </div>
-        <div class="card-record">
-            <header>
-                <p>State: <span id="state" class="state">Pending</span></p>
-                <p>User: <span id="idUser" class="id-user">Fulanita López</span></p>
-                <p>12/02/1997 00:10</p>
-            </header>
-            <table>
-                <tr>
-                    <td>Cant</td>
-                    <td>Product</td>
-                    <td>Price</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Hamburger</td>
-                    <td>S/. 120.00</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Hamburger</td>
-                    <td>S/. 120.00</td>
-                </tr>
-            </table>
-            <section class="btn-end">
-                <button>Done</button>
-                <p>S/. <span class="price-record">240.00</span></p>
+                <p>S/. <span class="price-record">{{prueba(itemOrder._id)}}</span></p>
             </section>
         </div>
     </section>
