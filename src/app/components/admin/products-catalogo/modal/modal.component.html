@@ -1,0 +1,39 @@
+<section class="modal" *ngIf="visibleProducts">
+    <div class="overlay"></div>
+    <div class="modal_content">
+    <div class="ctn-edit-user" >
+        <h2>{{title}}</h2>
+        <div class="form">
+          <input type="text" placeholder="Name Product" name="NameProduct">
+          <input type="text" placeholder="Price" >
+          <select name="typeProduct" class="select-product">
+            <option>Menu</option>
+            <option>Desayunos</option>
+            </select>
+            <input type="date" placeholder="Date Creation">
+          <div class="cancel-save">
+            <button type='button' class="cancel" (click)="cerrarModalProduct()">Cancel</button>
+            <button type='button' class="save">Add</button>
+          </div>
+        </div>
+    </div>
+    </div>
+  </section>
+  <section class="modal" *ngIf="visibleProductsDelete">
+    <div class="overlay"></div>
+    <div class="modal_content">
+    <div class="ctn-edit-user" >
+        <h2>{{title}}</h2>
+        <div class="form">
+            <h5 class="nameDelete" id="modal-delete">If you delete this product, you will not be able to recover it.</h5>
+          <div class="cancel-save">
+            <button type='button' class="cancel" (click)="cerrarModalProduct()">Cancel</button>
+            <button type='button' class="save">Delete</button>
+          </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+  
+
