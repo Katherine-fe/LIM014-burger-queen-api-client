@@ -5,6 +5,7 @@ import { itemOrder } from '../../../model/order-interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import jwt_decode from 'jwt-decode';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-list-orders',
@@ -25,9 +26,9 @@ export class ListOrdersComponent implements OnInit {
   date = new Date();
   public accessToken: any;
   fecha = this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear();
-  hora =  this.date.getHours() + ':' + this.date.getMinutes() + ':' + this.date.getSeconds();
+  hora = this.date.getHours() + ':' + this.date.getMinutes() + ':' + this.date.getSeconds();
 
-  constructor(private orders$: OrdersService, private auth: AuthService) {}
+  constructor(private orders$: OrdersService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.listenAddProduct();
@@ -87,16 +88,16 @@ export class ListOrdersComponent implements OnInit {
     this.accessToken = this.auth.getToken();
     const token: any = jwt_decode(this.accessToken);
     this.arrayProducts = this.orders.map((order) => {
-      this.products =  {
+      this.products = {
         qty: order.qty,
         product: {
-        _id: order.product._id,
-        name: order.product.name,
-        price:order.product.price,
-        image:order.product.image,
-        type:order.product.type,
-        dataEntry:order.product.dateEntry,
-      }
+          _id: order.product._id,
+          name: order.product.name,
+          price: order.product.price,
+          image: order.product.image,
+          type: order.product.type,
+          dataEntry: order.product.dateEntry,
+        }
       }
       return this.products;
     });
@@ -105,7 +106,7 @@ export class ListOrdersComponent implements OnInit {
       client: this.form.value.client,
       products: this.arrayProducts,
       status: 'pending',
-      dateEntry: this.fecha + ' ' + this.hora,
+      dateEntry: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     };
     console.log(this.orderTotal);
     return this.orderTotal;
@@ -115,7 +116,7 @@ export class ListOrdersComponent implements OnInit {
     if (this.form.valid) {
       this.orderSendSuscription = this.orders$
         .postOrder(this.createOrderFood())
-        .subscribe((data: any) => {
+        .subscribe(() => {
           this.form.reset();
           this.confirmation = false;
           this.cleanList();
@@ -126,9 +127,9 @@ export class ListOrdersComponent implements OnInit {
   }
   ngOnDestroy(): void {
     this.orderSuscription.unsubscribe();
-    if( this.orderSendSuscription){
+    if (this.orderSendSuscription) {
       this.orderSendSuscription.unsubscribe();
-     }
+    }
   }
 
 }
