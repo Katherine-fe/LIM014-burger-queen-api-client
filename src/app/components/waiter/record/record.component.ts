@@ -75,10 +75,6 @@ export class RecordComponent implements OnInit {
       .updateOrder(this.orderEdit, order._id)
       .subscribe();
   }
-
-  /* totalBill(id: string) {
-
-  } */
   ngOnDestroy(): void {
     this.orderUpdateSuscription
       ? this.orderUpdateSuscription.unsubscribe()
