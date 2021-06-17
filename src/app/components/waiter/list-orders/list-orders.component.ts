@@ -18,7 +18,7 @@ export class ListOrdersComponent implements OnInit {
   public objProd: any;
   form!: FormGroup;
   public arrayProducts: any;
-  public productsProduct: any;
+  public products: any;
   confirmation: boolean = false;
   public orderTotal: any;
   orderSuscription: Subscription = new Subscription();
@@ -87,18 +87,19 @@ export class ListOrdersComponent implements OnInit {
   createOrderFood() {
     this.accessToken = this.auth.getToken();
     const token: any = jwt_decode(this.accessToken);
-
     this.arrayProducts = this.orders.map((order) => {
-      this.productsProduct = {
-        productId: order.product._id,
-        productName: order.product.name,
-        productPrice: order.product.price,
-        productImage: order.product.image,
-        productType: order.product.type,
-        productDataEntry: order.product.dateEntry,
+      this.products = {
         qty: order.qty,
-      };
-      return this.productsProduct;
+        product: {
+          _id: order.product._id,
+          name: order.product.name,
+          price: order.product.price,
+          image: order.product.image,
+          type: order.product.type,
+          dataEntry: order.product.dateEntry,
+        }
+      }
+      return this.products;
     });
     this.orderTotal = {
       userId: token._id,
@@ -115,7 +116,7 @@ export class ListOrdersComponent implements OnInit {
     if (this.form.valid) {
       this.orderSendSuscription = this.orders$
         .postOrder(this.createOrderFood())
-        .subscribe((data: any) => {
+        .subscribe(() => {
           this.form.reset();
           this.confirmation = false;
           this.cleanList();
@@ -124,4 +125,11 @@ export class ListOrdersComponent implements OnInit {
       this.confirmation = true;
     }
   }
+  ngOnDestroy(): void {
+    this.orderSuscription.unsubscribe();
+    if (this.orderSendSuscription) {
+      this.orderSendSuscription.unsubscribe();
+    }
+  }
+
 }

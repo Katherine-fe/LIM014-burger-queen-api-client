@@ -47,5 +47,13 @@ export class OrdersService {
       )
   }
 
-  
+  updateOrder(order: any, uid: string) {
+    return this.http.put(this.link + uid, (order), {headers: this.headers })
+    .pipe(
+      tap(data => data),
+      tap(() => {
+        this.refresh$.next();
+      })
+    )
+  }
 }
