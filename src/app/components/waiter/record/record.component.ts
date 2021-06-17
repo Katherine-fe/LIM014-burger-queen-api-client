@@ -18,7 +18,7 @@ export class RecordComponent implements OnInit {
   orderUpdateSuscription: Subscription = new Subscription();
   showMoveButton: boolean = true;
 
-  constructor(private order: OrdersService) {}
+  constructor(private order: OrdersService) { }
 
   ngOnInit(): void {
     this.order.refresh$.subscribe(() => {
@@ -74,15 +74,6 @@ export class RecordComponent implements OnInit {
     this.orderUpdateSuscription = this.order
       .updateOrder(this.orderEdit, order._id)
       .subscribe();
-  }
-
-  totalBill(id: string) {
-    const item = this.orders.filter((obj) => obj._id == id);
-    this.total = item[0].products.reduce(
-      (acc, obj) => acc + obj.product.price * obj.qty,
-      0
-    );
-    return this.total;
   }
   ngOnDestroy(): void {
     this.orderUpdateSuscription

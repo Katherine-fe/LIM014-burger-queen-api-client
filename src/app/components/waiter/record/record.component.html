@@ -12,7 +12,7 @@
                 <p>{{itemOrder.dateEntry}}</p>
             </header>
             <table>
-                <tr>
+                <tr style="color: green; font-weight: bold;">
                     <td>Cant</td>
                     <td>Product</td>
                     <td>Price</td>
@@ -25,7 +25,7 @@
             </table>    
             <section class="btn-end">
                 <button *ngIf="showMoveButton" (click)="changeStatus(itemOrder)">Delivered</button>
-                <p>S/. <span class="price-record" >{{totalBill(itemOrder._id)}}</span></p>
+                <p>S/. <span class="price-record" >{{itemOrder._id | priceTotal : orders }}</span></p>
             </section>
         </div>
         

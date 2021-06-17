@@ -31,7 +31,9 @@ import { ApiService } from './services/api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StaffComponent } from './components/staff/staff.component';
 import { ListOrdersComponent } from './components/waiter/list-orders/list-orders.component';
-import { ModalComponent } from './components/admin/products-catalogo/modal/modal.component'
+import { PriceTotalPipe } from './pipe/price-total.pipe'
+import { ModalComponent } from './components/admin/products-catalogo/modal/modal.component';
+import { ChangeStatusPipe } from './pipe/change-status.pipe'
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { ModalComponent } from './components/admin/products-catalogo/modal/modal
     DoneComponent,
     StaffComponent,
     ListOrdersComponent,
+    PriceTotalPipe,
     ModalComponent,
+    ChangeStatusPipe,
   ],
   imports: [
     BrowserModule,
