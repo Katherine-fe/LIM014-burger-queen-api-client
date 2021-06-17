@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/products/product.service';
 import { Product } from '../../../model/product-interface';
 import { OrdersService } from '../../../services/orders/orders.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-orders',
@@ -12,12 +14,14 @@ export class OrdersComponent implements OnInit {
   products: Product[] = [];
   viewB: boolean = false;
   public productOrder!: object;
+  productsSuscription: Subscription = new Subscription;
   
   constructor(private http: ProductService, private order$: OrdersService) {}
 
   ngOnInit(): void {
-    this.http.refresh$.subscribe(() => {
+    this.productsSuscription = this.http.refresh$.subscribe(() => {
       this.getProductsFilter('desayuno');
+      
     });
     this.getProductsFilter('desayuno');
   }
@@ -46,5 +50,8 @@ export class OrdersComponent implements OnInit {
   }
   sendObjProd(product: object) {
     this.order$.setObjectOrderProduct(product);
+  }
+  ngOnDestroy(): void {
+    this.productsSuscription.unsubscribe();
   }
 }

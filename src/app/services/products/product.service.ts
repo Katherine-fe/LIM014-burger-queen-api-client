@@ -20,15 +20,12 @@ export class ProductService {
       'Authorization': 'Bearer 123ABC',
     })
     
-/* averiguar */    
-get refresh$(){
-  return this.subjectSource
-}
+  get refresh$(){
+    return this.subjectSource
+  }
 
-getListProducts(): Observable<any> {
-  return this.http.get(this.link, { headers: this.headers });
-}
-
-
+  getListProducts(): Observable<any> {
+    return this.http.get(this.link, { headers: this.headers });
+  }
 
 }

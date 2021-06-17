@@ -33,13 +33,4 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem("accessToken");
-  }
-  getUser(email: string, token: any) {
-    return this.http.get(`${this.link}users/${email}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
-    }
-    )
-  };
-};
+  }};

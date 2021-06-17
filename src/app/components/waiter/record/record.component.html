@@ -1,7 +1,7 @@
 <section class="body-orders">
     <section class="btn-groupR">
-        <button>Pending</button>
-        <button>Done</button>
+        <button (click)="getOrderFilter('pending')">Pending</button>
+        <button (click)="getOrderFilter('delivering')">Done</button>
     </section>
     <section class="group-cards">
         <div class="card-record" *ngFor="let itemOrder of orders">
@@ -24,7 +24,7 @@
                 </tr>
             </table>    
             <section class="btn-end">
-                <button>Delivered</button>
+                <button *ngIf="showMoveButton" (click)="changeStatus(itemOrder)">Delivered</button>
                 <p>S/. <span class="price-record" >{{totalBill(itemOrder._id)}}</span></p>
             </section>
         </div>
