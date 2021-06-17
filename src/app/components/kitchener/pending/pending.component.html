@@ -15,12 +15,12 @@
                 <tr *ngFor="let product of itemOrder.products">
                     <td>{{product.qty}}</td>
                     <td>{{product.product.name}}</td>
-                    <td>S/. {{product.product.price}}</td>
+                    <td>S/. {{product.product.price * product.qty}}</td>
                 </tr>
             </table>
             <section class="btn-end">
                 <button>Done</button>
-                <p>S/. <span class="price-record">{{prueba(itemOrder._id)}}</span></p>
+                <p>S/. <span class="price-record">{{totalBill(itemOrder._id)}}</span></p>
             </section>
         </div>
     </section>

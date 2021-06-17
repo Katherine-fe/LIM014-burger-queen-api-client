@@ -5,6 +5,7 @@ import { itemOrder } from '../../../model/order-interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import jwt_decode from 'jwt-decode';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-list-orders',
@@ -25,9 +26,9 @@ export class ListOrdersComponent implements OnInit {
   date = new Date();
   public accessToken: any;
   fecha = this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear();
-  hora =  this.date.getHours() + ':' + this.date.getMinutes() + ':' + this.date.getSeconds();
+  hora = this.date.getHours() + ':' + this.date.getMinutes() + ':' + this.date.getSeconds();
 
-  constructor(private orders$: OrdersService, private auth: AuthService) {}
+  constructor(private orders$: OrdersService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.listenAddProduct();
@@ -91,10 +92,10 @@ export class ListOrdersComponent implements OnInit {
       this.productsProduct = {
         productId: order.product._id,
         productName: order.product.name,
-        productPrice:order.product.price,
-        productImage:order.product.image,
-        productType:order.product.type,
-        productDataEntry:order.product.dateEntry,
+        productPrice: order.product.price,
+        productImage: order.product.image,
+        productType: order.product.type,
+        productDataEntry: order.product.dateEntry,
         qty: order.qty,
       };
       return this.productsProduct;
@@ -104,7 +105,7 @@ export class ListOrdersComponent implements OnInit {
       client: this.form.value.client,
       products: this.arrayProducts,
       status: 'pending',
-      dateEntry: this.fecha + ' ' + this.hora,
+      dateEntry: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     };
     console.log(this.orderTotal);
     return this.orderTotal;
