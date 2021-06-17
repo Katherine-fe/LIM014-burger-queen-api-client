@@ -18,9 +18,6 @@ import { ModalDeleteComponent } from './components/admin/user-catalogo/list-user
 import { ModalAddComponent } from './components/admin/user-catalogo/add-user/modal-add/modal-add.component';
 import { AddProductsComponent } from './components/admin/products-catalogo/add-products/add-products.component';
 import { ListProductsComponent } from './components/admin/products-catalogo/list-products/list-products.component';
-import { ModalAddProductsComponent } from './components/admin/products-catalogo/add-products/modal-add-products/modal-add-products.component';
-import { ModalDeleteProductsComponent } from './components/admin/products-catalogo/list-products/modal/modal-delete-products/modal-delete-products.component';
-import { ModalEditProductsComponent } from './components/admin/products-catalogo/list-products/modal/modal-edit-products/modal-edit-products.component';
 import { MainKComponent } from './components/kitchener/main-k/main-k.component';
 import { NavBarKComponent } from './components/kitchener/nav-bar-k/nav-bar-k.component';
 import { PendingComponent } from './components/kitchener/pending/pending.component';
@@ -35,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StaffComponent } from './components/staff/staff.component';
 import { ListOrdersComponent } from './components/waiter/list-orders/list-orders.component';
 import { PriceTotalPipe } from './pipe/price-total.pipe'
+import { ModalComponent } from './components/admin/products-catalogo/modal/modal.component'
 
 
 @NgModule({
@@ -56,9 +54,6 @@ import { PriceTotalPipe } from './pipe/price-total.pipe'
     ModalAddComponent,
     AddProductsComponent,
     ListProductsComponent,
-    ModalAddProductsComponent,
-    ModalDeleteProductsComponent,
-    ModalEditProductsComponent,
     MainKComponent,
     NavBarKComponent,
     PendingComponent,
@@ -66,6 +61,7 @@ import { PriceTotalPipe } from './pipe/price-total.pipe'
     StaffComponent,
     ListOrdersComponent,
     PriceTotalPipe,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

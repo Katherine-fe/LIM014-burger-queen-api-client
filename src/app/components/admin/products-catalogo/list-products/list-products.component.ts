@@ -6,25 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-products.component.scss']
 })
 export class ListProductsComponent implements OnInit {
-
+  title = '';
+ 
   constructor() { }
 
   ngOnInit(): void {
   }
-  myModalEditProduct = false;
-  myModalDeleteProduct = false;
 
-  mostrarModalEditProduct(){
-    this.myModalEditProduct = true;
+  myModalProduct = false;
+  myModalProduct2 = false;
+
+
+  mostrarModalProduct(){
+    this.myModalProduct = true;
+    this.title ='Edit Product';
   }
-  mostrarModalDeleteProduct(){
-    this.myModalDeleteProduct = true;
+  mostrarModalProductDelete(){
+    this.myModalProduct2 = true;
+    this.title ='Delete Product';
   }
-  cerrarModalEditProduct(e: boolean){
-    this.myModalEditProduct = e;
-  }
-  cerrarModalDeleteProduct(e: boolean){
-    this.myModalDeleteProduct = e;
+  cerrarModalProduct(e: boolean){
+    this.myModalProduct = e;
+    this.myModalProduct2 =e;
   }
 
 }
