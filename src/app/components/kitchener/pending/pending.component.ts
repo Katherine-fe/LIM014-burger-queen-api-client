@@ -9,6 +9,7 @@ import * as dayjs from 'dayjs';
 })
 export class PendingComponent implements OnInit {
   orderList: Order[] = [];
+  filterStatus: Order[] = [];
   total!: number;
   //suscription: Subscription = new Subscription;
   constructor(private get: ApiService) { }
@@ -32,9 +33,14 @@ export class PendingComponent implements OnInit {
     });
   }
   pending(orders: any) {
-    const filterStatus = orders.filter((date: any) => date.status == 'pending');
-    // filterStatus.sort((a,b) => );
-    console.log(filterStatus);
+    this.filterStatus = orders.filter((date: any) => date.status == 'pending');
+    this.filterStatus.forEach((elm) => {
+      let cadena = elm.dateEntry.toString();
+      const esto = cadena.replace('-', '').replace(':', '')
+      console.log(esto);
+    });
+    //Primero por los servicios y luego mockear
+    //ng module 
   }
   totalBill(id: string) {
     const item = this.orderList.filter((obj) => obj._id == id)

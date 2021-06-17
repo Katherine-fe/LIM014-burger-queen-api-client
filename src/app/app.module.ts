@@ -33,7 +33,8 @@ import { ApiService } from './services/api.service';
 // importamos para usar ngForm
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StaffComponent } from './components/staff/staff.component';
-import { ListOrdersComponent } from './components/waiter/list-orders/list-orders.component'
+import { ListOrdersComponent } from './components/waiter/list-orders/list-orders.component';
+import { PriceTotalPipe } from './pipe/price-total.pipe'
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { ListOrdersComponent } from './components/waiter/list-orders/list-orders
     DoneComponent,
     StaffComponent,
     ListOrdersComponent,
+    PriceTotalPipe,
   ],
   imports: [
     BrowserModule,
