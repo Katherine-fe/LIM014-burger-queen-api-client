@@ -18,8 +18,8 @@
           <td>Menu</td>
           <td>30/05/2021</td>
           <td class="edit-delete">
-            <button class="edit" (click)="mostrarModalEditProduct()">Update</button>
-            <button class="delete" (click)="mostrarModalDeleteProduct()">Delete</button>
+            <button class="edit" (click)="mostrarModalProduct()">Update</button>
+            <button class="delete"  (click)="mostrarModalProductDelete()" >Delete</button>
           </td>
         </tr>
         <tr>
@@ -29,16 +29,17 @@
             <td>Menu</td>
             <td>30/05/2021</td>
             <td class="edit-delete">
-              <button class="edit" (click)="mostrarModalEditProduct()">Update</button>
-              <button class="delete" (click)="mostrarModalDeleteProduct()">Delete</button>
+              <button class="edit" (click)="mostrarModalProduct()" >Update</button>
+              <button class="delete" (click)="mostrarModalProductDelete()">Delete</button>
             </td>
           </tr>
       </tbody>
     </table>
   </div>
   <div class="app">
-    <app-modal-edit-products [visibleEditProduct]="myModalEditProduct" (close)="cerrarModalEditProduct($event)" ></app-modal-edit-products>
-    <app-modal-delete-products [visibleDeleteProduct]="myModalDeleteProduct" (close)="cerrarModalDeleteProduct($event)"></app-modal-delete-products>
+    <app-modal  [visibleProducts]="myModalProduct" [title]= "title" (close)="cerrarModalProduct($event)" ></app-modal>
+    <app-modal  [visibleProductsDelete]="myModalProduct2" [title]= "title" (close)="cerrarModalProduct($event)" ></app-modal>
+
   </div>
 
 
