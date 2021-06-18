@@ -1,17 +1,17 @@
 <section class="container-orders">
     <section class="container-tickets">
         <div class="btn-group">
-            <button class="btn-bkf"  (click)="getProductsFilter('desayuno')">Breakfast</button>
-            <button class="btn-menu"  (click)="viewButton()" >Menu</button>
+            <button class="btn-bkf"  (click)="filterType('desayuno')">Breakfast</button>
+            <button class="btn-menu" (click)="filterType('menú')" >Menu</button>
         </div>
-        <div class="btn-group" *ngIf="viewB">
-            <button class="btn-bkf" (click)="getProductsFilter('menú')">Burgers</button>     
-            <button class="btn-bkf" (click)="getProductsFilter('acompañamientos')">Snacks</button>
-            <button class="btn-bkf" (click)="getProductsFilter('Para tomar')">Drink</button>
+        <div class="btn-group" *ngIf="show=='menú'" >
+            <button class="btn-bkf" (click)="filterType('menú')">Burgers</button>     
+            <button class="btn-bkf" (click)="filterType('acompañamientos')">Snacks</button>
+            <button class="btn-bkf" (click)="filterType('Para tomar')">Drink</button>
         </div>
 
         <div class="body-tickets">
-            <div class="card" *ngFor="let item of products" (click)="buttonAdd(item)">                 
+            <div class="card" *ngFor="let item of products | filter: filterProd " (click)="buttonAdd(item)">                 
                 <figure>
                     <img class="card-img" src="./../../../../assets/img/burger1.png" alt="">
                 </figure>

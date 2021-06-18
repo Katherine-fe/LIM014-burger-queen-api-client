@@ -4,7 +4,6 @@ import { Product } from '../../../model/product-interface';
 import { OrdersService } from '../../../services/orders/orders.service';
 import { Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -12,36 +11,41 @@ import { Subscription } from 'rxjs';
 })
 export class OrdersComponent implements OnInit {
   products: Product[] = [];
-  viewB: boolean = false;
+  
   public productOrder!: object;
   productsSuscription: Subscription = new Subscription;
+  filterProd: string = 'desayuno'
+  show!: string;
   
   constructor(private http: ProductService, private order$: OrdersService) {}
 
   ngOnInit(): void {
     this.productsSuscription = this.http.refresh$.subscribe(() => {
-      this.getProductsFilter('desayuno');
-      
+      this.getProducts();
     });
-    this.getProductsFilter('desayuno');
+    this.filterType('desayuno');
+    this.getProducts();
   }
   getProducts() {
     this.http.getListProducts().subscribe((data) => {
       this.products = data.products;
     });
   }
-  getProductsFilter(typeF: any) {
-    this.http.getListProducts().subscribe((data) => {
-      this.products = data.products.filter(
-        (products: { type: string }) => products.type === typeF
-      );
-    });
-    if (typeF === 'desayuno') {
-      this.viewB = false;
+  filterType(type: string) {
+    switch (type) {
+      case 'desayuno':
+        this.show = '';
+        this.filterProd = type
+        break;
+      case 'menú':
+        this.show = "menú"
+        this.filterProd = 'menú';
+        break;
+      default:
+        this.show = "menú";
+        this.filterProd = type
+        break;
     }
-  }
-  viewButton() {
-    this.viewB = true;
   }
   buttonAdd(product: any) {
     this.productOrder = { qty: 1, product };

@@ -49,7 +49,6 @@ export class ListOrdersComponent implements OnInit {
     );
   }
   plus(id: string) {
-    /*  const item = this.products.filter(obj => obj.product._id == id) let plus = item[0].qty; plus+=1; item [0].qty = plus; */
     this.orders.filter((obj) => obj.product._id == id)[0].qty += 1;
     this.totalBill();
   }
@@ -111,7 +110,6 @@ export class ListOrdersComponent implements OnInit {
     console.log(this.orderTotal);
     return this.orderTotal;
   }
-
   sendOrder() {
     if (this.form.valid) {
       this.orderSendSuscription = this.orders$
@@ -131,5 +129,4 @@ export class ListOrdersComponent implements OnInit {
       this.orderSendSuscription.unsubscribe();
     }
   }
-
 }
