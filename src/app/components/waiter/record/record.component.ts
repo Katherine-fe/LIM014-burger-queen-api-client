@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 import { Order } from '../../../model/order-interface';
 import { Subscription } from 'rxjs';
@@ -16,13 +16,16 @@ export class RecordComponent implements OnInit {
   public products: any;
   public orderEdit: any;
   orderUpdateSuscription: Subscription = new Subscription();
-  showMoveButton: boolean = true;
+  showMoveButton: boolean = false;
+  @Input() statusOrder!: string;
+
 
   constructor(private order: OrdersService) { }
 
   ngOnInit(): void {
     this.order.refresh$.subscribe(() => {
-      this.getOrderFilter('pending');
+      this.getOrders();
+      
     });
     this.getOrders();
   }
@@ -31,18 +34,16 @@ export class RecordComponent implements OnInit {
       this.orders = data.order;
     });
   }
-  getOrderFilter(statusF: any) {
-    this.order.getListOrders().subscribe((data) => {
-      this.orders = data.order.filter(
-        (orders: { status: string }) => orders.status === statusF
-      );
-    });
-  }
-  /*   showHideButtons(){
-    this.orders[0].status === 'pending';
-    }
- */
-
+    getOrderFilter(type: string) {
+      switch (type) {
+        case 'canceled':
+          this.statusOrder = type;
+          break;
+        default:
+          this.statusOrder = type
+          break;
+      }
+    }  
   changeStatus(order: Order) {
     this.arrayProducts = this.orders.map((order) => {
       this.products = {
