@@ -4,7 +4,7 @@
         <button (click)="getOrderFilter('delivering')">Delivering</button>
     </section>
     <section class="group-cards">
-        <div class="card-record" *ngFor="let itemOrder of orders | filter: statusOrder; index as i">
+        <div class="card-record" *ngFor="let itemOrder of orders | filter: statusOrder">
             <header>
                 <p>State: <span id="state" class="state">{{itemOrder.status}}</span></p>
                 <p>Table: <span>2</span></p>
