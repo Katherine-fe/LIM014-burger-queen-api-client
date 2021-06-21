@@ -24,7 +24,7 @@
                 </tr>
             </table>    
             <section class="btn-end">
-                <button *ngIf="itemOrder.status=='canceled'" (click)="changeStatus(itemOrder)">Delivered</button>
+                <button *ngIf="itemOrder.status=='canceled'" (click)="onChangeStatus(itemOrder)">Delivered</button>
                 <p>S/. <span class="price-record" >{{itemOrder._id | priceTotal : orders }}</span></p>
             </section>
         </div>

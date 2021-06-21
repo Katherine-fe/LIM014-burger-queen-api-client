@@ -19,16 +19,16 @@
     </div>
     </div>
   </section>
-  <section class="modal" *ngIf="visibleProductsDelete">
+  <section class="modal" *ngIf="visibleProductsDelete" >
     <div class="overlay"></div>
     <div class="modal_content">
-    <div class="ctn-edit-user" >
+    <div class="ctn-edit-user"  >
         <h2>{{title}}</h2>
         <div class="form">
             <h5 class="nameDelete" id="modal-delete">If you delete this product, you will not be able to recover it.</h5>
           <div class="cancel-save">
             <button type='button' class="cancel" (click)="cerrarModalProduct()">Cancel</button>
-            <button type='button' class="save">Delete</button>
+            <button type='button' class="save"  (click)="deleteProducts(products)">Delete</button>
           </div>
         </div>
     </div>

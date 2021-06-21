@@ -11,35 +11,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>001</td>
-          <td>Hamburger</td>
-          <td>S/10.00</td>
-          <td>Menu</td>
-          <td>30/05/2021</td>
+        <tr *ngFor="let item of products">
+          <td>{{item._id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.dateEntry}}</td>
           <td class="edit-delete">
             <button class="edit" (click)="mostrarModalProduct()">Update</button>
-            <button class="delete"  (click)="mostrarModalProductDelete()" >Delete</button>
+            <button class="delete"  (click)="mostrarModalProductDelete()">Delete</button>
           </td>
         </tr>
-        <tr>
-            <td>001</td>
-            <td>Hamburger 2</td>
-            <td>S/10.00</td>
-            <td>Menu</td>
-            <td>30/05/2021</td>
-            <td class="edit-delete">
-              <button class="edit" (click)="mostrarModalProduct()" >Update</button>
-              <button class="delete" (click)="mostrarModalProductDelete()">Delete</button>
-            </td>
-          </tr>
       </tbody>
     </table>
   </div>
   <div class="app">
     <app-modal  [visibleProducts]="myModalProduct" [title]= "title" (close)="cerrarModalProduct($event)" ></app-modal>
-    <app-modal  [visibleProductsDelete]="myModalProduct2" [title]= "title" (close)="cerrarModalProduct($event)" ></app-modal>
-
+    <app-modal  [visibleProductsDelete]="myModalProduct2" [title]= "title" (close)="cerrarModalProduct($event)"></app-modal>
   </div>
 
 
