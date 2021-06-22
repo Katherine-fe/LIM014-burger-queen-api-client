@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class ListProductsComponent implements OnInit {
   title = '';
+  buttonAddUpdate = '';
   products: Product[] = [];
   productsSuscription: Subscription = new Subscription;
  
@@ -34,6 +35,7 @@ export class ListProductsComponent implements OnInit {
   mostrarModalProduct(){
     this.myModalProduct = true;
     this.title ='Edit Product';
+    this.buttonAddUpdate= 'Update'
   }
   mostrarModalProductDelete(){
     this.myModalProduct2 = true;

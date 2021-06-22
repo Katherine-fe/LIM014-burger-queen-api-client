@@ -3,26 +3,29 @@
     <div class="modal_content">
     <div class="ctn-edit-user" >
         <h2>{{title}}</h2>
-        <div class="form">
-          <input type="text" placeholder="Name Product" name="NameProduct">
-          <input type="text" placeholder="Price" >
-          <select name="typeProduct" class="select-product">
-            <option>Menu</option>
-            <option>Desayunos</option>
+        <form class="form" [formGroup]="form">
+          <input type="text" placeholder="Name Product" name="NameProduct" formControlName="name">
+          <input type="text" placeholder="Price" formControlName="price">
+          <select name="typeProduct" class="select-product" formControlName="type">
+            <option value="desayuno">Breakfast</option>
+            <option value="menú">Menu</option>
+            <option value="acompañamientos">Accompaniment</option>
+            <option value="Para tomar">Drink</option>
             </select>
-            <input type="date" placeholder="Date Creation">
+            <div><input type="file" formControlName="image"></div>
+            <input type="date" placeholder="Date Creation" formControlName="dateEntry">
           <div class="cancel-save">
             <button type='button' class="cancel" (click)="cerrarModalProduct()">Cancel</button>
-            <button type='button' class="save">Add</button>
+            <button type='button' (click)="probando()"class="save">{{buttonAddUpdate}}</button>
           </div>
-        </div>
+        </form>
     </div>
     </div>
   </section>
   <section class="modal" *ngIf="visibleProductsDelete" >
     <div class="overlay"></div>
     <div class="modal_content">
-    <div class="ctn-edit-user"  >
+    <div class="ctn-edit-user">
         <h2>{{title}}</h2>
         <div class="form">
             <h5 class="nameDelete" id="modal-delete">If you delete this product, you will not be able to recover it.</h5>
