@@ -1,8 +1,8 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 import { Order } from '../../../model/order-interface';
 import { Subscription } from 'rxjs';
-import { changeStatus, arrayProd} from '../../../utilities/changeStatus';
+import { changeStatus, arrayProd } from '../../../utilities/changeStatus';
 
 @Component({
   selector: 'app-record',
@@ -18,14 +18,14 @@ export class RecordComponent implements OnInit {
   public orderEdit: any;
   orderUpdateSuscription: Subscription = new Subscription();
   showMoveButton: boolean = false;
-  @Input() statusOrder!: string;
+  statusOrder!: string;
 
   constructor(private order: OrdersService) { }
 
   ngOnInit(): void {
     this.order.refresh$.subscribe(() => {
       this.getOrders();
-      
+
     });
     this.getOrders();
   }
@@ -34,26 +34,26 @@ export class RecordComponent implements OnInit {
       this.orders = data.order;
     });
   }
-    getOrderFilter(type: string) {
-      switch (type) {
-        case 'canceled':
-          this.statusOrder = type;
-          break;
-        default:
-          this.statusOrder = type
-          break;
-      }
-    }  
+  getOrderFilter(type: string) {
+    switch (type) {
+      case 'canceled':
+        this.statusOrder = type;
+        break;
+      default:
+        this.statusOrder = type
+        break;
+    }
+  }
 
-   onChangeStatus(order: Order) {
+  onChangeStatus(order: Order) {
     const arrayP = arrayProd(this.orders);
-    const orderEdit = changeStatus(order , arrayP);
+    const orderEdit = changeStatus(order, arrayP);
     this.orderUpdateSuscription = this.order
       .updateOrder(orderEdit, order._id)
       .subscribe();
-  } 
- 
- 
+  }
+
+
   ngOnDestroy(): void {
     this.orderUpdateSuscription
       ? this.orderUpdateSuscription.unsubscribe()

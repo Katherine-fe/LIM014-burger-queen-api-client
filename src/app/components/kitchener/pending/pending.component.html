@@ -1,13 +1,14 @@
 <section class="body-orders">
     <section class="group-cards">
-        <div class="card-record" *ngFor="let itemOrder of filterStatus">
+        <div class="card-record" *ngFor="let itemOrder of orderList | filter: 'pending'">
             <header>
-                <p>State: <span id="state" class="state">{{itemOrder.status}}</span></p>
+                <p *ngIf="itemOrder.status != 'canceled'">State: <span id="state" class="state">{{itemOrder.status}}</span></p>
+                <p *ngIf="itemOrder.status == 'canceled'">State: <span style="color: rgb(0, 168, 0);" id="state" class="state">{{itemOrder.status}}</span></p>
                 <p>User: <span id="idUser" class="id-user">{{itemOrder.client}}</span></p>
                 <p>{{itemOrder.dateEntry}}</p>
             </header>
             <table>
-                <tr style="color: blue; font-weight: bold;">
+                <tr style="color: rgb(27, 21, 46); font-weight: bold;">
                     <td>Cant</td>
                     <td>Product</td>
                     <td>Price</td>
@@ -19,8 +20,8 @@
                 </tr>
             </table>
             <section class="btn-end">
-                <button>Done</button>
-                <p>S/. <span class="price-record">{{itemOrder._id | priceTotal : filterStatus}}</span></p>
+                <button (click)="onChangeStatus(itemOrder)">Done</button>
+                <p>S/. <span class="price-record">{{itemOrder._id | priceTotal : orderList}}</span></p>
             </section>
         </div>
     </section>
