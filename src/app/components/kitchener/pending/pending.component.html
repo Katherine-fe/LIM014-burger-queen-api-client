@@ -2,7 +2,8 @@
     <section class="group-cards">
         <div class="card-record" *ngFor="let itemOrder of orderList | filter: 'pending'">
             <header>
-                <p>State: <span id="state" class="state">{{itemOrder.status}}</span></p>
+                <p *ngIf="itemOrder.status != 'canceled'">State: <span id="state" class="state">{{itemOrder.status}}</span></p>
+                <p *ngIf="itemOrder.status == 'canceled'">State: <span style="color: rgb(0, 168, 0);" id="state" class="state">{{itemOrder.status}}</span></p>
                 <p>User: <span id="idUser" class="id-user">{{itemOrder.client}}</span></p>
                 <p>{{itemOrder.dateEntry}}</p>
             </header>
@@ -19,7 +20,7 @@
                 </tr>
             </table>
             <section class="btn-end">
-                <button>Done</button>
+                <button (click)="onChangeStatus(itemOrder)">Done</button>
                 <p>S/. <span class="price-record">{{itemOrder._id | priceTotal : orderList}}</span></p>
             </section>
         </div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../../../model/order-interface';
 import * as dayjs from 'dayjs';
+import { Subscription } from 'rxjs';
 import { OrdersService } from 'src/app/services/orders/orders.service';
+import { changeStatus, arrayProd } from 'src/app/utilities/changeStatus';
 @Component({
   selector: 'app-pending',
   templateUrl: './pending.component.html',
@@ -12,7 +14,7 @@ export class PendingComponent implements OnInit {
   filterStatus: Order[] = [];
   total!: number;
   statusPending: string = '';
-  //suscription: Subscription = new Subscription;
+  orderUpdateSuscription: Subscription = new Subscription();
   constructor(private get: OrdersService) { }
 
 
@@ -31,6 +33,14 @@ export class PendingComponent implements OnInit {
     this.get.getListOrders().subscribe(data => {
       this.orderList = data.order;
     });
+  }
+  onChangeStatus(order: Order): void {
+    const arrProd = arrayProd(this.orderList);
+    const editOrder = changeStatus(order, arrProd);
+    this.orderUpdateSuscription = this.get.updateOrder(editOrder, order._id)
+      .subscribe();
+    console.log(editOrder);
+
   }
   pending(orders: any) {
     this.filterStatus = orders.filter((date: any) => date.status == 'pending');
