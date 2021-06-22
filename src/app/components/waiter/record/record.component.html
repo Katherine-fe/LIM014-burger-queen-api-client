@@ -4,7 +4,7 @@
         <button (click)="getOrderFilter('delivering')">Delivering</button>
     </section>
     <section class="group-cards">
-        <div class="card-record" *ngFor="let itemOrder of orders | filter: statusOrder; index as i">
+        <div class="card-record" *ngFor="let itemOrder of orders | filter: statusOrder">
             <header>
                 <p *ngIf="itemOrder.status == 'canceled'">State: <span style="color: rgb(0, 168, 0); font-weight: bold; text-transform: capitalize;" id="state" class="state">{{itemOrder.status}}</span></p>
                 <p *ngIf="itemOrder.status == 'delivering'">State: <span style="text-transform: capitalize; color: black;" id="state" class="state">{{itemOrder.status}}</span></p>
@@ -26,7 +26,7 @@
                 </tr>
             </table>    
             <section class="btn-end">
-                <button *ngIf="itemOrder.status=='canceled'" (click)="changeStatus(itemOrder)">Delivered</button>
+                <button *ngIf="itemOrder.status=='canceled'" (click)="onChangeStatus(itemOrder)">Delivered</button>
                 <p>Total:</p>
                 <p>S/. <span class="price-record" >{{itemOrder._id | priceTotal : orders }}</span></p>
             </section>

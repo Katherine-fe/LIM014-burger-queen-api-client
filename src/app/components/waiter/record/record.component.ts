@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 import { Order } from '../../../model/order-interface';
 import { Subscription } from 'rxjs';
+import { changeStatus, arrayProd } from '../../../utilities/changeStatus';
 
 @Component({
   selector: 'app-record',
@@ -18,7 +19,6 @@ export class RecordComponent implements OnInit {
   orderUpdateSuscription: Subscription = new Subscription();
   showMoveButton: boolean = false;
   statusOrder!: string;
-
 
   constructor(private order: OrdersService) { }
 
@@ -44,38 +44,16 @@ export class RecordComponent implements OnInit {
         break;
     }
   }
-  changeStatus(order: Order) {
-    this.arrayProducts = this.orders.map((order) => {
-      this.products = {
-        qty: order.products[0].qty,
-        product: {
-          _id: order.products[0].product._id,
-          name: order.products[0].product.name,
-          price: order.products[0].product.price,
-          image: order.products[0].product.image,
-          type: order.products[0].product.type,
-          dataEntry: order.products[0].product.dateEntry,
-        },
-      };
-      return this.products;
-    });
-    if (order.status == 'canceled') {
-      order.status = 'delivering';
-      console.log('delivering')
-    } else if (order.status == 'pending') {
-      order.status = 'canceled';
-      console.log('canceled')
-    }
-    this.orderEdit = {
-      userId: order.userId,
-      client: order.client,
-      products: this.arrayProducts,
-      status: order.status,
-    };
+
+  onChangeStatus(order: Order) {
+    const arrayP = arrayProd(this.orders);
+    const orderEdit = changeStatus(order, arrayP);
     this.orderUpdateSuscription = this.order
-      .updateOrder(this.orderEdit, order._id)
+      .updateOrder(orderEdit, order._id)
       .subscribe();
   }
+
+
   ngOnDestroy(): void {
     this.orderUpdateSuscription
       ? this.orderUpdateSuscription.unsubscribe()

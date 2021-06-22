@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from "../../../environments/environment";
 import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
 
 
 
@@ -27,5 +29,29 @@ export class ProductService {
   getListProducts(): Observable<any> {
     return this.http.get(this.link, { headers: this.headers });
   }
-
+  postProduct(product: object): Observable<any> {
+    return this.http.post(this.link, product, {headers: this.headers})
+      .pipe(
+        tap(() => {
+          this.refresh$.next()
+        })
+      )
+  }
+  updateProduct(body: any, id: string) {
+    return this.http.put(this.link + id, body, {headers: this.headers})
+      .pipe(
+/*         tap(data => data),
+ */        tap(() => {
+          this.refresh$.next()
+        })
+      )
+  }
+  deleteProduct(product: any) {
+    return this.http.delete(this.link + product._id, { headers: this.headers })
+      .pipe(
+        tap(() => {
+          this.refresh$.next()
+        })
+      )
+  }
 }

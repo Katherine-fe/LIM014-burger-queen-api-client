@@ -13,3 +13,9 @@ export interface itemOrder{
   qty: number;
   product: Product;
 }
+export interface prodOrder{
+  qty: number;
+  product:{
+    _id: string;
+  }  
+}
