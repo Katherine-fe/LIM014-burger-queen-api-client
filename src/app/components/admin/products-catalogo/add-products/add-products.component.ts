@@ -8,7 +8,8 @@ import { Component, OnInit,Input } from '@angular/core';
 export class AddProductsComponent implements OnInit {
   @Input() visibleProducts: boolean = false;
   title = '';
-  status = '';
+  buttonAddUpdate = '';
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -19,7 +20,7 @@ export class AddProductsComponent implements OnInit {
   mostrarModalProduct(){
     this.myModalProduct = true;
     this.title='Add Product'
-    this.status='Añadir'
+    this.buttonAddUpdate= 'Add'
   }
 
   cerrarModalProduct(e: boolean){
