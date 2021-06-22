@@ -24,9 +24,6 @@ import { PendingComponent } from './components/kitchener/pending/pending.compone
 import { DoneComponent } from './components/kitchener/done/done.component';
 import { HttpClientModule } from '@angular/common/http';
 
-// services
-import { ApiService } from './services/api.service';
-
 // importamos para usar ngForm
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StaffComponent } from './components/staff/staff.component';
@@ -71,7 +68,7 @@ import { FilterPipe } from './pipe/filter.pipe'
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [ApiService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

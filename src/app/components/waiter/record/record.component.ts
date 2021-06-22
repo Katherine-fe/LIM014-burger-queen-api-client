@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 import { Order } from '../../../model/order-interface';
 import { Subscription } from 'rxjs';
@@ -17,7 +17,7 @@ export class RecordComponent implements OnInit {
   public orderEdit: any;
   orderUpdateSuscription: Subscription = new Subscription();
   showMoveButton: boolean = false;
-  @Input() statusOrder!: string;
+  statusOrder!: string;
 
 
   constructor(private order: OrdersService) { }
@@ -25,7 +25,7 @@ export class RecordComponent implements OnInit {
   ngOnInit(): void {
     this.order.refresh$.subscribe(() => {
       this.getOrders();
-      
+
     });
     this.getOrders();
   }
@@ -34,16 +34,16 @@ export class RecordComponent implements OnInit {
       this.orders = data.order;
     });
   }
-    getOrderFilter(type: string) {
-      switch (type) {
-        case 'canceled':
-          this.statusOrder = type;
-          break;
-        default:
-          this.statusOrder = type
-          break;
-      }
-    }  
+  getOrderFilter(type: string) {
+    switch (type) {
+      case 'canceled':
+        this.statusOrder = type;
+        break;
+      default:
+        this.statusOrder = type
+        break;
+    }
+  }
   changeStatus(order: Order) {
     this.arrayProducts = this.orders.map((order) => {
       this.products = {

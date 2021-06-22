@@ -6,13 +6,15 @@
     <section class="group-cards">
         <div class="card-record" *ngFor="let itemOrder of orders | filter: statusOrder; index as i">
             <header>
-                <p>State: <span id="state" class="state">{{itemOrder.status}}</span></p>
+                <p *ngIf="itemOrder.status == 'canceled'">State: <span style="color: rgb(0, 168, 0); font-weight: bold; text-transform: capitalize;" id="state" class="state">{{itemOrder.status}}</span></p>
+                <p *ngIf="itemOrder.status == 'delivering'">State: <span style="text-transform: capitalize; color: black;" id="state" class="state">{{itemOrder.status}}</span></p>
+                <p *ngIf="itemOrder.status != 'canceled' && itemOrder.status != 'delivering'">State: <span style="text-transform: capitalize;" id="state" class="state">{{itemOrder.status}}</span></p>
                 <p>Table: <span>2</span></p>
                 <p>User: <span id="idUser" class="id-user">{{itemOrder.client}}</span></p>
                 <p>{{itemOrder.dateEntry}}</p>
             </header>
             <table>
-                <tr style="color: green; font-weight: bold;">
+                <tr style="color: rgb(27, 21, 46); font-weight: bold;">
                     <td>Cant</td>
                     <td>Product</td>
                     <td>Price</td>
@@ -25,6 +27,7 @@
             </table>    
             <section class="btn-end">
                 <button *ngIf="itemOrder.status=='canceled'" (click)="changeStatus(itemOrder)">Delivered</button>
+                <p>Total:</p>
                 <p>S/. <span class="price-record" >{{itemOrder._id | priceTotal : orders }}</span></p>
             </section>
         </div>
