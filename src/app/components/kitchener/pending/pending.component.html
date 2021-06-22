@@ -20,7 +20,7 @@
                 </tr>
             </table>
             <section class="btn-end">
-                <button (click)="onChangeStatus(itemOrder)">Done</button>
+                <button *ngIf="itemOrder.status=='pending'" (click)="onChangeStatus(itemOrder)">Done</button>
                 <p>S/. <span class="price-record">{{itemOrder._id | priceTotal : orderList}}</span></p>
             </section>
         </div>
