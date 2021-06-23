@@ -4,9 +4,9 @@
     <div class="ctn-edit-user" >
         <h2>{{title}}</h2>
         <form class="form" [formGroup]="form">
-          <input type="text" placeholder="Name Product" name="NameProduct" formControlName="name">
-          <input type="text" placeholder="Price" formControlName="price">
-          <select name="typeProduct" class="select-product" formControlName="type">
+          <input type="text" placeholder="Name Product" name="NameProduct" formControlName="name"  [(ngModel)]="objProd2.name">
+          <input type="text" placeholder="Price" formControlName="price" [(ngModel)]="objProd2.price">
+          <select name="typeProduct" class="select-product" formControlName="type" [(ngModel)]="objProd2.type">
             <option value="desayuno">Breakfast</option>
             <option value="menú">Menu</option>
             <option value="acompañamientos">Accompaniment</option>
@@ -37,6 +37,7 @@
     </div>
     </div>
 </section>
+
 
   
 
