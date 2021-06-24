@@ -10,6 +10,8 @@ import { tap } from 'rxjs/operators';
 })
 export class OrdersService {
   public objectOrderProduct!: object;
+  public token = localStorage.getItem("accessToken");
+
 
   setObjectOrderProduct(product: object) {
     this.objectOrderProduct = product;
@@ -27,7 +29,7 @@ export class OrdersService {
 
   headers = new HttpHeaders(
     {
-      'Authorization': 'Bearer 123ABC',
+      'Authorization':  `Bearer ${this.token}`,
     }
   );
 

@@ -9,10 +9,12 @@ import { Observable } from 'rxjs';
 export class UsersService {
 
   constructor(public http: HttpClient) { }
+  public token = localStorage.getItem("accessToken");
   private link: string = environment.link + 'users/';
+
   headers = new HttpHeaders(
     {
-      'Authorization': 'Bearer 123ABC',
+      'Authorization': `Bearer ${this.token}`,
     })
 
   getUser(): Observable<any> {

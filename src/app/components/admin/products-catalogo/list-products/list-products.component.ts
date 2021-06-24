@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { Product } from '../../../../model/product-interface';
 import { ProductService } from 'src/app/services/products/product.service';
 import { Subscription } from 'rxjs';
@@ -10,8 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./list-products.component.scss']
 })
 export class ListProductsComponent implements OnInit {
-  title = '';
-  buttonAddUpdate = '';
+  objProd = Object;
   products: Product[] = [];
   productsSuscription: Subscription = new Subscription;
  
@@ -32,14 +31,13 @@ export class ListProductsComponent implements OnInit {
       this.products = data.products;
     });
   }
-  mostrarModalProduct(){
+  mostrarModalProduct(product : any){
     this.myModalProduct = true;
-    this.title ='Edit Product';
-    this.buttonAddUpdate= 'Update'
+    this.objProd = product;
   }
   mostrarModalProductDelete(){
     this.myModalProduct2 = true;
-    this.title ='Delete Product';
+
   }
   cerrarModalProduct(e: boolean){
     this.myModalProduct = e;

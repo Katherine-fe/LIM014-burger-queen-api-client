@@ -5,8 +5,6 @@ import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,10 +14,10 @@ export class ProductService {
   public link: string = environment.link + 'products/';
   private subjectSource = new Subject<void>();
   public countdown$ = this.subjectSource.asObservable();
+  public token = localStorage.getItem("accessToken");
   
-  headers = new HttpHeaders(
-    {
-      'Authorization': 'Bearer 123ABC',
+  headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`,
     })
     
   get refresh$(){
@@ -40,8 +38,7 @@ export class ProductService {
   updateProduct(body: any, id: string) {
     return this.http.put(this.link + id, body, {headers: this.headers})
       .pipe(
-/*         tap(data => data),
- */        tap(() => {
+          tap(() => {
           this.refresh$.next()
         })
       )
