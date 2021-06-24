@@ -26,8 +26,8 @@
     </table>
   </div>
   <div class="app">
-    <app-modal [visibleProducts]="myModalProduct" [title]= "title" [objProd2] = "objProd" [buttonAddUpdate]="buttonAddUpdate" (close)="cerrarModalProduct($event)" ></app-modal>
-    <app-modal [visibleProductsDelete]="myModalProduct2" [title]= "title" [buttonAddUpdate]="buttonAddUpdate" (close)="cerrarModalProduct($event)"></app-modal>
+    <app-modal [visibleProducts]="myModalProduct" [objProd2] = "objProd" (close)="cerrarModalProduct($event)" ></app-modal>
+    <app-modal [visibleProductsDelete]="myModalProduct2"  (close)="cerrarModalProduct($event)"></app-modal>
   </div>
 
 

@@ -10,9 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./list-products.component.scss']
 })
 export class ListProductsComponent implements OnInit {
-  title = '';
   objProd = Object;
-  buttonAddUpdate = '';
   products: Product[] = [];
   productsSuscription: Subscription = new Subscription;
  
@@ -35,14 +33,11 @@ export class ListProductsComponent implements OnInit {
   }
   mostrarModalProduct(product : any){
     this.myModalProduct = true;
-    this.title ='Edit Product';
-    this.buttonAddUpdate= 'Update'
     this.objProd = product;
-    console.log(this.objProd)
   }
   mostrarModalProductDelete(){
     this.myModalProduct2 = true;
-    this.title ='Delete Product';
+
   }
   cerrarModalProduct(e: boolean){
     this.myModalProduct = e;
