@@ -1,25 +1,25 @@
-<section class="modal">
+<section class="modal" *ngIf="showUser">
     <div class="overlay"></div>
     <div class="modal_content">
     <div class="ctn-edit-user" >
-        <h2>Add User</h2>
-        <form class="form">
-            <input type="text" placeholder="Email"name="email" formControlName="email">
-            <input type="text" placeholder="Password" #passw formControlName="constraseña">
+        <h2>{{title}}</h2>
+        <form class="form" [formGroup]="addUser" (ngSubmit)="saveUser()">
+            <input formControlName="email" required type="email" placeholder="Email">
+            <input formControlName="password" type="password" placeholder="Password">
             <select name="roles" class="select-rol">
-              <option>Admin</option>
-              <option>Waiter</option>
-              <option>Kitchener</option>
+              <option disabled selected>Admin</option>
+              <option>Yes</option>
+              <option>No</option>
               </select>
           <div class="cancel-save">
-            <button type='button' class="cancel" >Cancel</button>
-            <button type='button' class="save">Add</button>
+            <button type='button' (click)="closeModalUser()" class="cancel">Cancel</button>
+            <button type="submit" class="save">Add</button>
           </div>
         </form>
     </div>
     </div>
   </section>
-  <section class="modal">
+  <!-- <section class="modal">
     <div class="overlay"></div>
     <div class="modal_content">
     <div class="ctn-edit-user" >
@@ -33,4 +33,4 @@
         </div>
     </div>
     </div>
-</section>
+</section> -->

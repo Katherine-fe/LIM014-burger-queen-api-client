@@ -45,15 +45,17 @@
 }
 @mixin divcancel-save {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-
     button {
-      height: 2.5em;
-      width: 41%;
+      padding: 10px 40px;
       border-radius: 5px;
-      margin: 4%;
+      cursor: pointer;
+      box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
       border: none;
+      &:hover{
+        transform: scale(1.03);
+      }
     }
 
     button.cancel {
