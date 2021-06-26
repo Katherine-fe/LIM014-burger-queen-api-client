@@ -6,10 +6,10 @@
         <form class="form" [formGroup]="addUser" (ngSubmit)="saveUser()">
             <input formControlName="email" required type="email" placeholder="Email">
             <input formControlName="password" type="password" placeholder="Password">
-            <select name="roles" class="select-rol">
+            <select name="roles" class="select-rol" formControlName="rol">
               <option disabled selected>Admin</option>
-              <option>Yes</option>
-              <option>No</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
               </select>
           <div class="cancel-save">
             <button type='button' (click)="closeModalUser()" class="cancel">Cancel</button>

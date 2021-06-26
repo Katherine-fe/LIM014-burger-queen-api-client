@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AddUserComponent implements OnInit {
   modalUser: boolean = false;
-  //@Input() showUser: boolean = false;
   title = '';
   myModalAdd = false;
   constructor() { }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserInterface } from 'src/app/model/user-interface';
+import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-modal-user',
@@ -12,23 +12,36 @@ export class ModalUserComponent implements OnInit {
   @Input() title: string = '';
   @Output() close: EventEmitter<boolean> = new EventEmitter;
 
-  constructor() { }
+  constructor(private userService: UsersService) { }
   addUser = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+    email: new FormControl('', Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")),
+    password: new FormControl('', Validators.required),
+    rol: new FormControl('', Validators.required)
   })
 
   ngOnInit(): void {
   }
 
   closeModalUser() {
+    this.addUser.reset();
     this.close.emit(false);
   }
   saveUser() {
-    if (this.addUser.errors == null) {
-      alert("Please complete all inputs");
+    if (this.addUser.valid) {
+      const objUser: object = {
+        "email": this.addUser.value.email.toLowerCase(),
+        "password": this.addUser.value.password,
+        "roles": {
+          "admin": this.addUser.value.rol == 'yes' ? true : false
+        }
+      }
+      this.addUser.reset({ email: '', password: '', rol: '' });/* Linea temporal */
+      this.userService.postUser(objUser).subscribe(() => {
+        this.addUser.reset({ email: '', password: '', rol: '' });
+      });
+      console.log(objUser);
     } else {
-      console.log("Holi boli")
+      alert("Complete all inputs and enter correct data");
     }
   }
 }
