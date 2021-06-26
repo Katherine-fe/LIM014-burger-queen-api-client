@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class ListUserComponent implements OnInit {
   usersAdmin: adminUser[] = [];
+  user!: Object;
+  title = '';
   constructor(private users: UsersService, private auth: AuthService) { }
 
   private token: any = this.auth.getToken();
@@ -29,16 +31,19 @@ export class ListUserComponent implements OnInit {
       alert("No es administrador");
     }
   }
-  mostrarModalEdit() {
+  showEdit(userItem: Object) {
+    this.title = "Update";
+    this.user = userItem;
     this.myModalEdit = true;
   }
-  mostrarModalDelete() {
+  showDelete() {
     this.myModalDelete = true;
   }
-  cerrarModalEdit(e: boolean) {
+  closeEdit(e: boolean) {
     this.myModalEdit = e;
+    this.myModalDelete = e;
   }
-  cerrarModalDelete(e: boolean) {
+  closeDelete(e: boolean) {
     this.myModalDelete = e;
   }
 }

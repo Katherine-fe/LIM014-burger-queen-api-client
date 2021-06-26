@@ -17,7 +17,7 @@ export class AddUserComponent implements OnInit {
 
   showModalUser() {
     this.modalUser = true;
-    this.title = 'Add user Fio';
+    this.title = 'Add';
   }
 
   closeModalUser(e: boolean) {

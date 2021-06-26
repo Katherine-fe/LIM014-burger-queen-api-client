@@ -10,6 +10,11 @@ import { UsersService } from 'src/app/services/users/users.service';
 export class ModalUserComponent implements OnInit {
   @Input() showUser: boolean = false;
   @Input() title: string = '';
+
+  @Input() editUser: boolean = false;
+  @Input() deleteUser: boolean = false;
+  @Input() userI: any;
+
   @Output() close: EventEmitter<boolean> = new EventEmitter;
 
   constructor(private userService: UsersService) { }
@@ -27,21 +32,29 @@ export class ModalUserComponent implements OnInit {
     this.close.emit(false);
   }
   saveUser() {
-    if (this.addUser.valid) {
-      const objUser: object = {
-        "email": this.addUser.value.email.toLowerCase(),
-        "password": this.addUser.value.password,
-        "roles": {
-          "admin": this.addUser.value.rol == 'yes' ? true : false
+    if (this.title == "Add") {
+      if (this.addUser.valid) {
+        const objUser: object = {
+          "email": this.addUser.value.email.toLowerCase(),
+          "password": this.addUser.value.password,
+          "roles": {
+            "admin": this.addUser.value.rol == 'yes' ? true : false
+          }
         }
+        this.addUser.reset({ email: '', password: '', rol: '' });/* Linea temporal */
+        this.userService.postUser(objUser).subscribe(() => {
+          this.addUser.reset({ email: '', password: '', rol: '' });
+        });
+        console.log(objUser);
+      } else {
+        alert("Complete all inputs and enter correct data");
       }
-      this.addUser.reset({ email: '', password: '', rol: '' });/* Linea temporal */
-      this.userService.postUser(objUser).subscribe(() => {
-        this.addUser.reset({ email: '', password: '', rol: '' });
-      });
-      console.log(objUser);
     } else {
-      alert("Complete all inputs and enter correct data");
+      this.addUser.value.email = this.userI.email;
+      console.log(this.userI);
     }
+  }
+  deleteModalUser() {
+    this.closeModalUser();
   }
 }

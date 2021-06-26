@@ -1,11 +1,12 @@
-<section class="modal" *ngIf="showUser">
+<section class="modal" *ngIf="showUser || editUser">
     <div class="overlay"></div>
     <div class="modal_content">
-    <div class="ctn-edit-user" >
-        <h2>{{title}}</h2>
+    <div class="ctn-edit-user">
+        <h2>{{title}} user</h2>
         <form class="form" [formGroup]="addUser" (ngSubmit)="saveUser()">
-            <input formControlName="email" required type="email" placeholder="Email">
-            <input formControlName="password" type="password" placeholder="Password">
+          <input *ngIf="title == 'Add'" formControlName="email" required type="email" placeholder="Email">
+          <!-- <input *ngIf="title == 'Update'"  formControlName="email" required type="email" placeholder="Email"> -->
+          <input formControlName="password" type="password" placeholder="Password">
             <select name="roles" class="select-rol" formControlName="rol">
               <option disabled selected>Admin</option>
               <option value="yes">Yes</option>
@@ -13,24 +14,24 @@
               </select>
           <div class="cancel-save">
             <button type='button' (click)="closeModalUser()" class="cancel">Cancel</button>
-            <button type="submit" class="save">Add</button>
+            <button type="submit" class="save">{{title}}</button>
           </div>
         </form>
     </div>
     </div>
   </section>
-  <!-- <section class="modal">
+  <section class="modal" *ngIf="deleteUser">
     <div class="overlay"></div>
     <div class="modal_content">
     <div class="ctn-edit-user" >
-        <h2>Delete User</h2>
+        <h2>Delete user</h2>
         <div class="form">
             <h5 class="nameDelete" id="modal-delete">If you delete this user, you will not be able to recover it.</h5>
           <div class="cancel-save">
-            <button type='button' class="cancel" >Cancel</button>
-            <button type='button' class="save">Delete</button>
+            <button type='button' (click)="closeModalUser()" class="cancel" >Cancel</button>
+            <button type='button'  (click)="deleteModalUser()" class="save">Delete</button>
           </div>
         </div>
     </div>
     </div>
-</section> -->
+</section>
