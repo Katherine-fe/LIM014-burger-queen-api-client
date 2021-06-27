@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FilterPipe } from '../../../pipe/filter.pipe';
 import { OrdersComponent } from './orders.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
@@ -12,7 +12,7 @@ describe('OrdersComponent', () => {
       imports: [
         HttpClientTestingModule,
       ],
-      declarations: [ OrdersComponent ]
+      declarations: [ OrdersComponent, FilterPipe ]
     })
     .compileComponents();
   });
