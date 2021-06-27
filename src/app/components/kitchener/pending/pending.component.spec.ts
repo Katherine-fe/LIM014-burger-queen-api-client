@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PendingComponent } from './pending.component';
+import { FilterPipe } from '../../../pipe/filter.pipe';
 
 describe('PendingComponent', () => {
   let component: PendingComponent;
@@ -9,7 +10,7 @@ describe('PendingComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
-      declarations: [ PendingComponent ]
+      declarations: [ PendingComponent, FilterPipe ]
     })
     .compileComponents();
   });
