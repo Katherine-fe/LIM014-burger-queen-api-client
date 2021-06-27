@@ -6,24 +6,21 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./add-products.component.scss']
 })
 export class AddProductsComponent implements OnInit {
-  @Input() visibleProducts: boolean = false;
-  title = '';
-  buttonAddUpdate = '';
+  @Input() visibleProductsAdd: boolean = false;
   
   constructor() { }
 
   ngOnInit(): void {
   }
   
-  myModalProduct = false;
+  myModalProduct3 = false;
 
   mostrarModalProduct(){
-    this.myModalProduct = true;
-    this.title='Add Product'
-    this.buttonAddUpdate= 'Add'
+    this.myModalProduct3 = true;
+
   }
 
   cerrarModalProduct(e: boolean){
-    this.myModalProduct = e;
+    this.myModalProduct3 = e;
   }
 }
