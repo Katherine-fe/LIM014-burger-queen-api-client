@@ -10,6 +10,7 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
+      require('karma-teamcity-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -31,6 +32,16 @@ module.exports = function (config) {
         { type: 'html' },
         { type: 'text-summary' }
       ]
+    },
+    coverageIstanbulReporter: {
+      reports: ['html', 'lcovonly'],
+      fixWebpackSourcePaths: true,
+      thresholds: {
+        statements: 90,
+        lines: 90,
+        branches: 90,
+        functions: 90
+      }
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,

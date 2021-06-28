@@ -1,4 +1,4 @@
-/* import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ModalComponent } from './modal.component';
 
@@ -24,4 +24,3 @@ describe('ModalComponent', () => {
     expect(component).toBeTruthy();
   });
 });
- */
