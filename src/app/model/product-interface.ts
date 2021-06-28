@@ -2,7 +2,7 @@ export interface Product {
     _id: string;
     name: string;
     price: number;
-    image: URL;
+    image: String;
     type: string;
     dateEntry: Date;
 }
