@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RecordComponent } from './record.component';
+import { FilterPipe } from '../../../pipe/filter.pipe';
 
 describe('RecordComponent', () => {
   let component: RecordComponent;
@@ -9,7 +10,7 @@ describe('RecordComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
-      declarations: [ RecordComponent ]
+      declarations: [ RecordComponent, FilterPipe ]
     })
     .compileComponents();
   });
