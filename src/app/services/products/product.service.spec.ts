@@ -17,8 +17,8 @@ fdescribe('ProductService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return expected heroes (HttpClient called once)', (done: DoneFn) => {
-    const expectedHeroes: Product [] = [{
+  it('should return expected products (HttpClient called once)', (done: DoneFn) => {
+    const expectedProduct: Product [] = [{
       _id: "D01",
       name: "Café americano",
       price: 5.0,
@@ -37,11 +37,11 @@ fdescribe('ProductService', () => {
        function asyncData<Product>(data: Product) {
         return defer(() => Promise.resolve(data));
       }
-    httpClientSpy.get.and.returnValue(asyncData(expectedHeroes));
+    httpClientSpy.get.and.returnValue(asyncData(expectedProduct));
 
     service.getListProducts().subscribe(
-      heroes => {
-        expect(heroes).toEqual(expectedHeroes, 'expected heroes');
+      prod => {
+        expect(prod).toEqual(expectedProduct, 'expected products');
         done();
       },
       done.fail
