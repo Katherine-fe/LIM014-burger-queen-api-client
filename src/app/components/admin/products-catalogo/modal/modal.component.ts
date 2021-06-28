@@ -19,20 +19,15 @@ export class ModalComponent implements OnInit {
   products: Product[] = [];
   productId!: string;
   productImg!: string;
-<<<<<<< HEAD
-
 
   @Input() title: string = '';
   @Input() buttonAddUpdate: string = '';
-  @Output() close: EventEmitter<boolean> = new EventEmitter;
-=======
   private token: any = this.auth.getToken();
   private tokenEncode: any = jwt_decode(this.token);
   @Input() objProd2: any;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
->>>>>>> 2b6b1fb6b77b8843ce568d973d77a55747389ac9
 
-  constructor(private auth: AuthService, private prod: ProductService) {}
+  constructor(private auth: AuthService, private prod: ProductService) { }
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -41,52 +36,12 @@ export class ModalComponent implements OnInit {
     type: new FormControl('', [Validators.required]),
   });
 
-<<<<<<< HEAD
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
   cerrarModalProduct() {
-    this.form.reset();
-=======
-  ngOnInit(): void {}
-  cerrarModalProduct() {
->>>>>>> 2b6b1fb6b77b8843ce568d973d77a55747389ac9
     this.close.emit(false);
   }
 
   deleteProducts(product: any) {
-<<<<<<< HEAD
-    this.prod.deleteProduct(product).subscribe(data => {
-      this.products = this.products.filter(prod => prod._id != product.id);
-      console.log(data);
-      alert("delete product");
-      this.cerrarModalProduct();
-    })
-  }
-  probando() {
-    if (this.buttonAddUpdate === 'Add') {
-      if (this.form.valid) {
-        const newProd: object = {
-          "name": this.form.value.name,
-          "price": this.form.value.price,
-          "image": "assets/img/burger1.png",
-          "type": this.form.value.type,
-          "dateEntry": this.form.value.dateEntry,
-        };
-        console.log(newProd)
-        this.prod.postProduct(newProd).subscribe(() => {
-          this.form.reset();
-          console.log('registrado');
-        })
-      } else {
-        console.log('no registrado')
-      }
-    } else {
-
-      console.log('editar')
-    }
-  }
-
-=======
     if (this.tokenEncode.roles.admin) {
       this.prod.deleteProduct(product).subscribe(() => {
         this.products = this.products.filter((prod) => prod._id != product.id);
@@ -130,10 +85,10 @@ export class ModalComponent implements OnInit {
             type: this.form.value.type,
           };
           this.prod.updateProduct(newProd, this.objProd2._id).subscribe(() => {
-              this.form.reset();
-              this.cerrarModalProduct();
-              console.log(newProd); console.log('editado');
-            });
+            this.form.reset();
+            this.cerrarModalProduct();
+            console.log(newProd); console.log('editado');
+          });
         } else {
           alert('Verifique los campos')
         }
@@ -142,5 +97,4 @@ export class ModalComponent implements OnInit {
       console.log('no es admin');
     }
   }
->>>>>>> 2b6b1fb6b77b8843ce568d973d77a55747389ac9
 }
