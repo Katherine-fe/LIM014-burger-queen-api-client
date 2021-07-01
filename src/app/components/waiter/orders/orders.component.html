@@ -13,7 +13,7 @@
         <div class="body-tickets">
             <div class="card" *ngFor="let item of products | filter: filterProd " (click)="buttonAdd(item)">                 
                 <figure>
-                    <img class="card-img" src="./../../../../assets/img/burger1.png" alt="">
+                    <img class="card-img" src="{{item.image}}" alt="">
                 </figure>
                 <div class="card-body">
                     <h3>{{item.name}}</h3>

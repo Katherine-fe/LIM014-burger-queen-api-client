@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from "../../../environments/environment";
 import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { AuthService } from '../../services/auth/auth.service'
 
 
 @Injectable({
@@ -10,16 +11,17 @@ import { tap } from 'rxjs/operators';
 })
 export class ProductService {
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient,  public auth: AuthService) { }
   public link: string = environment.link + 'products/';
   private subjectSource = new Subject<void>();
   public countdown$ = this.subjectSource.asObservable();
-  public token = localStorage.getItem("accessToken");
+  public token : any = this.auth.getToken();
   
-  headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`,
+  headers = new HttpHeaders(
+    {
+      'Authorization': `Bearer ${this.token.replaceAll('"', '')}`,
     })
-    
+
   get refresh$(){
     return this.subjectSource
   }

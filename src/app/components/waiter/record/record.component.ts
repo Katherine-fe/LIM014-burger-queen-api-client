@@ -12,7 +12,7 @@ import { changeStatus, arrayProd } from '../../../utilities/changeStatus';
 export class RecordComponent implements OnInit {
   orders: Order[] = [];
   total!: number;
-  public accessToken: any;
+  public token: any;
   public arrayProducts: any;
   public products: any;
   public orderEdit: any;
@@ -31,7 +31,8 @@ export class RecordComponent implements OnInit {
   }
   getOrders() {
     this.order.getListOrders().subscribe((data) => {
-      this.orders = data.order;
+      this.orders = data;
+      console.log(data)
     });
   }
   getOrderFilter(type: string) {

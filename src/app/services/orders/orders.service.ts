@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from "../../../environments/environment";
 import { Subject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { AuthService } from '../../services/auth/auth.service'
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { tap } from 'rxjs/operators';
 })
 export class OrdersService {
   public objectOrderProduct!: object;
-  public token = localStorage.getItem("accessToken");
+  public token : any = this.auth.getToken();
 
 
   setObjectOrderProduct(product: object) {
@@ -21,7 +22,7 @@ export class OrdersService {
     return this.objectOrderProduct;  
   }
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, public auth: AuthService) { }
 
   public link: string = environment.link + 'orders/';
   public buttonAddClickEventTrack = new Subject();
@@ -29,9 +30,8 @@ export class OrdersService {
 
   headers = new HttpHeaders(
     {
-      'Authorization':  `Bearer ${this.token}`,
-    }
-  );
+      'Authorization': `Bearer ${this.token.replaceAll('"', '')}`,
+    })
 
   get refresh$() {
     return this.subjectSource;

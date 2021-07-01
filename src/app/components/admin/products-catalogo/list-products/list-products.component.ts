@@ -28,15 +28,17 @@ export class ListProductsComponent implements OnInit {
 
   getProducts() {
     this.prod.getListProducts().subscribe((data) => {
-      this.products = data.products;
+      this.products = data;
+      console.log(data)
     });
   }
   mostrarModalProduct(product : any){
     this.myModalProduct = true;
     this.objProd = product;
   }
-  mostrarModalProductDelete(){
+  mostrarModalProductDelete(product: any){
     this.myModalProduct2 = true;
+    this.objProd = product;
 
   }
   cerrarModalProduct(e: boolean){

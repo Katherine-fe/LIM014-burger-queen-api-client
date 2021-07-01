@@ -1,22 +1,23 @@
-import { TestBed } from '@angular/core/testing';
 import { ProductService } from './product.service';
 import { Product } from '../../model/product-interface';
 import { defer } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 fdescribe('ProductService', () => {
   let httpClientSpy: { get: jasmine.Spy };
+  let authServiceSpy: { get: jasmine.Spy };
   let service: ProductService;
 
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    service = new ProductService(httpClientSpy as any);
+    service = new ProductService(httpClientSpy as any, authServiceSpy as any);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return expected products (HttpClient called once)', (done: DoneFn) => {
+  it('GET should return expected products (HttpClient called once)', (done: DoneFn) => {
     const expectedProduct: Product[] = [{
       _id: "D01",
       name: "Café americano",

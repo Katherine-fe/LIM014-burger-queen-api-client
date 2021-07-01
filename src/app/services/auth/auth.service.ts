@@ -9,14 +9,13 @@ import { environment } from '../../../environments/environment';
 })
 export class AuthService {
   error: boolean = false;
-  public link: string = environment.link;
+  public link: string = environment.link + 'auth/';;
 
   constructor(private http: HttpClient) { }
 
   requestPost(email: string, password: string): Observable<any> {
-    const link = "http://nodejs-bq-api.herokuapp.com/auth";
 
-    return this.http.post<UserInterface>(link,
+    return this.http.post<UserInterface>(this.link,
       {
         "email": email,
         "password": password
@@ -24,13 +23,13 @@ export class AuthService {
   }
   setToken(token: string): void {
     let tokenString = token;
-    localStorage.setItem("accessToken", tokenString);
+    localStorage.setItem('token', tokenString);
   }
 
   getToken() {
-    return localStorage.getItem("accessToken");
+    return localStorage.getItem('token');
   }
   logout() {
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem('token');
   }
 };
