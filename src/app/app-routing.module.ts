@@ -12,6 +12,7 @@ import { PendingComponent } from './components/kitchener/pending/pending.compone
 import { DoneComponent } from './components/kitchener/done/done.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { StaffComponent } from './components/staff/staff.component';
+import { StaffGuard } from './services/auth/staff.guard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,10 +24,13 @@ export const routes: Routes = [
       { path: '', redirectTo: 'usercatalogoadmin', pathMatch: 'full' },
       { path: 'productoscatalogoadmin', component: ProductsCatalogoComponent }],
   },
-  { path: 'staff', component: StaffComponent },
+  {
+    path: 'staff', component: StaffComponent,
+    canActivate: [StaffGuard]
+  },
   {
     path: 'mainWaiter', component: MainComponent,
-    /* canActivate: [AuthGuard], */
+    canActivate: [StaffGuard],
     children: [
       { path: '', redirectTo: 'orders', pathMatch: 'full' },
       { path: 'orders', component: OrdersComponent },
@@ -34,7 +38,7 @@ export const routes: Routes = [
   },
   {
     path: 'mainkitchener', component: MainKComponent,
-    /* canActivate: [AuthGuard], */
+    canActivate: [StaffGuard],
     children: [
       { path: '', redirectTo: 'pending', pathMatch: 'full' },
       { path: 'pending', component: PendingComponent },

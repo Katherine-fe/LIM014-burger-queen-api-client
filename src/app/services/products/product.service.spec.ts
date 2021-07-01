@@ -10,7 +10,7 @@ fdescribe('ProductService', () => {
 
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    service = new ProductService(httpClientSpy as any , authServiceSpy as any);    
+    service = new ProductService(httpClientSpy as any, authServiceSpy as any);
   });
 
   it('should be created', () => {
@@ -18,25 +18,25 @@ fdescribe('ProductService', () => {
   });
 
   it('GET should return expected products (HttpClient called once)', (done: DoneFn) => {
-    const expectedProduct: Product [] = [{
+    const expectedProduct: Product[] = [{
       _id: "D01",
       name: "Café americano",
       price: 5.0,
       image: "src/logo.png",
       type: "desayuno",
-      dateEntry: new Date() 
-      },
-       {     
+      dateEntry: new Date()
+    },
+    {
       _id: "D01",
-       name: "Café americano",
-       price: 5.0,
-       image: "src/logo.png",
-       type: "desayuno",
-       dateEntry: new Date() 
-       }];
-       function asyncData<Product>(data: Product) {
-        return defer(() => Promise.resolve(data));
-      }
+      name: "Café americano",
+      price: 5.0,
+      image: "src/logo.png",
+      type: "desayuno",
+      dateEntry: new Date()
+    }];
+    function asyncData<Product>(data: Product) {
+      return defer(() => Promise.resolve(data));
+    }
     httpClientSpy.get.and.returnValue(asyncData(expectedProduct));
 
     service.getListProducts().subscribe(

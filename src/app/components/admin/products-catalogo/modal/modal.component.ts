@@ -19,12 +19,15 @@ export class ModalComponent implements OnInit {
   products: Product[] = [];
   productId!: string;
   productImg!: string;
+
+  @Input() title: string = '';
+  @Input() buttonAddUpdate: string = '';
   private token: any = this.auth.getToken();
   private tokenEncode: any = jwt_decode(this.token);
   @Input() objProd2: any;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private auth: AuthService, private prod: ProductService) {}
+  constructor(private auth: AuthService, private prod: ProductService) { }
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -33,7 +36,7 @@ export class ModalComponent implements OnInit {
     type: new FormControl('', [Validators.required]),
   });
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   cerrarModalProduct() {
     this.close.emit(false);
   }
@@ -71,10 +74,10 @@ export class ModalComponent implements OnInit {
             type: this.form.value.type,
           };
           this.prod.updateProduct(newProd, this.objProd2._id).subscribe(() => {
-              this.form.reset();
-              this.cerrarModalProduct();
-              console.log(newProd); console.log('editado');
-            });
+            this.form.reset();
+            this.cerrarModalProduct();
+            console.log(newProd); console.log('editado');
+          });
         } else {
           alert('Verifique los campos')
         }

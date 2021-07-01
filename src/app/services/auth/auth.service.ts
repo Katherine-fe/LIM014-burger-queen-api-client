@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserInterface } from '../../model/user-interface';
 import { environment } from '../../../environments/environment';
@@ -10,12 +9,11 @@ import { environment } from '../../../environments/environment';
 })
 export class AuthService {
   error: boolean = false;
-  public link: string = environment.link + 'auth/'; ;
+  public link: string = environment.link + 'auth/';;
 
   constructor(private http: HttpClient) { }
 
   requestPost(email: string, password: string): Observable<any> {
-   
 
     return this.http.post<UserInterface>(this.link,
       {
@@ -33,4 +31,5 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem('token');
-  }};
+  }
+};

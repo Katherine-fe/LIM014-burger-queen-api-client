@@ -14,14 +14,15 @@
           <td>{{i+1}}</td>
           <td>{{user.email}}</td>
           <td>{{user.password}}</td>
-          <td>{{user.roles.admin}}</td>
+          <td>{{user.roles.admin ? "Admin": "Staff"}}</td>
           <td class="edit-delete">
-            <button class="edit" (click)="mostrarModalEdit()">Update</button>
-            <button class="delete" (click)="mostrarModalDelete()">Delete</button>
+            <button class="edit" (click)="showEdit(user)">Update</button>
+            <button class="delete" (click)="showDelete(user)">Delete</button>
           </td>
         </tr>    
       </tbody>
     </table>
-  </div>
-
-
+</div>
+<app-modal-user [editUser]="myModalEdit" (close)="closeEdit($event)"
+ [deleteUser]="myModalDelete" [title]="title" [userI]="user">
+</app-modal-user>
