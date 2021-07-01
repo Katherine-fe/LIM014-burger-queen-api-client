@@ -1,14 +1,14 @@
 <section class="body-orders">
     <section class="btn-groupR">
         <button (click)="getOrderFilter('canceled')" >Canceled</button>
-        <button (click)="getOrderFilter('delivering')">Delivering</button>
+        <button (click)="getOrderFilter('delivered')">Delivering</button>
     </section>
     <section class="group-cards">
         <div class="card-record" *ngFor="let itemOrder of orders | filter: statusOrder">
             <header>
                 <p *ngIf="itemOrder.status == 'canceled'">State: <span style="color: rgb(0, 168, 0); font-weight: bold; text-transform: capitalize;" id="state" class="state">{{itemOrder.status}}</span></p>
-                <p *ngIf="itemOrder.status == 'delivering'">State: <span style="text-transform: capitalize; color: black;" id="state" class="state">{{itemOrder.status}}</span></p>
-                <p *ngIf="itemOrder.status != 'canceled' && itemOrder.status != 'delivering'">State: <span style="text-transform: capitalize;" id="state" class="state">{{itemOrder.status}}</span></p>
+                <p *ngIf="itemOrder.status == 'delivered'">State: <span style="text-transform: capitalize; color: black;" id="state" class="state">{{itemOrder.status}}</span></p>
+                <p *ngIf="itemOrder.status != 'canceled' && itemOrder.status != 'delivered'">State: <span style="text-transform: capitalize;" id="state" class="state">{{itemOrder.status}}</span></p>
                 <p>Table: <span>2</span></p>
                 <p>User: <span id="idUser" class="id-user">{{itemOrder.client}}</span></p>
                 <p>{{itemOrder.dateEntry}}</p>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 import { Order } from '../../../model/order-interface';
 import { Subscription } from 'rxjs';
-import { changeStatus, arrayProd } from '../../../utilities/changeStatus';
+import { changeStatus} from '../../../utilities/changeStatus';
 
 @Component({
   selector: 'app-record',
@@ -32,6 +32,7 @@ export class RecordComponent implements OnInit {
   getOrders() {
     this.order.getListOrders().subscribe((data) => {
       this.orders = data;
+/*    this.orders = data.filter( (item : Order) => item.products.length > 0 ) */
       console.log(data)
     });
   }
@@ -47,8 +48,7 @@ export class RecordComponent implements OnInit {
   }
 
   onChangeStatus(order: Order) {
-    const arrayP = arrayProd(this.orders);
-    const orderEdit = changeStatus(order, arrayP);
+    const orderEdit = changeStatus(order);
     this.orderUpdateSuscription = this.order
       .updateOrder(orderEdit, order._id)
       .subscribe();
