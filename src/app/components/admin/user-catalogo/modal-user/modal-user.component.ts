@@ -45,12 +45,14 @@ export class ModalUserComponent implements OnInit {
         this.userService.postUser(objUser).subscribe(() => {
           this.addUser.reset({ email: '', password: '', rol: '' });
         });
+        this.closeModalUser(); /* Temporal esto debe estar dentro de subscribe */
         console.log(objUser);
       } else {
         alert("Complete all inputs and enter correct data");
       }
     } else {
       this.addUser.value.email = this.userI.email;
+      this.closeModalUser()
       console.log(this.userI);
     }
   }

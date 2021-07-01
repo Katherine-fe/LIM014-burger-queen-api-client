@@ -17,7 +17,7 @@
           <td>{{user.roles.admin ? "Admin": "Staff"}}</td>
           <td class="edit-delete">
             <button class="edit" (click)="showEdit(user)">Update</button>
-            <button class="delete" (click)="showDelete()">Delete</button>
+            <button class="delete" (click)="showDelete(user)">Delete</button>
           </td>
         </tr>    
       </tbody>

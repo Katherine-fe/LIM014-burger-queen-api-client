@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ProductService } from './product.service';
 import { Product } from '../../model/product-interface';
 import { defer } from 'rxjs';
@@ -10,7 +9,7 @@ fdescribe('ProductService', () => {
 
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    service = new ProductService(httpClientSpy as any);    
+    service = new ProductService(httpClientSpy as any);
   });
 
   it('should be created', () => {
@@ -18,25 +17,25 @@ fdescribe('ProductService', () => {
   });
 
   it('should return expected products (HttpClient called once)', (done: DoneFn) => {
-    const expectedProduct: Product [] = [{
+    const expectedProduct: Product[] = [{
       _id: "D01",
       name: "Café americano",
       price: 5.0,
       image: "src/logo.png",
       type: "desayuno",
-      dateEntry: new Date() 
-      },
-       {     
+      dateEntry: new Date()
+    },
+    {
       _id: "D01",
-       name: "Café americano",
-       price: 5.0,
-       image: "src/logo.png",
-       type: "desayuno",
-       dateEntry: new Date() 
-       }];
-       function asyncData<Product>(data: Product) {
-        return defer(() => Promise.resolve(data));
-      }
+      name: "Café americano",
+      price: 5.0,
+      image: "src/logo.png",
+      type: "desayuno",
+      dateEntry: new Date()
+    }];
+    function asyncData<Product>(data: Product) {
+      return defer(() => Promise.resolve(data));
+    }
     httpClientSpy.get.and.returnValue(asyncData(expectedProduct));
 
     service.getListProducts().subscribe(

@@ -16,7 +16,7 @@ export class UsersService {
 
   headers = new HttpHeaders(
     {
-      'Authorization': `Bearer ${this.token}`,
+      Authorization: `Bearer ${this.token.replaceAll('"', '')}`,
     })
 
   get refresh$() {

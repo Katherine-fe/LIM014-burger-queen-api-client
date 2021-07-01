@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserInterface } from '../../model/user-interface';
 import { environment } from '../../../environments/environment';
@@ -15,7 +14,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   requestPost(email: string, password: string): Observable<any> {
-    const link = "http://localhost:3000/auth";
+    const link = "http://nodejs-bq-api.herokuapp.com/auth";
 
     return this.http.post<UserInterface>(link,
       {
@@ -24,7 +23,7 @@ export class AuthService {
       });
   }
   setToken(token: string): void {
-    let tokenString = JSON.stringify(token);
+    let tokenString = token;
     localStorage.setItem("accessToken", tokenString);
   }
 
@@ -33,4 +32,5 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem("accessToken");
-  }};
+  }
+};

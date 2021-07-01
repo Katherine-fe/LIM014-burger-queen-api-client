@@ -24,8 +24,10 @@ export class ListUserComponent implements OnInit {
 
   getUsers() {
     if (this.tokenEncode.roles.admin) {
+      console.log(this.tokenEncode.roles.admin);
       this.users.getUser().subscribe(data => {
-        this.usersAdmin = data.user;
+        console.log(data);
+        this.usersAdmin = data;
       });
     } else {
       alert("No es administrador");
@@ -36,7 +38,7 @@ export class ListUserComponent implements OnInit {
     this.user = userItem;
     this.myModalEdit = true;
   }
-  showDelete() {
+  showDelete(userItem: object) {
     this.myModalDelete = true;
   }
   closeEdit(e: boolean) {
