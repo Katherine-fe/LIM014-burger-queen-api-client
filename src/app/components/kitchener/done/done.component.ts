@@ -18,7 +18,7 @@ export class DoneComponent implements OnInit {
 
   orders() {
     this.get.getListOrders().subscribe(data => {
-      this.orderDone = data.order;
+      this.orderDone = data;
     });
   }
 }

@@ -31,12 +31,11 @@ export class PendingComponent implements OnInit {
     const result = date2.diff(date1, 'm');
     console.log(Math.trunc(result / 60), result % 60); */
     this.get.getListOrders().subscribe(data => {
-      this.orderList = data.order;
+      this.orderList = data;
     });
   }
   onChangeStatus(order: Order): void {
-/*     const arrProd = arrayProd(this.orderList);
- */    const editOrder = changeStatus(order);
+   const editOrder = changeStatus(order);
     this.orderUpdateSuscription = this.get.updateOrder(editOrder, order._id)
       .subscribe();
     console.log(editOrder);
@@ -49,7 +48,5 @@ export class PendingComponent implements OnInit {
       const esto = cadena.replace('-', '').replace(':', '')
       console.log(esto);
     });
-    //Primero por los servicios y luego mockear
-    //ng module 
   }
 }
