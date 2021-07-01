@@ -28,7 +28,7 @@ export class OrdersComponent implements OnInit {
   }
   getProducts() {
     this.http.getListProducts().subscribe((data) => {
-      this.products = data.products;
+      this.products = data;
     });
   }
   filterType(type: string) {

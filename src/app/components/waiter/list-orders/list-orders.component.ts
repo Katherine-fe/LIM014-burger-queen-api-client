@@ -24,7 +24,7 @@ export class ListOrdersComponent implements OnInit {
   orderSuscription: Subscription = new Subscription();
   orderSendSuscription: Subscription = new Subscription();
   date = new Date();
-  public accessToken: any;
+  public token: any;
   fecha = this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear();
   hora = this.date.getHours() + ':' + this.date.getMinutes() + ':' + this.date.getSeconds();
 
@@ -84,8 +84,8 @@ export class ListOrdersComponent implements OnInit {
     return this.form.get('client');
   }
   createOrderFood() {
-    this.accessToken = this.auth.getToken();
-    const token: any = jwt_decode(this.accessToken);
+    this.token = this.auth.getToken();
+    const token: any = jwt_decode(this.token);
     this.arrayProducts = this.orders.map((order) => {
       this.products = {
         qty: order.qty,
@@ -101,7 +101,7 @@ export class ListOrdersComponent implements OnInit {
       return this.products;
     });
     this.orderTotal = {
-      userId: token._id,
+      userId: token.uid,
       client: this.form.value.client,
       products: this.arrayProducts,
       status: 'pending',

@@ -12,7 +12,7 @@
             <option value="acompañamientos">Accompaniment</option>
             <option value="Para tomar">Drink</option>
             </select>
-            <div><input type="file" formControlName="image"></div>
+            <div><input formControlName="image"></div>
           <div class="cancel-save">
             <button type='button' class="cancel" (click)="cerrarModalProduct()">Cancel</button>
             <button type='button' (click)="editProduct()" class="save">Update</button>
@@ -35,7 +35,7 @@
             <option value="acompañamientos">Accompaniment</option>
             <option value="Para tomar">Drink</option>
             </select>
-            <div><input type="file" formControlName="image"></div>
+            <div><input formControlName="image"></div>
           <div class="cancel-save">
             <button type='button' class="cancel" (click)="cerrarModalProduct()">Cancel</button>
             <button type='button'(click)="addProduct()" class="save">Add</button>
@@ -53,7 +53,7 @@
             <h5 class="nameDelete" id="modal-delete">If you delete this product, you will not be able to recover it.</h5>
           <div class="cancel-save">
             <button type='button' class="cancel" (click)="cerrarModalProduct()">Cancel</button>
-            <button type='button' class="save"  (click)="deleteProducts(products)">Delete</button>
+            <button type='button' class="save"  (click)="deleteProducts()">Delete</button>
           </div>
         </div>
     </div>

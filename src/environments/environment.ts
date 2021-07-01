@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  link: "http://localhost:3000/"
+  link: "http://nodejs-bq-api.herokuapp.com/"
 };
 
 /*

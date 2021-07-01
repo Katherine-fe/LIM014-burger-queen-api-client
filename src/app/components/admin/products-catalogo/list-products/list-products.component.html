@@ -19,7 +19,7 @@
           <td>{{item.dateEntry}}</td>
           <td class="edit-delete">
             <button class="edit" (click)="mostrarModalProduct(item)" >Update</button>
-            <button class="delete"  (click)="mostrarModalProductDelete()">Delete</button>
+            <button class="delete"  (click)="mostrarModalProductDelete(item)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -27,7 +27,7 @@
   </div>
   <div class="app">
     <app-modal [visibleProducts]="myModalProduct" [objProd2] = "objProd" (close)="cerrarModalProduct($event)" ></app-modal>
-    <app-modal [visibleProductsDelete]="myModalProduct2"  (close)="cerrarModalProduct($event)"></app-modal>
+    <app-modal [visibleProductsDelete]="myModalProduct2" [objProd2] = "objProd" (close)="cerrarModalProduct($event)"></app-modal>
   </div>
 
 
