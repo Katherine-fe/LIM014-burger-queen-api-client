@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
           this.auth.setToken(data.token);
           const token: any = jwt_decode(data.token);
           if (token.roles.admin) {
-            console.log(token.roles.admin);
             this.router.navigate(['menuprincipal']);
           } else {
             this.router.navigate(['staff']);

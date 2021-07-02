@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth/auth.service'
 })
 export class OrdersService {
   public objectOrderProduct!: object;
-  public token : any = this.auth.getToken();
+  public token: any = this.auth.getToken();
 
 
   setObjectOrderProduct(product: object) {
@@ -19,7 +19,7 @@ export class OrdersService {
   }
 
   getObjectOrderProduct() {
-    return this.objectOrderProduct;  
+    return this.objectOrderProduct;
   }
 
   constructor(public http: HttpClient, public auth: AuthService) { }
@@ -37,24 +37,24 @@ export class OrdersService {
     return this.subjectSource;
   }
   getListOrders(): Observable<any> {
-    return this.http.get(`${this.link}`, {  headers: this.headers });
+    return this.http.get(`${this.link}`, { headers: this.headers });
   }
 
   postOrder(order: object): Observable<any> {
     return this.http.post(this.link, (order), { headers: this.headers })
       .pipe(
-        tap(()=> {
+        tap(() => {
           this.refresh$.next();
         })
       )
   }
 
   updateOrder(order: any, uid: string) {
-    return this.http.put(this.link + uid, (order), {headers: this.headers })
-    .pipe(
-      tap(() => {
-        this.refresh$.next();
-      })
-    )
+    return this.http.put(this.link + uid, (order), { headers: this.headers })
+      .pipe(
+        tap(() => {
+          this.refresh$.next();
+        })
+      )
   }
 }

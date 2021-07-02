@@ -31,7 +31,7 @@ export class PendingComponent implements OnInit {
     const result = date2.diff(date1, 'm');
     console.log(Math.trunc(result / 60), result % 60); */
     this.get.getListOrders().subscribe(data => {
-      this.orderList = data.order;
+      this.orderList = data;
     });
   }
   onChangeStatus(order: Order): void {

@@ -24,9 +24,7 @@ export class ListUserComponent implements OnInit {
 
   getUsers() {
     if (this.tokenEncode.roles.admin) {
-      console.log(this.tokenEncode.roles.admin);
       this.users.getUser().subscribe(data => {
-        console.log(data);
         this.usersAdmin = data;
       });
     } else {

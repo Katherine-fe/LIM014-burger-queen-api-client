@@ -32,7 +32,6 @@ export class RecordComponent implements OnInit {
   getOrders() {
     this.order.getListOrders().subscribe((data) => {
       this.orders = data;
-      console.log(data)
     });
   }
   getOrderFilter(type: string) {
