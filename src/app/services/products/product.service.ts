@@ -27,7 +27,7 @@ export class ProductService {
   }
 
   getListProducts(): Observable<any> {
-    return this.http.get(this.link, { headers: this.headers });
+    return this.http.get(`${this.link}?page=1&limit=100`, { headers: this.headers });
   }
   postProduct(product: object): Observable<any> {
     return this.http.post(this.link, product, {headers: this.headers})

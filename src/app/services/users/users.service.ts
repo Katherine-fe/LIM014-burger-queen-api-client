@@ -24,7 +24,7 @@ export class UsersService {
   }
 
   getUser(): Observable<any> {
-    return this.http.get(this.link, { headers: this.headers })
+    return this.http.get(`${this.link}?page=1&limit=100`, { headers: this.headers })
   }
   postUser(body: object): Observable<any> {
     return this.http.post(this.link, body, { headers: this.headers })

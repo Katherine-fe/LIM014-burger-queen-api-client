@@ -37,7 +37,7 @@ export class OrdersService {
     return this.subjectSource;
   }
   getListOrders(): Observable<any> {
-    return this.http.get(`${this.link}`, { headers: this.headers });
+    return this.http.get(`${this.link}?page=1&limit=100`, { headers: this.headers });
   }
 
   postOrder(order: object): Observable<any> {

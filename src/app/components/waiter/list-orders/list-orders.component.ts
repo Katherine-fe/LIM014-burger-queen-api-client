@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { OrdersService } from '../../../services/orders/orders.service';
-import { itemOrder } from '../../../model/order-interface';
+import { itemOrder, prodOrder } from '../../../model/order-interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import jwt_decode from 'jwt-decode';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -17,8 +17,7 @@ export class ListOrdersComponent implements OnInit {
   total!: number;
   public objProd: any;
   form!: FormGroup;
-  public arrayProducts: any;
-  public products: any;
+  public products!: Array<prodOrder>;
   confirmation: boolean = false;
   public orderTotal: any;
   orderSuscription: Subscription = new Subscription();
@@ -86,30 +85,17 @@ export class ListOrdersComponent implements OnInit {
   createOrderFood() {
     this.token = this.auth.getToken();
     const token: any = jwt_decode(this.token);
-    this.arrayProducts = this.orders.map((order) => {
-      this.products = {
-        qty: order.qty,
-        product: {
-          _id: order.product._id,
-          name: order.product.name,
-          price: order.product.price,
-          image: order.product.image,
-          type: order.product.type,
-          dataEntry: order.product.dateEntry,
-        }
-      }
-      return this.products;
-    });
-    this.orderTotal = {
+    let order = {
       userId: token.uid,
       client: this.form.value.client,
-      products: this.arrayProducts,
-      status: 'pending',
-      dateEntry: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+      products: this.orders.map((item) => ({
+        productId: item.product._id,
+        qty: item.qty,
+      })),
+      }
+      return order;
     };
-    console.log(this.orderTotal);
-    return this.orderTotal;
-  }
+   
   sendOrder() {
     if (this.form.valid) {
       this.orderSendSuscription = this.orders$
