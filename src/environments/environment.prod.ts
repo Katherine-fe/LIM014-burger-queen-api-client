@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  link: "http://nodejs-bq-api.herokuapp.com/"
+  link: "https://burger-queen-apiv2.herokuapp.com/"
 };

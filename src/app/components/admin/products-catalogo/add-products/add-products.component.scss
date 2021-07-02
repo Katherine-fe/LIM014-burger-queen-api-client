@@ -13,21 +13,29 @@ $font2: 'Poppins', sans-serif;
       color:map-get($colors, 'secundary');
     }
     .input-search{
-    padding: 2px 10px;
-    font-size: 18px;
-    font-family:$font2 ;
-    border-radius: 5px;
-    border:1px solid grey ;
+      padding: 2px 10px;
+      font-size: 18px;
+      font-family:$font2 ;
+      border-radius: 5px;
+      border:1px solid grey ;
     }
    
 
 }
+.div-add{
+  display: flex;
+  column-gap: 20px;
+}
 .add-products{
-    padding: 2px 10px;
-    background: map-get($colors, 'add');
-    font-size: 18px;
-    font-family:$font2 ;  
-    border-radius: 5px;
-    margin: 10px;
-    border: none;
+  padding: 10px 15px;
+  background: map-get($colors, 'add');
+  font-size: 15px;
+  font-family:$font2 ;  
+  border-radius: 5px;
+  border: none;
+  box-shadow: 5px 5px 5px rgba(0,0,0,.2);
+  cursor: pointer;
+  &:hover{
+    transform: scale(1.03);
+  }
 }
