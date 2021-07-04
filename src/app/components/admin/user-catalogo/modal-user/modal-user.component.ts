@@ -29,8 +29,8 @@ export class ModalUserComponent implements OnInit {
   }
 
   closeModalUser() {
-    this.addUser.reset();
     this.close.emit(false);
+    console.log(this.userI);
   }
   saveUser() {
     if (this.title == "Add") {
@@ -52,9 +52,8 @@ export class ModalUserComponent implements OnInit {
         alert("Complete all inputs and enter correct data");
       }
     } else {
-      this.addUser.value.email = this.userI.email;
+      /* this.addUser.value.email = this.userI.email; */
       this.closeModalUser()
-      console.log(this.userI);
     }
   }
   deleteModalUser() {

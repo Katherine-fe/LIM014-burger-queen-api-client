@@ -9,8 +9,17 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td style="opacity: 0.4;">1</td>
+          <td style="opacity: 0.4;">admin@localhost.com</td>
+          <td style="opacity: 0.4;">Admin</td>
+          <td class="edit-delete">
+            <button class="edit" style="opacity: 0.4;" disabled>Update</button>
+            <button class="delete" style="opacity: 0.4;" disabled>Delete</button>
+          </td>
+        </tr>    
         <tr *ngFor="let user of usersAdmin; index as i">
-          <td>{{i+1}}</td>
+          <td>{{i+2}}</td>
           <td>{{user.email}}</td>
           <td>{{user.roles.admin ? "Admin": "Staff"}}</td>
           <td class="edit-delete">

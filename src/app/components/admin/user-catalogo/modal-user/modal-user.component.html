@@ -1,24 +1,15 @@
-<section class="modal" *ngIf="showUser || editUser">
+<section class="modal" *ngIf="showUser">
     <div class="overlay"></div>
     <div class="modal_content">
     <div class="ctn-edit-user">
         <h2>{{title}} user</h2>
         <form class="form" [formGroup]="addUser" (ngSubmit)="saveUser()">
-          <input *ngIf="title == 'Add'" formControlName="email" required type="email" placeholder="Email">
-          <input *ngIf="title == 'Update'" [(ngModel)]="userI.email" formControlName="email" required type="email" placeholder="Email">
-          <input *ngIf="title == 'Add'" formControlName="password" type="password" placeholder="Password">
-          <input *ngIf="title == 'Update'" [(ngModel)]="userI.password" formControlName="password" type="password" placeholder="Password">
-            <select *ngIf="title == 'Add'" name="roles" class="select-rol" formControlName="rol">
+          <input formControlName="email" required type="email" placeholder="Email">
+          <input formControlName="password" type="password" placeholder="Password">
+            <select name="roles" class="select-rol" formControlName="rol">
               <option disabled selected>Admin</option>
               <option value="yes">Yes</option>
               <option value="no">No</option>
-            </select>
-            <select *ngIf="title !== 'Add'" [(ngModel)]="userI.roles.admin" name="roles" class="select-rol" formControlName="rol">
-              <option disabled selected>Admin</option>
-              <option *ngIf="userI.roles.admin == true" selected value="yes">Yes</option>
-              <option *ngIf="userI.roles.admin == false" value="yes">Yes</option>
-              <option *ngIf="userI.roles.admin == false" selected value="no">No</option>
-              <option *ngIf="userI.roles.admin == true" value="no">No</option>
             </select>
           <div class="cancel-save">
             <button type='button' (click)="closeModalUser()" class="cancel">Cancel</button>
@@ -28,6 +19,29 @@
     </div>
     </div>
   </section>
+
+<section class="modal" *ngIf="editUser">
+    <div class="overlay"></div>
+    <div class="modal_content">
+    <div class="ctn-edit-user">
+        <h2>{{title}} user</h2>
+        <form class="form" >
+          <input [(value)]="userI.email" required type="email" placeholder="Email">
+          <input type="password" placeholder="Password">
+            <select name="roles" [(value)]="userI.roles.admin" class="select-rol">
+              <option disabled selected>Admin...</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          <div class="cancel-save">
+            <button type='button' (click)="closeModalUser()" class="cancel">Cancel</button>
+            <button type="button" class="save">{{title}}</button>
+          </div>
+        </form>
+    </div>
+    </div>
+  </section>
+
   <section class="modal" *ngIf="deleteUser">
     <div class="overlay"></div>
     <div class="modal_content">
