@@ -1,6 +1,6 @@
 <section class="body-orders">
     <section class="group-cards">
-        <div class="card-record" *ngFor="let itemOrder of orderDone | filter: statusCanceled">
+        <div class="card-record" *ngFor="let itemOrder of orderDone | filter: 'canceled'">
             <header>
                 <p>State: <span id="state" style="text-transform: capitalize; color: black;" class="state">{{itemOrder.status}}</span></p>
                 <p>User: <span id="idUser" class="id-user">{{itemOrder.client}}</span></p>
