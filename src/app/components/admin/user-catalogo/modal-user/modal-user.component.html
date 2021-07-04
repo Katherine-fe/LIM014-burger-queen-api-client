@@ -2,7 +2,7 @@
     <div class="overlay"></div>
     <div class="modal_content">
     <div class="ctn-edit-user">
-        <h2>{{title}} user</h2>
+        <h2>Add user</h2>
         <form class="form" [formGroup]="addUser" (ngSubmit)="saveUser()">
           <input formControlName="email" required type="email" placeholder="Email">
           <input formControlName="password" type="password" placeholder="Password">
@@ -13,7 +13,7 @@
             </select>
           <div class="cancel-save">
             <button type='button' (click)="closeModalUser()" class="cancel">Cancel</button>
-            <button type="submit" class="save">{{title}}</button>
+            <button type="submit" class="save">Add</button>
           </div>
         </form>
     </div>
@@ -24,18 +24,18 @@
     <div class="overlay"></div>
     <div class="modal_content">
     <div class="ctn-edit-user">
-        <h2>{{title}} user</h2>
+        <h2>Update user</h2>
         <form class="form" >
-          <input [(value)]="userI.email" required type="email" placeholder="Email">
-          <input type="password" placeholder="Password">
-            <select name="roles" [(value)]="userI.roles.admin" class="select-rol">
+          <input [(value)]="userSelect.email" #updateEmail name="emailUpdate" required type="email" placeholder="Email">
+          <input #pass type="password" placeholder="Password">
+            <select name="roles" [(value)]="userSelect.roles.admin" #rol class="select-rol">
               <option disabled selected>Admin...</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
           <div class="cancel-save">
             <button type='button' (click)="closeModalUser()" class="cancel">Cancel</button>
-            <button type="button" class="save">{{title}}</button>
+            <button type="button" (click)="updateUser(updateEmail.value, rol.value, pass.value)" class="save">Update</button>
           </div>
         </form>
     </div>

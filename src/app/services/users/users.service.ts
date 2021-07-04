@@ -37,6 +37,15 @@ export class UsersService {
       )
   }
 
+  updateUser(body: object, uid: string) {
+    return this.http.put(this.link + uid, body, { headers: this.headers })
+      .pipe(
+        tap(() => {
+          this.refreshUser$.next();
+        })
+      )
+  }
+
   deleteUser(uid: string): Observable<any> {
     return this.http.delete(this.link + uid, { headers: this.headers })
       .pipe(

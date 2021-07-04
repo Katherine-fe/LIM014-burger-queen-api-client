@@ -8,19 +8,19 @@ import { UsersService } from 'src/app/services/users/users.service';
   styleUrls: ['./modal-user.component.scss']
 })
 export class ModalUserComponent implements OnInit {
+  expReg: RegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   @Input() showUser: boolean = false;
-  @Input() title: string = '';
 
   @Input() editUser: boolean = false;
   @Input() deleteUser: boolean = false;
-  @Input() delateObject!: any;
+  @Input() userSelect!: any;
   @Input() userI: any;
 
   @Output() close: EventEmitter<boolean> = new EventEmitter;
 
   constructor(private userService: UsersService) { }
   addUser = new FormGroup({
-    email: new FormControl('', Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")),
+    email: new FormControl('', Validators.pattern(this.expReg)),
     password: new FormControl('', Validators.required),
     rol: new FormControl('', Validators.required)
   })
@@ -30,35 +30,44 @@ export class ModalUserComponent implements OnInit {
 
   closeModalUser() {
     this.close.emit(false);
-    console.log(this.userI);
   }
   saveUser() {
-    if (this.title == "Add") {
-      if (this.addUser.valid) {
-        const objUser: object = {
-          "email": this.addUser.value.email.toLowerCase(),
-          "password": this.addUser.value.password,
-          "roles": {
-            "admin": this.addUser.value.rol == 'yes' ? true : false
-          }
+    if (this.addUser.valid) {
+      const objUser: object = {
+        "email": this.addUser.value.email.toLowerCase(),
+        "password": this.addUser.value.password,
+        "roles": {
+          "admin": this.addUser.value.rol == 'yes' ? true : false
         }
-        this.addUser.reset({ email: '', password: '', rol: '' });/* Linea temporal */
-        this.userService.postUser(objUser).subscribe(() => {
-          this.addUser.reset({ email: '', password: '', rol: '' });
-        });
-        this.closeModalUser(); /* Temporal esto debe estar dentro de subscribe */
-        console.log(objUser);
-      } else {
-        alert("Complete all inputs and enter correct data");
       }
+      this.userService.postUser(objUser).subscribe(() => {
+        this.addUser.reset({ email: '', password: '', rol: '' });
+        this.closeModalUser();
+      });
     } else {
-      /* this.addUser.value.email = this.userI.email; */
-      this.closeModalUser()
+      alert("Complete all inputs and enter correct data");
     }
   }
+
   deleteModalUser() {
-    this.userService.deleteUser(this.delateObject._id).subscribe(() => {
+    this.userService.deleteUser(this.userSelect._id).subscribe(() => {
       this.closeModalUser();
     });
+  }
+  updateUser(email: string, rol: string, pass: string) {
+    if (!this.expReg.test(email) || email == '' || rol == '' || pass == '') {
+      alert("Complete all inputs and enter correct data");
+    } else {
+      const userUpdate = {
+        email: email,
+        password: pass,
+        roles: {
+          admin: rol == 'true' ? true : false
+        }
+      }
+      this.userService.updateUser(userUpdate, this.userSelect._id).subscribe(() => {
+        this.closeModalUser();
+      });
+    }
   }
 }

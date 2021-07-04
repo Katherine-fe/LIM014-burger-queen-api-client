@@ -10,8 +10,6 @@ import { Subscription } from 'rxjs';
 export class ListUserComponent implements OnInit, OnDestroy {
   usersAdmin: adminUser[] = [];
   user!: Object;
-  title = '';
-  delateObj!: Object;
   myModalEdit = false;
   myModalDelete = false;
   subscriptionUsers: Subscription = new Subscription;
@@ -36,13 +34,11 @@ export class ListUserComponent implements OnInit, OnDestroy {
     });
   }
   showEdit(userItem: Object) {
-    this.title = "Update";
     this.user = userItem;
     this.myModalEdit = true;
   }
   showDelete(userItem: object) {
-    console.log(userItem);
-    this.delateObj = userItem;
+    this.user = userItem;
     this.myModalDelete = true;
   }
   closeEdit(e: boolean) {
