@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../../model/product-interface';
 import { ProductService } from 'src/app/services/products/product.service';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ export class ListProductsComponent implements OnInit {
   objProd = Object;
   products: Product[] = [];
   productsSuscription: Subscription = new Subscription;
- 
+
   constructor(private prod: ProductService) { }
 
   ngOnInit(): void {
@@ -29,21 +29,22 @@ export class ListProductsComponent implements OnInit {
   getProducts() {
     this.prod.getListProducts().subscribe((data) => {
       this.products = data;
-      console.log(data)
     });
   }
-  mostrarModalProduct(product : any){
+  mostrarModalProduct(product: any) {
     this.myModalProduct = true;
     this.objProd = product;
   }
-  mostrarModalProductDelete(product: any){
+  mostrarModalProductDelete(product: any) {
     this.myModalProduct2 = true;
     this.objProd = product;
 
   }
-  cerrarModalProduct(e: boolean){
+  cerrarModalProduct(e: boolean) {
     this.myModalProduct = e;
-    this.myModalProduct2 =e;
+    this.myModalProduct2 = e;
   }
-
+  string(date: Date) {
+    return date.toString().substring(0, 10);
+  }
 }

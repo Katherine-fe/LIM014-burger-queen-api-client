@@ -4,7 +4,6 @@
         <tr class="titles">
           <th class="num">N°</th>
           <th>Email</th>
-          <th>Password</th>
           <th>Rol</th>
           <th>Opciones</th>
         </tr>
@@ -13,7 +12,6 @@
         <tr *ngFor="let user of usersAdmin; index as i">
           <td>{{i+1}}</td>
           <td>{{user.email}}</td>
-          <td>{{user.password}}</td>
           <td>{{user.roles.admin ? "Admin": "Staff"}}</td>
           <td class="edit-delete">
             <button class="edit" (click)="showEdit(user)">Update</button>
@@ -24,5 +22,5 @@
     </table>
 </div>
 <app-modal-user [editUser]="myModalEdit" (close)="closeEdit($event)"
- [deleteUser]="myModalDelete" [title]="title" [userI]="user">
+ [deleteUser]="myModalDelete" [delateObject]="delateObj" [title]="title" [userI]="user">
 </app-modal-user>

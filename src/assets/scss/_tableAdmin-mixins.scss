@@ -15,20 +15,25 @@ $colors: (
 }
 @mixin table-staff {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: scroll;
     .table {
-      text-align: center;
       width: 100%;
+      text-align: center;
+      /* max-width: 650px; */
       border: 1px solid #C4C4C4;
-      font-family: $font2; 
+      font-family: $font2;
       thead {
         font-size: 15px;
         
         tr {
-          height: 45px;
-  
+          /* height: 45px; */
+          padding: 20px;
           th {
             border: 0;
-  
+            padding: 5px 20px;
             p {
               font-size: 14px;
             }
