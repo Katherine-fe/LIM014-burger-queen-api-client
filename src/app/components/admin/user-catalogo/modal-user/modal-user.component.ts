@@ -13,7 +13,7 @@ export class ModalUserComponent implements OnInit {
 
   @Input() editUser: boolean = false;
   @Input() deleteUser: boolean = false;
-  @Input() delateObject!: Object;
+  @Input() delateObject!: any;
   @Input() userI: any;
 
   @Output() close: EventEmitter<boolean> = new EventEmitter;
@@ -58,7 +58,8 @@ export class ModalUserComponent implements OnInit {
     }
   }
   deleteModalUser() {
-    console.log(this.delateObject);
-    this.closeModalUser();
+    this.userService.deleteUser(this.delateObject._id).subscribe(() => {
+      this.closeModalUser();
+    });
   }
 }
