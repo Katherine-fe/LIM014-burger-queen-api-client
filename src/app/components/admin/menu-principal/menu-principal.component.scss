@@ -2,10 +2,6 @@
 @import '../../../../styles.scss';
 
 .container-admin{
-    /* width: 100%;
-    max-width: 90%;
-    margin: 0 auto;
-    padding-top: 70px;
-    font-family: $fontText; */
+    font-family: $fontText;
     @include container;
 }
