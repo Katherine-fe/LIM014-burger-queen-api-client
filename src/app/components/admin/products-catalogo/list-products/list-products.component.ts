@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from '../../../../model/product-interface';
 import { ProductService } from 'src/app/services/products/product.service';
 import { Subscription } from 'rxjs';
-
-
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
   styleUrls: ['./list-products.component.scss']
 })
-export class ListProductsComponent implements OnInit {
+export class ListProductsComponent implements OnInit, OnDestroy {
   objProd = Object;
   products: Product[] = [];
+  myModalProduct = false;
+  myModalProduct2 = false;
   productsSuscription: Subscription = new Subscription;
 
   constructor(private prod: ProductService) { }
@@ -23,8 +23,11 @@ export class ListProductsComponent implements OnInit {
     this.getProducts();
   }
 
-  myModalProduct = false;
-  myModalProduct2 = false;
+  ngOnDestroy(): void {
+    this.productsSuscription.unsubscribe();
+    console.log("Observable cerrado");
+  }
+
 
   getProducts() {
     this.prod.getListProducts().subscribe((data) => {

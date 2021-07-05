@@ -2,9 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../../../model/product-interface';
 import { ProductService } from 'src/app/services/products/product.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import * as dayjs from 'dayjs';
-
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -23,7 +21,7 @@ export class ModalComponent implements OnInit {
   @Input() objProd2: any;
   @Output() close: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private auth: AuthService, private prod: ProductService) { }
+  constructor(private prod: ProductService) { }
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),

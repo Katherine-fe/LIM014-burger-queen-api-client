@@ -18,14 +18,13 @@ export class RecordComponent implements OnInit {
   public orderEdit: any;
   orderUpdateSuscription: Subscription = new Subscription();
   showMoveButton: boolean = false;
-  statusOrder!: string;
+  statusOrder: string = "pending";
 
   constructor(private order: OrdersService) { }
 
   ngOnInit(): void {
     this.order.refresh$.subscribe(() => {
       this.getOrders();
-
     });
     this.getOrders();
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Order } from '../../../model/order-interface';
 import * as dayjs from 'dayjs';
 import { Subscription } from 'rxjs';
@@ -9,20 +9,24 @@ import { changeStatus } from 'src/app/utilities/changeStatus';
   templateUrl: './pending.component.html',
   styleUrls: ['./pending.component.scss']
 })
-export class PendingComponent implements OnInit {
+export class PendingComponent implements OnInit, OnDestroy {
   orderList: Order[] = [];
   filterStatus: Order[] = [];
   total!: number;
-  statusPending: string = '';
-  orderUpdateSuscription: Subscription = new Subscription();
-  constructor(private get: OrdersService) { }
+  subscriptionOrders: Subscription = new Subscription();
 
+  constructor(private get: OrdersService) { }
 
   ngOnInit(): void {
     this.orders();
-    /* this.suscription = this.getObservable.refresh$.subscribe(() => {
+    this.subscriptionOrders = this.get.refresh$.subscribe(() => {
       this.orders();
-    }); */
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionOrders.unsubscribe();
+    console.log("Observable cerrado");
   }
 
   orders() {
@@ -35,18 +39,10 @@ export class PendingComponent implements OnInit {
     });
   }
   onChangeStatus(order: Order): void {
-   const editOrder = changeStatus(order);
-    this.orderUpdateSuscription = this.get.updateOrder(editOrder, order._id)
-      .subscribe();
-    console.log(editOrder);
-
-  }
-  pending(orders: any) {
-    this.filterStatus = orders.filter((date: any) => date.status == 'pending');
-    this.filterStatus.forEach((elm) => {
-      let cadena = elm.dateEntry.toString();
-      const esto = cadena.replace('-', '').replace(':', '')
-      console.log(esto);
+    const editOrder = changeStatus(order);
+    this.get.updateOrder(editOrder, order._id).subscribe(() => {
+      console.log(editOrder);
     });
+
   }
 }

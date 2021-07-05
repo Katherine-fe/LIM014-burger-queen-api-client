@@ -4,29 +4,18 @@ import { environment } from "../../../environments/environment";
 import { Subject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AuthService } from '../../services/auth/auth.service'
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
   public objectOrderProduct!: object;
   public token: any = this.auth.getToken();
-
-
-  setObjectOrderProduct(product: object) {
-    this.objectOrderProduct = product;
-  }
-
-  getObjectOrderProduct() {
-    return this.objectOrderProduct;
-  }
-
-  constructor(public http: HttpClient, public auth: AuthService) { }
-
   public link: string = environment.link + 'orders/';
+
   public buttonAddClickEventTrack = new Subject();
   private subjectSource = new Subject<void>();
+
+  constructor(public http: HttpClient, public auth: AuthService) { }
 
   headers = new HttpHeaders(
     {
@@ -36,6 +25,15 @@ export class OrdersService {
   get refresh$() {
     return this.subjectSource;
   }
+
+  setObjectOrderProduct(product: object) {
+    this.objectOrderProduct = product;
+  }
+
+  getObjectOrderProduct() {
+    return this.objectOrderProduct;
+  }
+
   getListOrders(): Observable<any> {
     return this.http.get(`${this.link}?page=1&limit=100`, { headers: this.headers });
   }
