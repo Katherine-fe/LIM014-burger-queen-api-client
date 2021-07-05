@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrdersService } from 'src/app/services/orders/orders.service';
 import { Order } from '../../../model/order-interface';
 import { Subscription } from 'rxjs';
-import { changeStatus} from '../../../utilities/changeStatus';
+import { changeStatus } from '../../../utilities/changeStatus';
 
 @Component({
   selector: 'app-record',
@@ -18,22 +18,19 @@ export class RecordComponent implements OnInit {
   public orderEdit: any;
   orderUpdateSuscription: Subscription = new Subscription();
   showMoveButton: boolean = false;
-  statusOrder!: string;
+  statusOrder: string = "pending";
 
   constructor(private order: OrdersService) { }
 
   ngOnInit(): void {
     this.order.refresh$.subscribe(() => {
       this.getOrders();
-
     });
     this.getOrders();
   }
   getOrders() {
     this.order.getListOrders().subscribe((data) => {
       this.orders = data;
-/*    this.orders = data.filter( (item : Order) => item.products.length > 0 ) */
-      console.log(data)
     });
   }
   getOrderFilter(type: string) {

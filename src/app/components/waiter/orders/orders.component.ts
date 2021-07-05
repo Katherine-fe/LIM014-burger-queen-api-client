@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/products/product.service';
 import { Product } from '../../../model/product-interface';
 import { OrdersService } from '../../../services/orders/orders.service';
@@ -9,15 +9,15 @@ import { Subscription } from 'rxjs';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss'],
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnInit, OnDestroy {
   products: Product[] = [];
-  
+
   public productOrder!: object;
   productsSuscription: Subscription = new Subscription;
   filterProd: string = 'desayuno'
   show!: string;
-  
-  constructor(private http: ProductService, private order$: OrdersService) {}
+
+  constructor(private http: ProductService, private order$: OrdersService) { }
 
   ngOnInit(): void {
     this.productsSuscription = this.http.refresh$.subscribe(() => {

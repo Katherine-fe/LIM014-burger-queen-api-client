@@ -10,17 +10,19 @@ import { tap } from 'rxjs/operators';
 export class UsersService {
 
   constructor(private http: HttpClient, private auth: AuthService) { }
+
   private link: string = environment.link + 'users/';
   private token: any = this.auth.getToken();
   private subjectSource = new Subject<void>();
+  public countdown$ = this.subjectSource.asObservable();
 
   headers = new HttpHeaders(
     {
       'Authorization': `Bearer ${this.token.replaceAll('"', '')}`,
     })
 
-  get refresh$() {
-    return this.subjectSource
+  get refreshUser$() {
+    return this.subjectSource;
   }
 
   getUser(): Observable<any> {
@@ -30,7 +32,25 @@ export class UsersService {
     return this.http.post(this.link, body, { headers: this.headers })
       .pipe(
         tap(() => {
-          this.refresh$.next()
+          this.refreshUser$.next();
+        })
+      )
+  }
+
+  updateUser(body: object, uid: string) {
+    return this.http.put(this.link + uid, body, { headers: this.headers })
+      .pipe(
+        tap(() => {
+          this.refreshUser$.next();
+        })
+      )
+  }
+
+  deleteUser(uid: string): Observable<any> {
+    return this.http.delete(this.link + uid, { headers: this.headers })
+      .pipe(
+        tap(() => {
+          this.refreshUser$.next();
         })
       )
   }

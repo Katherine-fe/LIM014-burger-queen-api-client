@@ -8,6 +8,7 @@ $font2: 'Poppins', sans-serif;
     display: flex; 
     align-items: center;
     justify-content: space-between;
+    font-family:  $font2;
     .title-user{
       font-size: 13px;
       color:map-get($colors, 'secundary');
