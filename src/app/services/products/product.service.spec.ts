@@ -13,9 +13,6 @@ fdescribe('ProductService', () => {
     service = new ProductService(httpClientSpy as any, authServiceSpy as any);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 
   it('GET should return expected products (HttpClient called once)', (done: DoneFn) => {
     const expectedProduct: Product[] = [{

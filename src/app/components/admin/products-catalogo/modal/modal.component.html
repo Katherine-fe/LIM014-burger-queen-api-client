@@ -12,7 +12,7 @@
             <option value="acompañamientos">Snacks</option>
             <option value="Para tomar">Drink</option>
             </select>
-            <div><input formControlName="image"></div>
+            <div><input formControlName="image"  formControlName="image" [(ngModel)]="objProd2.image"></div>
           <div class="cancel-save">
             <button type='button' class="cancel" (click)="cerrarModalProduct()">Cancel</button>
             <button type='button' (click)="editProduct()" class="save">Update</button>
