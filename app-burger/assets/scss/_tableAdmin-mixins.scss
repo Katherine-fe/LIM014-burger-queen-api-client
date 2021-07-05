@@ -15,20 +15,25 @@ $colors: (
 }
 @mixin table-staff {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: scroll;
     .table {
-      text-align: center;
       width: 100%;
+      text-align: center;
+      /* max-width: 650px; */
       border: 1px solid #C4C4C4;
-      font-family: $font2; 
+      font-family: $font2;
       thead {
         font-size: 15px;
         
         tr {
-          height: 45px;
-  
+          /* height: 45px; */
+          padding: 20px;
           th {
             border: 0;
-  
+            padding: 5px 20px;
             p {
               font-size: 14px;
             }
@@ -55,26 +60,29 @@ $colors: (
       background: #FFFFFF;
 
       td.edit-delete {
-        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 15px;
         button {
-          height: 28px;
-          width: 80px;
           border-radius: 5px;
-          margin: 10px;
           border: none;
+          padding: 10px 15px;
+          cursor: pointer;
+          box-shadow: 3px 3px 3px rgba(0,0,0,.1);
+          &:hover{
+            transform: scale(1.03);
+          }
         }
 
         button.edit {
           background: map-get($colors, 'edit');
           color: map-get($colors, 'letter');
-          text-decoration: none; 
-          width: 25%;
         }
-
+        
         button.delete {
           background: map-get($colors, 'error');
           color: map-get($colors, 'secundary');
-          width: 25%;
         }
        
       }

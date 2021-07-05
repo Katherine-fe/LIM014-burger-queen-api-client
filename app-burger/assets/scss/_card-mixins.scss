@@ -24,6 +24,7 @@ $sangre: #a30e0e;
 @mixin card {
     width: 100%;
     display: flex;
+    max-width: 900px;
     flex-direction: column;
     row-gap: 15px;
     background-color: white;
