@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class AuthService {
   error: boolean = false;
-  public link: string = environment.link + 'auth/';;
+  public link: string = environment.link + 'auth/';
 
   constructor(private http: HttpClient) { }
 
